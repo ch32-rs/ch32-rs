@@ -20,7 +20,9 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 
 ## RISC-V
 
-- CH32V103x
+Nick name: "赤菟"?
+
+- CH32V103x 青稞V3A RV32IMAC
 - CH32V203x 采用青稞 V4B 内核, 支持硬件中断堆栈
 - CH32V208x 采用青稞 V4C 内核, 进一步加快硬件除法运算速度，并增加了内存保护功能
 - CH32V303x/305x/307x 采用青稞 V4F 内核，进一步支持了硬件浮点运算
@@ -32,3 +34,9 @@ For RISC-V, 2 SVD files are enough to cover CH32V103x, CH32V2x and CH32V3x famil
 - CH32V20x = CH32V30x (share the same RM datasheet)
 - CH32V303xx.svd = CH32V305xx.svd
 - CH32V103xx.svd
+
+## Toolchain
+
+- [MRS: MounRiver Studio](http://www.mounriver.com/)
+- [Official Flash Tool: NanjingQinheng/WCH-Link](https://github.com/NanjingQinheng/WCH-Link)
+- [OpenOCD fork with WCH-Link support(wlink)](https://github.com/jiegec/riscv-openocd/tree/wch)
