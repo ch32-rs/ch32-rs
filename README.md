@@ -1,11 +1,17 @@
-# ch32-rs
+# ch32-rs - WCH's CH32 Peripheral Access Crates
+
+[![crates.io](https://img.shields.io/crates/v/ch32v1.svg?label=ch32v1)](https://crates.io/crates/ch32v1)
+[![crates.io](https://img.shields.io/crates/v/ch32v2.svg?label=ch32v2)](https://crates.io/crates/ch32v2)
+[![crates.io](https://img.shields.io/crates/v/ch32v3.svg?label=ch32v3)](https://crates.io/crates/ch32v3)
 
 Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 
 ## Roadmap
 
-- [ ] Support GD32V3x/GD32V2x family
-- [ ] Support GD32V103x family
+- [x] Support GD32V3x/GD32V2x family
+- [x] Support GD32V103x family
+- [ ] HAL crate for GD32V3x/GD32V2x family
+- [ ] HAL crate for GD32V103x family
 - [ ] CHxxx interface or BLE MCUs.
 - [ ] Cortex-M MCUs.
 
@@ -40,3 +46,7 @@ For RISC-V, 2 SVD files are enough to cover CH32V103x, CH32V2x and CH32V3x famil
 - [MRS: MounRiver Studio](http://www.mounriver.com/)
 - [Official Flash Tool: NanjingQinheng/WCH-Link](https://github.com/NanjingQinheng/WCH-Link)
 - [OpenOCD fork with WCH-Link support(wlink)](https://github.com/jiegec/riscv-openocd/tree/wch)
+
+## Ref
+
+- https://github.com/openwch
