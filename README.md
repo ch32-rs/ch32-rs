@@ -10,6 +10,8 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 
 - [x] Support GD32V3x/GD32V2x family
 - [x] Support GD32V103x family
+- [ ] Toolchains
+  - [x] [wchisp](https://github.com/ch32-rs/wchisp) for Linux/macOS/Windows
 - [ ] HAL crate for GD32V3x/GD32V2x family
 - [ ] HAL crate for GD32V103x family
 - [ ] CHxxx interface or BLE MCUs.
@@ -24,28 +26,47 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 
 **NOTE**: Will never support of 8-bit MCUs.
 
-## RISC-V
+### Subdivision
 
-Nick name: "赤菟"?
+- D6: Low-and-medium-density general
+- D8: High-density general
+- D8C: Connectivity or interconnectivity
+- D8W: Wireless
 
-- CH32V103x 青稞V3A RV32IMAC
-- CH32V203x 采用青稞 V4B 内核, 支持硬件中断堆栈
-- CH32V208x 采用青稞 V4C 内核, 进一步加快硬件除法运算速度，并增加了内存保护功能
-- CH32V303x/305x/307x 采用青稞 V4F 内核，进一步支持了硬件浮点运算
+### RISC-V
 
-### SVD files
+Nick name: "赤菟"(Chitu). IP Core brand: 青稞(Qingke).
 
-For RISC-V, 2 SVD files are enough to cover CH32V103x, CH32V2x and CH32V3x family MCUs:
+- CH32V103x Qingke-V3A RV32IMAC
+- CH32V203x Qingke-V4B Hardware Interrupt stack
+- CH32V208x Qingke-V4C Hardware division, memory protect
+- CH32V303x/305x/307x Qingke-V4F Hardware floating point
+- CH56x: RISC-V3A
+- CH571, CH573: RISC-V3A BLE
+- CH58x: RISC-V3A BLE
 
-- CH32V20x = CH32V30x (share the same RM datasheet)
-- CH32V303xx.svd = CH32V305xx.svd
-- CH32V103xx.svd
+```
+CH32V20x_D6: CH32V203F6, CH32V203G6, CH32V203K6, CH32V203K8, CH32V203C6 and CH32V203C8. CH32V20x_D8: CH32V203RB.
+CH32V20x_D8W: CH32V208GB, CH32V208CB, CH32V208RB and CH32V208WB.
+CH32V30x_D8: CH32V303CB, CH32V303RB, CH32V303RC and CH32V303VC.
+CH32V30x_D8C: CH32V305FB, CH32V305RB, CH32V307RC, CH32V307WC and CH32V307VC.
+```
+
+### Cortex-M
+
+```
+CH32F20x_D6: CH32F203K8, CH32F203C6 and CH32F203C8.
+CH32F20x_D8: CH32F203CB, CH32F203RC and CH32F203VC.
+CH32F20x_D8C: CH32F205RB and CH32F207VC.
+CH32F20x_D8W: CH32F208RB and CH32F208WB.
+```
 
 ## Toolchain
 
 - [MRS: MounRiver Studio](http://www.mounriver.com/)
 - [Official Flash Tool: NanjingQinheng/WCH-Link](https://github.com/NanjingQinheng/WCH-Link)
 - [OpenOCD fork with WCH-Link support(wlink)](https://github.com/jiegec/riscv-openocd/tree/wch)
+- [ch32-rs/wchisp](https://github.com/ch32-rs/wchisp)
 
 ## Ref
 
