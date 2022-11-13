@@ -2,6 +2,6 @@
 
 set -ex
 
-rm -rv ../ch32-rs-nightlies/ch32v*
+rm -rv ../ch32-rs-nightlies/ch*
 
-mv ch32v* ../ch32-rs-nightlies
+mv ch* ../ch32-rs-nightlies
