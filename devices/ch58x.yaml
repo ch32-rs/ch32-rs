@@ -27,3 +27,59 @@ TMR*:
   "*":
     _strip:
       - "TMR?_"
+
+I2C:
+  _strip:
+    - "I2C_*"
+  "*":
+    _strip:
+      - "I2C_"
+
+PFIC:
+  _strip:
+    - "PFIC_*"
+  "*":
+    _strip:
+      - "PFIC_"
+
+UART*:
+  _strip:
+    - "UART*_"
+  "*":
+    _strip:
+      - "UART*_"
+
+SPI*:
+  _strip:
+    - "SPI[01]_*"
+  "*":
+    _strip:
+      - "SPI?_"
+
+SPI0:
+  _delete:
+    - CLOCK_DIV__R8_SPI0_SLAVE_PRE
+
+  _add:
+    CLOCK_DIV:
+      description: SPI clock divider
+      addressOffset: 0x03
+      size: 8
+      access: read-write
+      fields:
+        CLOCK_DIV:
+          description: SPI clock divider in master mode
+          bitOffset: 0
+          bitWidth: 8
+          access: read-write
+    SLAVE_PRE:
+      description: SPI slave prescaler
+      addressOffset: 0x03
+      size: 8
+      access: read-write
+      fields:
+        SLAVE_PRE:
+          description: SPI slave prescaler
+          bitOffset: 0
+          bitWidth: 8
+          access: read-write
