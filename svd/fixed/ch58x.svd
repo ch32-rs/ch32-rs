@@ -1464,7 +1464,7 @@
             <name>R16_ADC_DMA_NOW</name>
             <description>RO, ADC DMA current address</description>
             <addressOffset>0x64</addressOffset>
-            <size>8</size>
+            <size>16</size>
             <access>read-only</access>
             <resetValue>0x00000000</resetValue>
             <fields>
@@ -1479,7 +1479,7 @@
             <name>R16_ADC_DMA_BEG</name>
             <description>RW, ADC DMA begin address</description>
             <addressOffset>0x68</addressOffset>
-            <size>8</size>
+            <size>16</size>
             <access>read-write</access>
             <resetValue>0x00000000</resetValue>
             <fields>
@@ -1494,7 +1494,7 @@
             <name>R16_ADC_DMA_END</name>
             <description>RW, ADC DMA end address</description>
             <addressOffset>0x6C</addressOffset>
-            <size>8</size>
+            <size>16</size>
             <access>read-write</access>
             <resetValue>0x00000000</resetValue>
             <fields>
@@ -2212,7 +2212,7 @@
                     <field>
                         <name>R8_TMR1_FIFO_COUNT</name>
                         <description>RW1, TMR1 FIFO count status</description>
-                        <bitRange>[31:0]</bitRange>
+                        <bitRange>[7:0]</bitRange>
                     </field>
                 </fields>
             </register>
@@ -2493,14 +2493,14 @@
                 <resetValue>0x0</resetValue>
                 <fields>
                     <field>
-                        <name>R32_TMR2_COUNT</name>
+                        <name>R32_TMR2_CNT_END</name>
                         <description>RW, TMR2 current count</description>
                         <bitRange>[31:0]</bitRange>
                     </field>
                 </fields>
             </register>
             <register>
-                <name>R32_TMR2_COUNT</name>
+                <name>R32_TMR2_FIFO</name>
                 <description>RO, TMR2 FIFO register, only low 26 bit</description>
                 <addressOffset>0x10</addressOffset>
                 <size>32</size>
@@ -2523,9 +2523,9 @@
                 <resetValue>0x0000</resetValue>
                 <fields>
                     <field>
-                        <name>R32_TMR2_FIFO</name>
+                        <name>R16_TMR2_DMA_NOW</name>
                         <description>RW, TMR2 current count</description>
-                        <bitRange>[31:0]</bitRange>
+                        <bitRange>[15:0]</bitRange>
                     </field>
                 </fields>
             </register>
@@ -2540,7 +2540,7 @@
                     <field>
                         <name>R16_TMR2_DMA_BEG</name>
                         <description>RW, TMR2 DMA begin address</description>
-                        <bitRange>[31:0]</bitRange>
+                        <bitRange>[15:0]</bitRange>
                     </field>
                 </fields>
             </register>
@@ -2555,7 +2555,7 @@
                     <field>
                         <name>R16_TMR2_DMA_END</name>
                         <description>RW,  TMR2 DMA end address</description>
-                        <bitRange>[31:0]</bitRange>
+                        <bitRange>[15:0]</bitRange>
                     </field>
                 </fields>
             </register>
