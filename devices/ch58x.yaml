@@ -21,6 +21,9 @@ SYS:
       - "R32_*"
       - "RB_*"
 
-TMR2:
+TMR*:
   _strip:
-    - "TMR2_*"
+    - "TMR[0123]_*"
+  "*":
+    _strip:
+      - "TMR?_"
