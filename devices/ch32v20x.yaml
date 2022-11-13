@@ -11,3 +11,54 @@ _svd: ../svd/fixed/ch32v2.svd
       - "R16_*"
       - "R32_*"
       - "RB_*"
+
+USB_OTG_FS:
+  _strip_end:
+    - "_"
+  _delete:
+    - USBHD_UDEV_CTRL__USBHD_UHOST_CTRL
+    - UEP2_3_MOD__R8_UH_EP_MOD
+    - UEP2_DMA__R32_UH_RX_DMA
+    - UEP3_DMA__R32_UH_TX_DMA
+    - UEP1_T_CTRL___USBHD_UH_SETUP
+    - UEP2_T_LEN__USBHD_UH_EP_PID
+    - UEP2_R_CTRL__USBHD_UH_RX_CTRL
+    - UEP3_T_LEN__USBHD_UH_TX_LEN
+    - UEP3_T_CTRL__USBHD_UH_TX_CTRL
+
+  _add:
+    USBHD_UDEV_CTRL:
+      description: USB device physical port control register
+      addressOffset: 0x01
+      size: 8
+      fields:
+        UD_PD_DIS:
+          description: USB device port UD+/UD- pin internal pull-down resistor control
+          bitOffset: 7
+          bitWidth: 1
+          access: read-write
+        UD_DP_PIN:
+          description: USB device port UD+ pin status
+          bitOffset: 5
+          bitWidth: 1
+          access: read-only
+        UD_DM_PIN:
+          description: USB device port UD- pin status
+          bitOffset: 4
+          bitWidth: 1
+          access: read-only
+        UD_LOW_SPEED:
+          description: USB device port low speed enable
+          bitOffset: 2
+          bitWidth: 1
+          access: read-write
+        UD_GP_BIT:
+          description: USB device port general purpose bit
+          bitOffset: 1
+          bitWidth: 1
+          access: read-write
+        UD_PORT_EN:
+          description: USB device port enable
+          bitOffset: 0
+          bitWidth: 1
+          access: read-write

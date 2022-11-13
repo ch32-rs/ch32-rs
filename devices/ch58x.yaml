@@ -3,12 +3,6 @@ _svd: ../svd/fixed/ch58x.svd
 _delete:
   BLE:
 
-SYS:
-  R8_CK32K_CONFIG:
-    _modify:
-      RB_32K_CLK_PIN:
-        name: RB_CLK_32K_PIN
-
 "*":
   _strip:
     - "R8_*"
@@ -20,6 +14,26 @@ SYS:
       - "R16_*"
       - "R32_*"
       - "RB_*"
+
+SYS:
+  CK32K_CONFIG:
+    _modify:
+      32K_CLK_PIN:
+        name: CLK_32K_PIN
+
+  _modify:
+    RESET_STATUS_*_GLOB_ROM_CFG:
+      name: RESET_STATUS__GLOB_ROM_CFG
+
+    # SLV_RD_DATA is undocumented
+    PB_OUT__R8_SLV_RD_DATA:
+      name: PB_OUT
+
+Systick:
+  _modify:
+    name: SYSTICK
+  _strip:
+    - "STK_"
 
 TMR*:
   _strip:
@@ -48,6 +62,22 @@ UART*:
   "*":
     _strip:
       - "UART*_"
+
+  LCR:
+    _delete:
+      - LCR_GP_BIT_*_LCR_DLAB
+
+    _add:
+      LCR_DLAB:
+        description: Divisor Latch Access Bit
+        bitOffset: 7
+        bitWidth: 1
+        access: read-write
+      LCR_GP_BIT:
+        description: General Purpose Bit
+        bitOffset: 7
+        bitWidth: 1
+        access: read-write
 
 SPI*:
   _strip:
@@ -83,3 +113,11 @@ SPI0:
           bitOffset: 0
           bitWidth: 8
           access: read-write
+
+USB:
+  _strip:
+    - "USB_"
+USB2:
+  _strip:
+    - "U2"
+    - "USB2_"
