@@ -3,6 +3,12 @@ _svd: ../svd/fixed/ch58x.svd
 _delete:
   BLE:
 
+SYS:
+  R8_CK32K_CONFIG:
+    _modify:
+      RB_32K_CLK_PIN:
+        name: RB_CLK_32K_PIN
+
 "*":
   _strip:
     - "R8_*"
@@ -13,3 +19,8 @@ _delete:
       - "R8_*"
       - "R16_*"
       - "R32_*"
+      - "RB_*"
+
+TMR2:
+  _strip:
+    - "TMR2_*"
