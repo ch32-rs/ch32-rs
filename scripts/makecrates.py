@@ -18,7 +18,7 @@ import os.path
 import argparse
 import re
 
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 SVD2RUST_VERSION = "0.26.0"
 
 CRATE_DOC_FEATURES = {
