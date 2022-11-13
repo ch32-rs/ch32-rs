@@ -30,8 +30,13 @@ MD5 (CH58Xxx.svd) = 5e3f36119397397e0c4ee1b186f242c5
 ## Format Fixes
 
 - read/clear => read-write
+- read-only or write-only => read-write
+- write-only or read-only => read-write
 - read-opnly => read-only
 - write-read => read-write
+- Read or Write 1 to Clear => read-write
 - RE: ">[ ]+" => ">"
 - move `<access>` below `<bitWidth>`
+- move `<size>` below `<addressOffset>`
 - read-only_write-only ???
+- /RB_ => __RB_ ???

@@ -25,12 +25,14 @@ CRATE_DOC_FEATURES = {
     "ch32v3": ["rt", "ch32v30x"],
     "ch32v2": ["rt", "ch32v20x"],
     "ch32v1": ["rt", "ch32v103"],
+    "ch58x": ["rt", "ch58x"],
 }
 
 CRATE_DOC_TARGETS = {
     "ch32v3": "riscv32imac-unknown-none-elf",
     "ch32v2": "riscv32imac-unknown-none-elf",
     "ch32v1": "riscv32imac-unknown-none-elf",
+    "ch58x": "riscv32imac-unknown-none-elf",
 }
 
 CARGO_TOML_TPL = """\
@@ -173,7 +175,10 @@ def main(devices_path, yes, families):
 
     for path in glob.glob(os.path.join(devices_path, "*.yaml")):
         yamlfile = os.path.basename(path)
-        family = re.match(r'ch32[a-z]+[0-9]', yamlfile)[0]
+        if "ch5" in yamlfile:
+            family = yamlfile.split('.')[0]
+        else:
+            family = re.match(r'ch32[a-z]*[0-9]', yamlfile)[0]
 
 
         device = os.path.splitext(yamlfile)[0].lower()
