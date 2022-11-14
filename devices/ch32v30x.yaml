@@ -1,16 +1,17 @@
-_svd: ../svd/fixed/ch32v3.svd
+_svd: ../svd/fixed/ch32v30x.svd
 
 "*":
   _strip:
-    - "R8_*"
-    - "R16_*"
-    - "R32_*"
+    - "R8_"
+    - "R16_"
+    - "R32_"
   "*":
     _strip:
-      - "R8_*"
-      - "R16_*"
-      - "R32_*"
-      - "RB_*"
+      - "R8_"
+      - "R16_"
+      - "R32_"
+      - "RB_"
+      - " "
     _strip_end:
       - "_"
 

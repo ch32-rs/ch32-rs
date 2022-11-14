@@ -7,7 +7,7 @@ Copyright 2022 Andelf <andelf@gmail.com>
 Licensed under the MIT and Apache 2.0 licenses.
 
 Autogenerate the crate Cargo.toml, build.rs, README.md and src/lib.rs files
-based on available YAML files for each STM32 family.
+based on available YAML files for each CH32 family.
 
 Usage: python3 scripts/makecrates.py devices/
 """
@@ -112,7 +112,7 @@ version = "{version}"
 features = ["{device}"]
 ```
 
-The `rt` feature is enabled by default and brings in support for `cortex-m-rt`.
+The `rt` feature is enabled by default and brings in support for `riscv-rt`.
 To disable, specify `default-features = false` in `Cargo.toml`.
 
 In your code:
@@ -179,6 +179,9 @@ def main(devices_path, yes, families):
             family = yamlfile.split('.')[0]
         else:
             family = re.match(r'ch32[a-z]*[0-9]', yamlfile)[0]
+
+        if family == 'ch32v0':
+            continue # skip for now
 
 
         device = os.path.splitext(yamlfile)[0].lower()

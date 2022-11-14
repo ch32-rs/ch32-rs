@@ -1,22 +1,22 @@
 _svd: ../svd/fixed/ch58x.svd
 
 _delete:
-  BLE:
+  - BLE
 
 "*":
   _strip:
-    - "R8_*"
-    - "R16_*"
-    - "R32_*"
+    - "R8_"
+    - "R16_"
+    - "R32_"
   "*":
     _strip:
-      - "R8_*"
-      - "R16_*"
-      - "R32_*"
-      - "RB_*"
+      - "R8_"
+      - "R16_"
+      - "R32_"
+      - "RB_"
 
 SYS:
-  CK32K_CONFIG:
+  "CK32K_CONFIG":
     _modify:
       32K_CLK_PIN:
         name: CLK_32K_PIN
@@ -29,9 +29,11 @@ SYS:
     PB_OUT__R8_SLV_RD_DATA:
       name: PB_OUT
 
-Systick:
-  _modify:
+_modify:
+  Systick:
     name: SYSTICK
+
+SYSTICK:
   _strip:
     - "STK_"
 

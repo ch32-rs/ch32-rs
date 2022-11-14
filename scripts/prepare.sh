@@ -5,6 +5,7 @@ set -ex
 # or libxml2-utils
 #brew install libxml2
 #pip install wheel svdtools
+# or the rust version
 
 # wget https://raw.githubusercontent.com/ARM-software/CMSIS_5/develop/CMSIS/Utilities/CMSIS-SVD.xsd -O svd/CMSIS-SVD.xsd
 

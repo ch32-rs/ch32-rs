@@ -1,4 +1,4 @@
-_svd: ../svd/fixed/ch32v103.svd
+_svd: ../svd/fixed/ch32v003.svd
 
 "*":
   _strip:

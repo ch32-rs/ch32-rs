@@ -4,12 +4,12 @@ set -ex
 
 ./scripts/makecrates.py -y devices
 
-
+# cargo install svd
 svd patch devices/ch32v30x.yaml
-xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v3.svd.patched
+xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v30x.svd.patched
 
 mkdir -p ch32v3/src/ch32v30x
-svd2rust -m --target riscv -o ch32v3/src/ch32v30x -g --strict --pascal_enum_values --max_cluster_size -i svd/fixed/ch32v3.svd.patched
+svd2rust -m --target riscv -o ch32v3/src/ch32v30x -g --strict --pascal_enum_values --max_cluster_size -i svd/fixed/ch32v30x.svd.patched
 
 mv ch32v3/src/ch32v30x/generic.rs ch32v3/src/
 rm ch32v3/src/ch32v30x/build.rs
@@ -19,11 +19,11 @@ rustfmt --config-path="rustfmt.toml" ch32v3/src/ch32v30x/mod.rs
 
 
 svd patch devices/ch32v20x.yaml
-xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v2.svd.patched
+xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v20x.svd.patched
 
 mkdir -p ch32v2/src/ch32v20x
 svd2rust -m --target riscv -g --strict --pascal_enum_values --max_cluster_size \
-    -o ch32v2/src/ch32v20x -i svd/fixed/ch32v2.svd.patched
+    -o ch32v2/src/ch32v20x -i svd/fixed/ch32v20x.svd.patched
 
 mv ch32v2/src/ch32v20x/generic.rs ch32v2/src/
 rm ch32v2/src/ch32v20x/build.rs
@@ -33,11 +33,11 @@ rustfmt --config-path="rustfmt.toml" ch32v2/src/ch32v20x/mod.rs
 
 
 svd patch devices/ch32v103.yaml
-xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v1.svd.patched
+xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v103.svd.patched
 
 mkdir -p ch32v1/src/ch32v103
 svd2rust -m --target riscv -g --strict --pascal_enum_values --max_cluster_size \
-    -o ch32v1/src/ch32v103 -i svd/fixed/ch32v1.svd.patched
+    -o ch32v1/src/ch32v103 -i svd/fixed/ch32v103.svd.patched
 
 mv ch32v1/src/ch32v103/generic.rs ch32v1/src/
 rm ch32v1/src/ch32v103/build.rs
