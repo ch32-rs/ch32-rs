@@ -9,12 +9,12 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 
 ## Roadmap
 
-- [x] Support GD32V3x/GD32V2x family
-- [x] Support GD32V103x family
+- [x] Support CH32V3x/CH32V2x family
+- [x] Support CH32V103x family
 - [ ] Toolchains
   - [x] [wchisp](https://github.com/ch32-rs/wchisp) for Linux/macOS/Windows
-- [ ] HAL crate for GD32V3x/GD32V2x family
-- [ ] HAL crate for GD32V103x family
+- [ ] HAL crate for CH32V3x/CH32V2x family
+- [ ] HAL crate for CH32V103x family
 - [ ] CHxxx interface or BLE MCUs.
 - [ ] Cortex-M MCUs.
 
@@ -25,7 +25,7 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 - [32-bit High-speed Interface MCU, RISC-V or Unmentioned](http://www.wch-ic.com/products/categories/67.html?pid=5)
 - [32-bit BLE MCU, RISC-V or Coretex-M](http://www.wch-ic.com/products/categories/68.html?pid=5)
 
-**NOTE**: Will never support of 8-bit MCUs.
+**NOTE**: Will never support 8-bit MCUs.
 
 ### Subdivision
 
