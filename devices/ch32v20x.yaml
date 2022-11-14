@@ -5,16 +5,74 @@ _svd: ../svd/fixed/ch32v2.svd
     - "R8_*"
     - "R16_*"
     - "R32_*"
+  _strip_end:
+    - "_"
   "*":
     _strip:
       - "R8_*"
       - "R16_*"
       - "R32_*"
       - "RB_*"
+    _strip_end:
+      - "_"
+
+_include:
+  - ../peripherals/systick_64bit.yaml
+
+# CH32V203 excluding CH32V203RB
+RCC:
+  CFGR0:
+    MCO:
+      NoMCO: [0, "No clock"]
+      SYSCLK: [0b0100, "System clock (SYSCLK)"]
+      HSI: [0b0101, "Internal 8MHz RC oscillator clock (HSI)"]
+      HSE: [0b0110, "External oscillator clock (HSE)"]
+      PLL_Div2: [0b0111, "PLL clock divided by 2 (PLL/2)"]
+      PLL2: [0b1000, "PLL2 clock"]
+      PLL3_Div2: [0b1001, "PLL3 clock divided by 2 (PLL3/2)"]
+      XT1: [0b1010, "XT1 external oscillator clock"]
+      PLL3: [0b1011, "PLL3 clock"]
+    USBPRE:
+      Div1: [0b00, "Not divided (when PLLCLK=48MHz)"]
+      Div2: [0b01, "Divided by 2 (when PLLCLK=96MHz)"]
+      Div3: [0b10, "Divided by 3 (when PLLCLK=144MHz)"]
+      Div5:
+        [
+          0b11,
+          "Divided by 5 and PLL source is HSE divided by 2 (PLLCLK=240MHz, only applied for CH32V20x_D8W/CH32F20x_D8W).",
+        ]
+    PPRE2:
+      Div1: [0b000, "HCLK not divided"]
+      Div2: [0b100, "HCLK divided by 2"]
+      Div4: [0b101, "HCLK divided by 4"]
+      Div8: [0b110, "HCLK divided by 8"]
+      Div16: [0b111, "HCLK divided by 16"]
+    PPRE1:
+      Div1: [0b000, "HCLK not divided"]
+      Div2: [0b100, "HCLK divided by 2"]
+      Div4: [0b101, "HCLK divided by 4"]
+      Div8: [0b110, "HCLK divided by 8"]
+      Div16: [0b111, "HCLK divided by 16"]
+    HPRE:
+      Div1: [0b0000, "SYSCLK not divided"]
+      Div2: [0b1000, "SYSCLK divided by 2"]
+      Div4: [0b1001, "SYSCLK divided by 4"]
+      Div8: [0b1010, "SYSCLK divided by 8"]
+      Div16: [0b1011, "SYSCLK divided by 16"]
+      Div64: [0b1100, "SYSCLK divided by 64"]
+      Div128: [0b1101, "SYSCLK divided by 128"]
+      Div256: [0b1110, "SYSCLK divided by 256"]
+      Div512: [0b1111, "SYSCLK divided by 512"]
+    SWS:
+      HSI: [0b00, "HSI oscillator used as system clock"]
+      HSE: [0b01, "HSE oscillator used as system clock"]
+      PLL: [0b10, "PLL used as system clock"]
+    SW:
+      HSI: [0b00, "HSI selected as system clock"]
+      HSE: [0b01, "HSE selected as system clock"]
+      PLL: [0b10, "PLL selected as system clock"]
 
 USB_OTG_FS:
-  _strip_end:
-    - "_"
   _delete:
     - USBHD_UDEV_CTRL__USBHD_UHOST_CTRL
     - UEP2_3_MOD__R8_UH_EP_MOD
@@ -22,11 +80,13 @@ USB_OTG_FS:
     - UEP3_DMA__R32_UH_TX_DMA
     - UEP1_T_CTRL___USBHD_UH_SETUP
     - UEP2_T_LEN__USBHD_UH_EP_PID
+    # FIXME: offset = 0x3a or 0x3b?
     - UEP2_R_CTRL__USBHD_UH_RX_CTRL
     - UEP3_T_LEN__USBHD_UH_TX_LEN
     - UEP3_T_CTRL__USBHD_UH_TX_CTRL
 
   _add:
+    # 0x50000001
     USBHD_UDEV_CTRL:
       description: USB device physical port control register
       addressOffset: 0x01
@@ -62,3 +122,151 @@ USB_OTG_FS:
           bitOffset: 0
           bitWidth: 1
           access: read-write
+    UHOST_CTRL:
+      description: USB host physical port control register
+      addressOffset: 0x01
+      size: 8
+      access: read-write
+      fields:
+        UH_PD_DIS:
+          description: Internal pull-down resistor control for USB host port UD+/UD- pins
+          bitOffset: 7
+          bitWidth: 1
+        UH_DP_PIN:
+          description: Current UD+ pin status
+          bitOffset: 5
+          bitWidth: 1
+          access: read-only
+        UH_DM_PIN:
+          description: Current UD- pin status
+          bitOffset: 4
+          bitWidth: 1
+          access: read-only
+        UH_LOW_SPEED:
+          description: USB host port low speed enable
+          bitOffset: 2
+          bitWidth: 1
+        UH_BUS_RESET:
+          description: USB host port bus reset
+          bitOffset: 1
+          bitWidth: 1
+        UH_PORT_EN:
+          description: USB host port enable
+          bitOffset: 0
+          bitWidth: 1
+    UEP2_3_MOD:
+      description: Endpoint 2/3 mode control register
+      addressOffset: 0x0D
+      size: 8
+      access: read-write
+      fields:
+        UEP3_RX_EN:
+          bitOffset: 7
+          bitWidth: 1
+        UEP3_TX_EN:
+          bitOffset: 6
+          bitWidth: 1
+        UEP3_BUF_MOD:
+          bitOffset: 4
+          bitWidth: 1
+        UEP2_RX_EN:
+          bitOffset: 3
+          bitWidth: 1
+        UEP2_TX_EN:
+          bitOffset: 2
+          bitWidth: 1
+        UEP2_BUF_MOD:
+          bitOffset: 0
+          bitWidth: 1
+    UH_EP_MOD:
+      description: USB host endpoint mode control register
+      addressOffset: 0x0D
+      size: 8
+      access: read-write
+      fields:
+        UH_EP_TX_EN:
+          bitOffset: 6
+          bitWidth: 1
+        UH_EP_TBUF_MOD:
+          bitOffset: 4
+          bitWidth: 1
+        UH_EP_RX_EN:
+          bitOffset: 3
+          bitWidth: 1
+        UH_EP_RBUF_MOD:
+          bitOffset: 0
+          bitWidth: 1
+    UEP2_DMA:
+      addressOffset: 0x18
+      size: 16
+      access: read-write
+      fields:
+        UEP2_DMA:
+          bitOffset: 0
+          bitWidth: 16
+    UH_RX_DMA:
+      addressOffset: 0x18
+      size: 16
+      access: read-write
+      fields:
+        UH_RX_DMA:
+          bitOffset: 0
+          bitWidth: 16
+    UEP3_DMA:
+      addressOffset: 0x1C
+      size: 16
+      access: read-write
+      fields:
+        UEP3_DMA:
+          bitOffset: 0
+          bitWidth: 16
+    UH_TX_DMA:
+      addressOffset: 0x1C
+      size: 16
+      access: read-write
+      fields:
+        UH_TX_DMA:
+          bitOffset: 0
+          bitWidth: 16
+
+    UEP1_TX_CTRL:
+      addressOffset: 0x36
+      size: 8
+      access: read-write
+    UEP2_T_LEN:
+      addressOffset: 0x38
+      size: 8
+      access: read-write
+    UEP2_RX_CTRL:
+      addressOffset: 0x3B
+      size: 8
+      access: read-write
+    UEP3_T_LEN:
+      addressOffset: 0x3C
+      size: 8
+      access: read-write
+    UEP3_TX_CTRL:
+      addressOffset: 0x3E
+      size: 8
+      access: read-write
+
+    UH_SETUP:
+      addressOffset: 0x36
+      size: 8
+      access: read-write
+    UH_EP_PID:
+      addressOffset: 0x38
+      size: 8
+      access: read-write
+    UH_RX_CTRL:
+      addressOffset: 0x3A
+      size: 8
+      access: read-write
+    UH_TX_LEN:
+      addressOffset: 0x3C
+      size: 8
+      access: read-write
+    UH_TX_CTRL:
+      addressOffset: 0x3E
+      size: 8
+      access: read-write

@@ -11,3 +11,8 @@ _svd: ../svd/fixed/ch32v3.svd
       - "R16_*"
       - "R32_*"
       - "RB_*"
+    _strip_end:
+      - "_"
+
+_include:
+  - ../peripherals/systick_64bit.yaml
