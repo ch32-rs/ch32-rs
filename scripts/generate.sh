@@ -2,7 +2,7 @@
 
 set -ex
 
-./scripts/makecrates.py devices
+./scripts/makecrates.py -y devices
 
 
 svd patch devices/ch32v30x.yaml
