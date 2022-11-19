@@ -49,7 +49,8 @@ categories = ["embedded", "no-std", "hardware-support"]
 license = "MIT/Apache-2.0"
 
 [dependencies]
-riscv = "0.10.0"
+critical-section = {{ version = "1.0", optional = true }}
+riscv = "0.9.0"
 riscv-rt = {{ version = "0.10.0", optional = true }}
 vcell = "0.1.0"
 
@@ -59,7 +60,7 @@ default-target = "{doc_target}"
 targets = []
 
 [features]
-default = []
+default = ["rt"]
 rt = ["riscv-rt"]
 {features}
 """
