@@ -45,7 +45,7 @@ _add:
         description: System count status register
         addressOffset: 0x4
         size: 32
-        access: read-only
+        access: read-write
         fields:
           CNTIF:
             description: Count value compare flag
