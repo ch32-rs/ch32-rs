@@ -481,50 +481,36 @@
 						<description>PA2 pin interrupt flag</description>
 						<bitRange>[0:0]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PA3_IF</name>
 						<description>PA3 pin interrupt flag</description>
 						<bitRange>[1:1]</bitRange>		
 					</field>				
-				</fields>				
-				<fields>
 					<field>
 						<name>RB_GPIO_PA4_IF</name>
 						<description>PA4 pin interrupt flag</description>
 						<bitRange>[2:2]</bitRange>		
 					</field>				
-				</fields>	
-				<fields>
 					<field>
 						<name>RB_GPIO_PB3_IF</name>
 						<description>PB3 pin interrupt flag</description>
 						<bitRange>[3:3]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB4_IF</name>
 						<description>PB4 pin interrupt flag</description>
 						<bitRange>[4:4]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB11_IF</name>
 						<description>PB11 pin interrupt flag</description>
 						<bitRange>[5:5]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB12_IF</name>
 						<description>PB12 pin interrupt flag</description>
 						<bitRange>[6:6]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB15_IF</name>
 						<description>PB15 pin interrupt flag</description>
@@ -545,50 +531,36 @@
 						<description>PA2 pin interrupt enable</description>
 						<bitRange>[0:0]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PA3_IE</name>
 						<description>PA3 pin interrupt enable</description>
 						<bitRange>[1:1]</bitRange>		
 					</field>				
-				</fields>				
-				<fields>
 					<field>
 						<name>RB_GPIO_PA4_IE</name>
 						<description>PA4 pin interrupt enable</description>
 						<bitRange>[2:2]</bitRange>		
 					</field>				
-				</fields>	
-				<fields>
 					<field>
 						<name>RB_GPIO_PB3_IE</name>
 						<description>PB3 pin interrupt enable</description>
 						<bitRange>[3:3]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB4_IE</name>
 						<description>PB4 pin interrupt enable</description>
 						<bitRange>[4:4]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB11_IE</name>
 						<description>PB11 pin interrupt enable</description>
 						<bitRange>[5:5]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB12_IE</name>
 						<description>PB12 pin interrupt enable</description>
 						<bitRange>[6:6]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB15_IE</name>
 						<description>PB15 pin interrupt enable</description>
@@ -609,50 +581,36 @@
 						<description>PA2 pin interrupt mode</description>
 						<bitRange>[0:0]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PA3_IM</name>
 						<description>PA3 pin interrupt mode</description>
 						<bitRange>[1:1]</bitRange>		
 					</field>				
-				</fields>				
-				<fields>
 					<field>
 						<name>RB_GPIO_PA4_IM</name>
 						<description>PA4 pin interrupt mode</description>
 						<bitRange>[2:2]</bitRange>		
 					</field>				
-				</fields>	
-				<fields>
 					<field>
 						<name>RB_GPIO_PB3_IM</name>
 						<description>PB3 pin interrupt mode</description>
 						<bitRange>[3:3]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB4_IM</name>
 						<description>PB4 pin interrupt mode</description>
 						<bitRange>[4:4]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB11_IM</name>
 						<description>PB11 pin interrupt mode</description>
 						<bitRange>[5:5]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB12_IM</name>
 						<description>PB12 pin interrupt mode</description>
 						<bitRange>[6:6]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB15_IM</name>
 						<description>PB15 pin interrupt mode</description>
@@ -673,50 +631,36 @@
 						<description>PA2 pin interrupt mode</description>
 						<bitRange>[0:0]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PA3_IP</name>
 						<description>PA3 pin interrupt mode</description>
 						<bitRange>[1:1]</bitRange>		
 					</field>				
-				</fields>				
-				<fields>
 					<field>
 						<name>RB_GPIO_PA4_IP</name>
 						<description>PA4 pin interrupt mode</description>
 						<bitRange>[2:2]</bitRange>		
 					</field>				
-				</fields>	
-				<fields>
 					<field>
 						<name>RB_GPIO_PB3_IP</name>
 						<description>PB3 pin interrupt mode</description>
 						<bitRange>[3:3]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB4_IP</name>
 						<description>PB4 pin interrupt mode</description>
 						<bitRange>[4:4]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB11_IP</name>
 						<description>PB11 pin interrupt mode</description>
 						<bitRange>[5:5]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB12_IP</name>
 						<description>PB12 pin interrupt mode</description>
 						<bitRange>[6:6]</bitRange>		
 					</field>				
-				</fields>
-				<fields>
 					<field>
 						<name>RB_GPIO_PB15_IP</name>
 						<description>PB15 pin interrupt mode</description>
@@ -1139,7 +1083,7 @@
 				<description>TMR0 current count</description>
 				<addressOffset>0x08</addressOffset>
 				<size>32</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
@@ -1169,7 +1113,7 @@
 				<description>TMR0 FIFO register, only low 26 bit</description>
 				<addressOffset>0x10</addressOffset>
 				<size>32</size>
-				<access>read-only/write-only</access>
+				<access>read-write</access>
                 <resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
@@ -1309,7 +1253,7 @@
 				<description>TMR1 FIFO count status</description>
 				<addressOffset>0x07</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -1324,7 +1268,7 @@
 				<description>TMR1 current count</description>
 				<addressOffset>0x08</addressOffset>
 				<size>32</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
@@ -1354,7 +1298,7 @@
 				<description>TMR1 FIFO  only low 26 bit</description>
 				<addressOffset>0x10</addressOffset>
 				<size>32</size>
-				<access>read-only/write-only</access>
+				<access>read-write</access>
                 <resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
@@ -1574,7 +1518,7 @@
 				<description>TMR2 current count</description>
 				<addressOffset>0x08</addressOffset>
 				<size>32</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
@@ -1873,7 +1817,7 @@
 				<description>UART0 interrupt identification</description>
 				<addressOffset>0x04</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x01</resetValue>
 				<fields>
 					<field>
@@ -1898,7 +1842,7 @@
 				<description>UART0 line status</description>
 				<addressOffset>0x05</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0xC0</resetValue>
 				<fields>
 					<field>
@@ -1948,7 +1892,7 @@
 				<description>UART0 modem status</description>
 				<addressOffset>0x06</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -1998,7 +1942,7 @@
 				<description>UART0 receiver buffer, receiving byte _ UART0 transmitter holding, transmittal byte</description>
 				<addressOffset>0x08</addressOffset>
 				<size>8</size>
-				<access>read/write</access>
+				<access>read-write</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2013,7 +1957,7 @@
 				<description>UART0 receiver FIFO count</description>
 				<addressOffset>0x0A</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2028,7 +1972,7 @@
 				<description>UART0 transmitter FIFO count</description>
 				<addressOffset>0x0B</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2224,7 +2168,7 @@
 				<description>UART1 interrupt identification</description>
 				<addressOffset>0x04</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x01</resetValue>
 				<fields>
 					<field>
@@ -2249,7 +2193,7 @@
 				<description>UART1 line status</description>
 				<addressOffset>0x05</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0xC0</resetValue>
 				<fields>
 					<field>
@@ -2299,7 +2243,7 @@
 				<description>UART1 receiver buffer, receiving byte _ UART1 transmitter holding, transmittal byte</description>
 				<addressOffset>0x08</addressOffset>
 				<size>8</size>
-				<access>read/write</access>
+				<access>read-write</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2314,7 +2258,7 @@
 				<description>UART1 receiver FIFO count</description>
 				<addressOffset>0x0A</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2329,7 +2273,7 @@
 				<description>UART1 transmitter FIFO count</description>
 				<addressOffset>0x0B</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2510,7 +2454,7 @@
 				<description>UART2 interrupt identification</description>
 				<addressOffset>0x04</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x01</resetValue>
 				<fields>
 					<field>
@@ -2535,7 +2479,7 @@
 				<description>UART2 line status</description>
 				<addressOffset>0x05</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0xC0</resetValue>
 				<fields>
 					<field>
@@ -2585,7 +2529,7 @@
 				<description>UART2 receiver buffer, receiving byte _ UART2 transmitter holding, transmittal byte</description>
 				<addressOffset>0x08</addressOffset>
 				<size>8</size>
-				<access>read/write</access>
+				<access>read-write</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2600,7 +2544,7 @@
 				<description>UART2 receiver FIFO count</description>
 				<addressOffset>0x0A</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2615,7 +2559,7 @@
 				<description>UART2 transmitter FIFO count</description>
 				<addressOffset>0x0B</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2795,7 +2739,7 @@
 				<description>UART3 interrupt identification</description>
 				<addressOffset>0x04</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x01</resetValue>
 				<fields>
 					<field>
@@ -2820,7 +2764,7 @@
 				<description>UART3 line status</description>
 				<addressOffset>0x05</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0xC0</resetValue>
 				<fields>
 					<field>
@@ -2885,7 +2829,7 @@
 				<description>UART3 receiver FIFO count</description>
 				<addressOffset>0x0A</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -2900,7 +2844,7 @@
 				<description>UART3 transmitter FIFO count</description>
 				<addressOffset>0x0B</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -3095,7 +3039,7 @@
 				<description>SPI0 data buffer</description>
 				<addressOffset>0x04</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -3110,7 +3054,7 @@
 				<description>SPI0 work flag</description>
 				<addressOffset>0x05</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -3440,7 +3384,7 @@
 				<description>SPI1 data buffer</description>
 				<addressOffset>0x04</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -3455,7 +3399,7 @@
 				<description>SPI1 work flag</description>
 				<addressOffset>0x05</addressOffset>
 				<size>8</size>
-				<access>read</access>
+				<access>read-only</access>
                 <resetValue>0x00</resetValue>
 				<fields>
 					<field>
@@ -4680,9 +4624,6 @@
 			<usage>registers</usage>
 		</addressBlock>	
 		<registers>
-			<register>
-
-			</register>	
 		</registers>	
 	</peripheral>	
  
@@ -6148,10 +6089,6 @@
 			<usage>registers</usage>
 		</addressBlock>
 		<registers>
-			 <register>
-
-			 </register>
-		
 		</registers>
 	</peripheral>
  
@@ -6167,9 +6104,6 @@
 			<usage>registers</usage>
 		</addressBlock>
 		<registers>
-		     <register>
-
-			 </register>
 		</registers>
 	</peripheral>
  
@@ -8294,7 +8228,7 @@
 				<description>SD 128bits response register, [31:0] 32bits </description>
 				<addressOffset>0x08</addressOffset>
 				<size>32</size>
-				<access>read</access>
+				<access>read-only</access>
 				<resetValue>0x00000000</resetValue>
 				<fields>
 				    <field>
@@ -8309,12 +8243,12 @@
 				<description>SD 128bits response register, [63:32] 32bits </description>
 				<addressOffset>0x0C</addressOffset>
 				<size>32</size>
-				<access>read</access>
+				<access>read-only</access>
 				<fields>
 					<field>
 						<name>R32_EMMC_RESPONSE1</name>
 						<description>response parameter register</description>
-						<bitRange>[63:32]</bitRange>
+						<bitRange>[31:0]</bitRange>
 					</field>
 				</fields>	
 			</register>
@@ -8323,13 +8257,13 @@
 				<description>SD 128bits response register, [95:64] 32bits </description>
 				<addressOffset>0x10</addressOffset>
 				<size>32</size>
-				<access>read</access>
+				<access>read-only</access>
 				<resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
 						<name>R32_EMMC_RESPONSE2</name>
 						<description>response parameter register</description>
-						<bitRange>[95:64]</bitRange>
+						<bitRange>[31:0]</bitRange>
 					</field>
 				</fields>	
 			</register>
@@ -8338,13 +8272,13 @@
 				<description>SD 128bits response register, [127:96] 32bits </description>
 				<addressOffset>0x14</addressOffset>
 				<size>32</size>
-				<access>read</access>
+				<access>read-only</access>
 				<resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
 						<name>R32_EMMC_RESPONSE3</name>
 						<description>response parameter register</description>
-						<bitRange>[127:96]</bitRange>
+						<bitRange>[31:0]</bitRange>
 					</field>
 				</fields>	
 			</register>
@@ -8353,13 +8287,13 @@
 				<description>Multiplexing register of the EMMC_RESPONSE3,[127:96] 32bits</description>
 				<addressOffset>0x14</addressOffset>
 				<size>32</size>
-				<access>write</access>
+				<access>write-only</access>
 				<resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
 						<name>R32_EMMC_WRITE_CONT</name>
 						<description>response parameter register</description>
-						<bitRange>[127:96]</bitRange>
+						<bitRange>[31:0]</bitRange>
 					</field>
 				</fields>
 			</register>
@@ -8418,7 +8352,7 @@
 				<description>SD status</description>
 				<addressOffset>0x20</addressOffset>
 				<size>32</size>
-				<access>read</access>
+				<access>read-only</access>
 				<resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
@@ -8653,7 +8587,7 @@
 					</field>
 				</fields>
 			</register>
-		<registers>
+		</registers>
     </peripheral>
  </peripherals>
 </device>
