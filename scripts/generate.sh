@@ -4,6 +4,21 @@ set -ex
 
 ./scripts/makecrates.py -y devices
 
+
+svd patch devices/ch56x.yaml
+xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch56x.svd.patched
+
+mkdir -p ch56x/src/ch56x
+svd2rust -m --target riscv -o ch56x/src/ch56x -g --strict --pascal_enum_values --max_cluster_size -i svd/fixed/ch56x.svd.patched
+
+mv ch56x/src/ch56x/generic.rs ch56x/src/
+rm ch56x/src/ch56x/build.rs
+
+rustfmt --config-path="rustfmt.toml" ch56x/src/ch56x/mod.rs
+
+
+
+
 # cargo install svd
 svd patch devices/ch32v30x.yaml
 xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v30x.svd.patched

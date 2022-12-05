@@ -1,0 +1,97 @@
+_svd: ../svd/fixed/ch56x.svd
+
+_delete:
+  - USBSS
+  - SERDES
+  - ETH
+
+"*":
+  _strip:
+    - "R8_"
+    - "R16_"
+    - "R32_"
+  "*":
+    _strip:
+      - "R8_"
+      - "R16_"
+      - "R32_"
+      - "RB_"
+
+PWMX:
+  _delete:
+    - PWM[0123]_DATA
+  
+  _add:
+    PWM_DATA:
+      description: PWM data register
+      addressOffset: 0x04
+      size: 32
+      access: read-write
+      resetValue: 0x00000000
+      fields:
+        DATA0:
+          description: PWM0 data
+          bitOffset: 0
+          bitWidth: 8
+        DATA1:
+          description: PWM1 data
+          bitOffset: 8
+          bitWidth: 8
+        DATA2:
+          description: PWM2 data
+          bitOffset: 16
+          bitWidth: 8
+        DATA3:
+          description: PWM3 data
+          bitOffset: 24
+          bitWidth: 8
+
+
+TMR*:
+  _strip:
+    - "TMR[0123]_*"
+  "*":
+    _strip:
+      - "TMR?_"
+
+UART*:
+  _strip:
+    - "UART[0123]_*"
+  "*":
+    _strip:
+      - "UART?_"
+
+SPI*:
+  _strip:
+    - "SPI[01]_*"
+  "*":
+    _strip:
+      - "SPI?_"
+
+PFIC:
+  _strip:
+    - "PFIC_*"
+  "*":
+    _strip:
+      - "PFIC_"
+
+ECDC:
+  _strip:
+    - "ECDC_*"
+  "*":
+    _strip:
+      - "ECDC_"
+
+DVP:
+  _strip:
+    - "DVP_*"
+  "*":
+    _strip:
+      - "DVP_"
+
+HSPI:
+  _strip:
+    - "HSPI_*"
+  "*":
+    _strip:
+      - "HSPI_"      
