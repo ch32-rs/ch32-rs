@@ -163,8 +163,11 @@ def make_features(devices):
 
 
 def make_mods(devices):
-    return "\n".join('#[cfg(feature = "{0}")]\npub mod {0};\n'.format(d)
-                     for d in sorted(devices))
+    return "\n".join("""\
+#[cfg(feature = "{0}")]
+pub mod {0};
+#[cfg(feature = "{0}")]
+pub use {0}::interrupt;""".strip().format(d) for d in sorted(devices))
 
 
 def make_device_clauses(devices):
