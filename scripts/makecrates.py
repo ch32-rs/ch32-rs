@@ -25,16 +25,18 @@ CRATE_DOC_FEATURES = {
     "ch32v3": ["rt", "ch32v30x"],
     "ch32v2": ["rt", "ch32v20x"],
     "ch32v1": ["rt", "ch32v103"],
-    "ch58x": ["rt", "ch58x"],
+    "ch57x": ["rt", "ch57x"],
     "ch56x": ["rt", "ch56x"],
+    "ch58x": ["rt", "ch58x"],
 }
 
 CRATE_DOC_TARGETS = {
     "ch32v3": "riscv32imac-unknown-none-elf",
     "ch32v2": "riscv32imac-unknown-none-elf",
     "ch32v1": "riscv32imac-unknown-none-elf",
-    "ch58x": "riscv32imac-unknown-none-elf",
     "ch56x": "riscv32imac-unknown-none-elf",
+    "ch57x": "riscv32imac-unknown-none-elf",
+    "ch58x": "riscv32imac-unknown-none-elf",
 }
 
 CARGO_TOML_TPL = """\

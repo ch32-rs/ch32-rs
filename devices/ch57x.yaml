@@ -1,0 +1,51 @@
+_svd: ../svd/fixed/ch57x.svd
+
+_delete:
+  - BLE
+
+"*":
+  _strip:
+    - "R8_"
+    - "R16_"
+    - "R32_"
+  "*":
+    _strip:
+      - "R8_"
+      - "R16_"
+      - "R32_"
+      - "RB_"
+
+
+SYS:
+  "CK32K_CONFIG":
+    _modify:
+      32K_CLK_PIN:
+        name: CLK_32K_PIN
+
+TMR*:
+  _strip:
+    - "TMR[0123]_*"
+  "*":
+    _strip:
+      - "TMR?_"
+
+UART*:
+  _strip:
+    - "UART[0123]_*"
+  "*":
+    _strip:
+      - "UART?_"
+
+SPI*:
+  _strip:
+    - "SPI[01]_*"
+  "*":
+    _strip:
+      - "SPI?_"
+
+PFIC:
+  _strip:
+    - "PFIC_*"
+  "*":
+    _strip:
+      - "PFIC_"

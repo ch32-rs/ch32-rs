@@ -35,11 +35,6 @@
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
-	  <interrupt>
-        <name>TMR0</name>
-		<description>TMR0_IRQHandler</description>
-        <value>1</value>
-      </interrupt>
       <interrupt>
         <name>GPIO_A</name>
 		<description>GPIO_IRQHandler</description>
@@ -50,21 +45,6 @@
 		<description>GPIO_IRQHandler</description>
         <value>4</value>
       </interrupt>
-	  <interrupt>
-		<name>SPI0</name>
-		<description>SPI0_IRQHandler</description>
-		<value>5</value>
-	  </interrupt>
-	   <interrupt>
-		<name>BLEL</name>
-		<description>LLE_IRQHandler</description>
-		<value>6</value>
-	  </interrupt>
-	   <interrupt>
-		<name>BLEB</name>
-		<description>BB_IRQHandler</description>
-		<value>7</value>
-	  </interrupt>
 	  <interrupt>
 		<name>USB</name>
 		<description>USB_IRQHandler</description>
@@ -79,16 +59,6 @@
 		<name>TMR2</name>
 		<description>TMR2_IRQHandler</description>
 		<value>11</value>
-	  </interrupt>
-	  <interrupt>
-		<name>UART0</name>
-		<description>UART0_IRQHandler</description>
-		<value>12</value>
-	  </interrupt>
-	  <interrupt>
-		<name>UART1</name>
-		<description>UART1_IRQHandler</description>
-		<value>13</value>
 	  </interrupt>
 	  <interrupt>
 		<name>RTC</name>
@@ -109,16 +79,6 @@
 		<name>TMR3</name>
 		<description>TMR3_IRQHandler</description>
 		<value>18</value>
-	  </interrupt>
-	  <interrupt>
-		<name>UART2</name>
-		<description>UART2_IRQHandler</description>
-		<value>19</value>
-	  </interrupt>
-	  <interrupt>
-		<name>UART3</name>
-		<description>UART3_IRQHandler</description>
-		<value>20</value>
 	  </interrupt>
 	  <interrupt>
 		<name>WDOG_BAT</name>
@@ -422,7 +382,7 @@
 			<access>read-write</access> 
 			<resetValue>0x11DF</resetValue>
 			<fields>
-			    <field>
+				<field>
 					<name>RB_PWR_XROM</name>
 					<description>RWA, power for retention 2KB SRAM</description>
 					<bitRange>[0:0]</bitRange>
@@ -456,7 +416,7 @@
 					<name>RB_PWR_LDO_EN</name>
 					<description>RWA, LDO enable </description>
 					<bitRange>[8:8]</bitRange>
-				</field>>
+				</field>
 				<field>
 					<name>RB_PWR_DCDC_EN</name>
 					<description>RWA, DC/DC converter enable: 0=DC/DC disable and bypass, 1=DC/DC enable</description>
@@ -886,7 +846,7 @@
 			<addressOffset>0x45</addressOffset>
 			<access>read-only</access>
 			<size>8</size>
-			<resetValue>0xEX</resetValue>
+			<resetValue>0xE8</resetValue>
 			<fields>
 				<field>
 					<name>RB_CFG_ROM_READ</name>
@@ -919,7 +879,7 @@
 			<name>R8_RST_WDOG_CTRL</name>
 			<description>RWA, reset and watch-dog control, SAM</description>
 			<addressOffset>0x46</addressOffset>
-			<access> read-write </access>
+			<access>read-write</access>
 			<size>8</size>
 			<resetValue>0x00</resetValue>
 			<fields>
@@ -1217,21 +1177,6 @@
 				</field>		
 			</fields>
 		</register>	
-	    <register>
-			<name>R8_ADC_DMA_IF</name>
-			<description>RO, ADC interrupt flag register</description>
-			<addressOffset>0x5E</addressOffset>
-			<size>8</size>
-			<access>read-only</access>
-			<resetValue>0x00</resetValue>
-			<fields>
-				<field>
-					<name>RB_ADC_IF_EOC</name>
-					<description>RW, ADC conversion interrupt flag: 0=free or converting, 1=end of conversion, interrupt action, write R8_ADC_CONVERT to clear flag</description>
-					<bitRange>[7:7]</bitRange>
-				</field>		
-			</fields>
-		</register>
 		 <register>
 			<name>R32_ADC_DMA_CTRL</name>
 			<description>RO, ADC DMA control and status register</description>
@@ -1321,9 +1266,9 @@
 			<name>R16_ADC_DMA_NOW</name>
 			<description>RO, ADC DMA current address</description>
 			<addressOffset>0x64</addressOffset>
-			<size>8</size>
+			<size>16</size>
 			<access>read-only</access>
-			<resetValue>0x00000000</resetValue>
+			<resetValue>0x0000</resetValue>
 			<fields>
 				<field>
 					<name>R16_ADC_DMA_NOW</name>
@@ -1336,9 +1281,9 @@
 			<name>R16_ADC_DMA_BEG</name>
 			<description>RW, ADC DMA begin address</description>
 			<addressOffset>0x68</addressOffset>
-			<size>8</size>
+			<size>16</size>
 			<access>read-write</access>
-			<resetValue>0x00000000</resetValue>
+			<resetValue>0x00</resetValue>
 			<fields>
 				<field>
 					<name>R16_ADC_DMA_BEG</name>
@@ -1351,9 +1296,9 @@
 			<name>R16_ADC_DMA_END</name>
 			<description>RW, ADC DMA end address</description>
 			<addressOffset>0x6C</addressOffset>
-			<size>8</size>
+			<size>16</size>
 			<access>read-write</access>
-			<resetValue>0x00000000</resetValue>
+			<resetValue>0x00</resetValue>
 			<fields>
 				<field>
 					<name>R16_ADC_DMA_END</name>
@@ -1737,7 +1682,7 @@
 		<interrupt>
 			<name>TMR0</name>
 			<description>TMR0_IRQHandler</description>
-			<value>0</value>
+			<value>2</value>
 		</interrupt>
 		<registers>
 			<register>
@@ -2069,7 +2014,7 @@
 					<field>
 						<name>R8_TMR1_FIFO_COUNT</name>
 						<description>RW1, TMR1 FIFO count status</description>
-						<bitRange>[31:0]</bitRange>
+						<bitRange>[7:0]</bitRange>
 					</field>
 				</fields>
 			</register>
@@ -2357,7 +2302,7 @@
 				</fields>
 			</register>
 			<register>
-				<name>R32_TMR2_COUNT</name>
+				<name>R32_TMR2_FIFO</name>
 				<description>RO, TMR2 FIFO register, only low 26 bit</description>
 				<addressOffset>0x10</addressOffset>
 				<size>32</size>
@@ -2380,9 +2325,9 @@
 				<resetValue>0x0000</resetValue>
 				<fields>
 					<field>
-						<name>R32_TMR2_FIFO</name>
+						<name>R16_TMR2_DMA_NOW</name>
 						<description>RW, TMR2 current count</description>
-						<bitRange>[31:0]</bitRange>
+						<bitRange>[15:0]</bitRange>
 					</field>
 				</fields>
 			</register>
@@ -2397,7 +2342,7 @@
 					<field>
 						<name>R16_TMR2_DMA_BEG</name>
 						<description>RW, TMR2 DMA begin address</description>
-						<bitRange>[31:0]</bitRange>
+						<bitRange>[15:0]</bitRange>
 					</field>
 				</fields>
 			</register>
@@ -2412,7 +2357,7 @@
 					<field>
 						<name>R16_TMR2_DMA_END</name>
 						<description>RW,  TMR2 DMA end address</description>
-						<bitRange>[31:0]</bitRange>
+						<bitRange>[15:0]</bitRange>
 					</field>
 				</fields>
 			</register>
@@ -4789,7 +4734,7 @@
 				<addressOffset>0x05</addressOffset>
 				<size>8</size>
 				<access>read-only</access>
-				<resetValue>0x00200000</resetValue>
+				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
 						<name>RB_UMS_DEV_ATTACH</name>
@@ -5348,7 +5293,7 @@
 		 <interrupt>
 		  <name>BLEB</name>
 		  <description>BB_IRQHandler</description>
-		  <value>6</value>
+		  <value>7</value>
 	     </interrupt>
 	</peripheral>
 
