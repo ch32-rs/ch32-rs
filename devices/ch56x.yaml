@@ -19,7 +19,16 @@ _delete:
       - "RB_"
 
 _include:
-  - ../peripherals/gpio_pa_pb.yaml
+  - ../peripherals/gpio_from_sys.yaml
+  - ../peripherals/serdes.yaml
+
+# move GPIO to GPIO register block
+SYS:
+  _delete:
+    - "GPIO_INT_*"
+    - "PA_*"
+    - "PB_*"
+    - "PIN_ALT*"
 
 PWMX:
   _delete:
@@ -156,165 +165,3 @@ EMMC:
   "*":
     _strip:
       - "EMMC_"
-
-_add:
-  # 0x4000B000
-  # Ref: https://github.com/hydrausb3/wch-ch56x-bsp/blob/main/drv/CH56x_serdes.h
-  SERDES:
-    description: SerDes high-speed differential signal
-    baseAddress: 0x4000B000
-    registers:
-      CTRL:
-        description:
-        addressOffset: 0x0
-        size: 32
-        access: read-write
-        resetValue: 0x00000000
-        fields:
-          ALIGN_EN:
-            description:
-            bitOffset: 18
-            bitWidth: 1
-          CONT_EN:
-            bitOffset: 17
-            bitWidth: 1
-          POWR_UP:
-            bitOffset: 16
-            bitWidth: 1
-          TX_PU:
-            bitOffset: 15
-            bitWidth: 1
-          RX_PU:
-            bitOffset: 14
-            bitWidth: 1
-          PLL_PU:
-            bitOffset: 13
-            bitWidth: 1
-          PLL_DIV:
-            bitOffset: 8
-            bitWidth: 5
-          DMA_EN:
-            bitOffset: 7
-            bitWidth: 1
-          TX_EN:
-            bitOffset: 6
-            bitWidth: 1
-          RX_EN:
-            bitOffset: 5
-            bitWidth: 1
-          RX_POLAR:
-            bitOffset: 4
-            bitWidth: 1
-          INT_BUSY_EN:
-            bitOffset: 3
-            bitWidth: 1
-          PHY_RESET:
-            bitOffset: 2
-            bitWidth: 1
-          LINK_RESET:
-            bitOffset: 1
-            bitWidth: 1
-          ALL_CLR:
-            bitOffset: 0
-            bitWidth: 1
-
-      INT_EN:
-        description:
-        addressOffset: 0x4
-        size: 32
-        access: read-write
-        # all int type 0x2F 0b101111
-        resetValue: 0x00000000
-        fields:
-          PHY_RDY_EN:
-            bitRange: "[0:0]"
-          TX_INT_EN:
-            bitRange: "[1:1]"
-          RX_ERR_EN:
-            bitRange: "[1:1]"
-          RX_INT_EN:
-            bitRange: "[2:2]"
-          FIFO_OV_EN:
-            bitRange: "[3:3]"
-          COMMA_INT_EN:
-            bitRange: "[5:5]"
-
-      STATUS:
-        description:
-        addressOffset: 0x8
-        size: 32
-        access: read-write
-        resetValue: 0x00000000
-        fields:
-          PHY_RDY_FLG:
-            bitRange: "[0:0]"
-          TX_INT_FLG:
-            bitRange: "[1:1]"
-          RX_ERR_FLG:
-            bitRange: "[1:1]"
-          RX_INT_FLG:
-            bitRange: "[2:2]"
-          FIFO_OV_FLG:
-            bitRange: "[3:3]"
-          COMMA_INT_FLG:
-            bitRange: "[5:5]"
-
-          SEQ_MATCH:
-            bitRange: "[17:17]"
-          RX_CRC_OK:
-            bitRange: "[18:18]"
-          PLL_READY:
-            bitRange: "[19:19]"
-          TX_READY:
-            bitRange: "[20:20]"
-
-      RTX_CTRL:
-        description:
-        addressOffset: 0xC
-        size: 32
-        access: read-write
-        resetValue: 0x00000000
-        fields:
-          BUF_MODE:
-            bitRange: "[18:18]"
-          TX_START:
-            bitRange: "[17:17]"
-          LINK_INIT:
-            bitRange: "[16:16]"
-
-      RX_LEN0:
-        description:
-        addressOffset: 0x10
-        size: 32
-        access: read-write
-        resetValue: 0x00000000
-      DATA0:
-        description:
-        addressOffset: 0x14
-        size: 32
-        access: read-write
-        resetValue: 0x00000000
-      DMA0:
-        description: DMA starting Address
-        addressOffset: 0x18
-        size: 32
-        access: read-write
-        resetValue: 0x00000000
-      RX_LEN1:
-        description:
-        addressOffset: 0x1C
-        size: 32
-        access: read-write
-        resetValue: 0x00000000
-      DATA1:
-        description:
-        addressOffset: 0x20
-        size: 32
-        access: read-write
-        resetValue: 0x00000000
-      DMA1:
-        description:
-        addressOffset: 0x24
-        size: 32
-        access: read-write
-        resetValue: 0x00000000

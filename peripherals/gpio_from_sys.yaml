@@ -4,6 +4,7 @@ _add:
   GPIO:
     description: GPIO
     groupName: GPIO
+    # The same as SYS
     baseAddress: 0x4000_1000
     registers:
       INT_FLAG:
