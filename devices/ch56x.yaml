@@ -10,6 +10,7 @@ _delete:
     - "R8_"
     - "R16_"
     - "R32_"
+    - "RB_"
   "*":
     _strip:
       - "R8_"
@@ -20,7 +21,7 @@ _delete:
 PWMX:
   _delete:
     - PWM[0123]_DATA
-  
+
   _add:
     PWM_DATA:
       description: PWM data register
@@ -46,7 +47,6 @@ PWMX:
           bitOffset: 24
           bitWidth: 8
 
-
 TMR*:
   _strip:
     - "TMR[0123]_*"
@@ -55,6 +55,32 @@ TMR*:
       - "TMR?_"
 
 UART*:
+  _delete:
+    - "*RBR_*_THR"
+
+  _add:
+    RBR:
+      description: Receive buffer register
+      addressOffset: 0x08
+      size: 8
+      access: read-write
+      fields:
+        RBR:
+          description: Data receive buffer register
+          bitOffset: 0
+          bitWidth: 8
+      
+    THR:
+      description: Transmit hold register
+      addressOffset: 0x08
+      size: 8
+      access: read-write
+      fields:
+        THR:
+          description: Data transmit hold register
+          bitOffset: 0
+          bitWidth: 8
+
   _strip:
     - "UART[0123]_*"
   "*":
@@ -62,6 +88,31 @@ UART*:
       - "UART?_"
 
 SPI*:
+  _delete:
+    - "*CLOCK_DIV_*_SLAVE_PRE"
+
+  _add:
+    CLOCK_DIV:
+      description: SPI master mode clock divider register
+      addressOffset: 0x03
+      size: 8
+      access: read-write
+      fields:
+        CLICK_DIV:
+          description: SPI master mode clock divider
+          bitOffset: 0
+          bitWidth: 8
+    SLAVE_PRE:
+      description: SPI slave mode preset data register
+      addressOffset: 0x03
+      size: 8
+      access: read-write
+      fields:
+        SLAVE_PRE:
+          description: SPI slave mode preset data
+          bitOffset: 0
+          bitWidth: 8
+
   _strip:
     - "SPI[01]_*"
   "*":
@@ -94,7 +145,14 @@ HSPI:
     - "HSPI_*"
   "*":
     _strip:
-      - "HSPI_"      
+      - "HSPI_"
+
+EMMC:
+  _strip:
+    - "EMMC_*"
+  "*":
+    _strip:
+      - "EMMC_"
 
 _add:
   # 0x4000B000
@@ -156,7 +214,7 @@ _add:
           ALL_CLR:
             bitOffset: 0
             bitWidth: 1
-            
+
       INT_EN:
         description:
         addressOffset: 0x4
@@ -220,7 +278,7 @@ _add:
             bitRange: "[17:17]"
           LINK_INIT:
             bitRange: "[16:16]"
-      
+
       RX_LEN0:
         description:
         addressOffset: 0x10
