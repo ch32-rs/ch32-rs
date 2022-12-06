@@ -18,6 +18,9 @@ _delete:
       - "R32_"
       - "RB_"
 
+_include:
+  - ../peripherals/gpio_pa_pb.yaml
+
 PWMX:
   _delete:
     - PWM[0123]_DATA
@@ -69,7 +72,7 @@ UART*:
           description: Data receive buffer register
           bitOffset: 0
           bitWidth: 8
-      
+
     THR:
       description: Transmit hold register
       addressOffset: 0x08

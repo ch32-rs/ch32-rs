@@ -1,0 +1,440 @@
+# strip GPIO from SYS
+
+_add:
+  GPIO:
+    description: GPIO
+    groupName: GPIO
+    baseAddress: 0x4000_1000
+    registers:
+      INT_FLAG:
+        description: GPIO interrupt flag
+        addressOffset: 0x1c
+        size: 8
+        access: read-write
+        resetValue: 0x00
+        fields:
+          PB15_IF:
+            description: PB15 interrupt flag
+            bitOffset: 7
+            bitWidth: 1
+            access: read-write
+          PB12_IF:
+            description: PB12 interrupt flag
+            bitOffset: 6
+            bitWidth: 1
+            access: read-write
+          PB11_IF:
+            description: PB11 interrupt flag
+            bitOffset: 5
+            bitWidth: 1
+            access: read-write
+          PB4_IF:
+            description: PB4 interrupt flag
+            bitOffset: 4
+            bitWidth: 1
+            access: read-write
+          PB3_IF:
+            description: PB3 interrupt flag
+            bitOffset: 3
+            bitWidth: 1
+            access: read-write
+          PA4_IF:
+            description: PA4 interrupt flag
+            bitOffset: 2
+            bitWidth: 1
+            access: read-write
+          PA3_IF:
+            description: PA3 interrupt flag
+            bitOffset: 1
+            bitWidth: 1
+            access: read-write
+          PA2_IF:
+            description: PA2 interrupt flag
+            bitOffset: 0
+            bitWidth: 1
+            access: read-write
+
+      INT_ENABLE:
+        description: GPIO interrupt enable
+        addressOffset: 0x1d
+        size: 8
+        access: read-write
+        resetValue: 0x00
+        fields:
+          PB15_IE:
+            description: PB15 interrupt enable flag
+            bitOffset: 7
+            bitWidth: 1
+            access: read-write
+          PB12_IE:
+            description: PB12 interrupt enable flag
+            bitOffset: 6
+            bitWidth: 1
+            access: read-write
+          PB11_IE:
+            description: PB11 interrupt enable flag
+            bitOffset: 5
+            bitWidth: 1
+            access: read-write
+          PB4_IE:
+            description: PB4 interrupt enable flag
+            bitOffset: 4
+            bitWidth: 1
+            access: read-write
+          PB3_IE:
+            description: PB3 interrupt enable flag
+            bitOffset: 3
+            bitWidth: 1
+            access: read-write
+          PA4_IE:
+            description: PA4 interrupt enable flag
+            bitOffset: 2
+            bitWidth: 1
+            access: read-write
+          PA3_IE:
+            description: PA3 interrupt enable flag
+            bitOffset: 1
+            bitWidth: 1
+            access: read-write
+          PA2_IE:
+            description: PA2 interrupt enable flag
+            bitOffset: 0
+            bitWidth: 1
+            access: read-write
+
+      INT_MODE:
+        description: GPIO interrupt mode
+        addressOffset: 0x1e
+        size: 8
+        access: read-write
+        resetValue: 0x00
+        fields:
+          PB15_IM:
+            description: PB15 interrupt mode selection
+            bitOffset: 7
+            bitWidth: 1
+            access: read-write
+          PB12_IM:
+            description: PB12 interrupt mode selection
+            bitOffset: 6
+            bitWidth: 1
+            access: read-write
+          PB11_IM:
+            description: PB11 interrupt mode selection
+            bitOffset: 5
+            bitWidth: 1
+            access: read-write
+          PB4_IM:
+            description: PB4 interrupt mode selection
+            bitOffset: 4
+            bitWidth: 1
+            access: read-write
+          PB3_IM:
+            description: PB3 interrupt mode selection
+            bitOffset: 3
+            bitWidth: 1
+            access: read-write
+          PA4_IM:
+            description: PA4 interrupt mode selection
+            bitOffset: 2
+            bitWidth: 1
+            access: read-write
+          PA3_IM:
+            description: PA3 interrupt mode selection
+            bitOffset: 1
+            bitWidth: 1
+            access: read-write
+          PA2_IM:
+            description: PA2 interrupt mode selection
+            bitOffset: 0
+            bitWidth: 1
+            access: read-write
+
+      INT_POLAR:
+        description: GPIO interrupt polarity
+        addressOffset: 0x1f
+        size: 8
+        access: read-write
+        fields:
+          PB15_IP:
+            description: PB15 interrupt polar selection
+            bitOffset: 7
+            bitWidth: 1
+            access: read-write
+          PB12_IP:
+            description: PB12 interrupt polar selection
+            bitOffset: 6
+            bitWidth: 1
+            access: read-write
+          PB11_IP:
+            description: PB11 interrupt polar selection
+            bitOffset: 5
+            bitWidth: 1
+            access: read-write
+          PB4_IP:
+            description: PB4 interrupt polar selection
+            bitOffset: 4
+            bitWidth: 1
+            access: read-write
+          PB3_IP:
+            description: PB3 interrupt polar selection
+            bitOffset: 3
+            bitWidth: 1
+            access: read-write
+          PA4_IP:
+            description: PA4 interrupt polar selection
+            bitOffset: 2
+            bitWidth: 1
+            access: read-write
+          PA3_IP:
+            description: PA3 interrupt polar selection
+            bitOffset: 1
+            bitWidth: 1
+            access: read-write
+          PA2_IP:
+            description: PA2 interrupt polar selection
+            bitOffset: 0
+            bitWidth: 1
+            access: read-write
+
+      # PA
+
+      PA_DIR:
+        description: GPIO port A direction
+        addressOffset: 0x40
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PA_DIR:
+            description: GPIO port A direction
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PA_PIN:
+        description: GPIO port A pin input value
+        addressOffset: 0x44
+        size: 32
+        access: read-write
+        # resetValue: 0x00XXXXXX
+        fields:
+          PA_PIN:
+            description: GPIO port A pin input value
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PA_OUT:
+        description: GPIO port A output value
+        addressOffset: 0x48
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PA_OUT:
+            description: GPIO port A output value
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PA_CLR:
+        description: GPIO port A data clear
+        addressOffset: 0x4c
+        size: 32
+        access: write-only
+        resetValue: 0x00000000
+        fields:
+          PA_CLR:
+            description: GPIO port A data clear
+            bitOffset: 0
+            bitWidth: 24
+            access: write-only
+
+      PA_PU:
+        description: GPIO port A pull-up enable
+        addressOffset: 0x50
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PA_PU:
+            description: GPIO port A pull-up enable
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PA_PD:
+        description: GPIO port A pull-down enable
+        addressOffset: 0x54
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PA_PD:
+            description: GPIO port A pull-down enable
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PA_DRV:
+        description: GPIO port A drive capability
+        addressOffset: 0x58
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PA_DRV:
+            description: GPIO port A drive capability
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PA_SMT:
+        description: GPIO port A Schmitt trigger enable
+        addressOffset: 0x5c
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PA_SMT:
+            description: GPIO port A Schmitt trigger enable
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      # PB
+
+      PB_DIR:
+        description: GPIO port B direction
+        addressOffset: 0x60
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PB_DIR:
+            description: GPIO port B direction
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PB_PIN:
+        description: GPIO port B pin input value
+        addressOffset: 0x64
+        size: 32
+        access: read-write
+        # resetValue: 0x00XXXXXX
+        fields:
+          PB_PIN:
+            description: GPIO port B pin input value
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PB_OUT:
+        description: GPIO port B output value
+        addressOffset: 0x68
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PB_OUT:
+            description: GPIO port B output value
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PB_CLR:
+        description: GPIO port B data clear
+        addressOffset: 0x6c
+        size: 32
+        access: write-only
+        resetValue: 0x00000000
+        fields:
+          PB_CLR:
+            description: GPIO port B data clear
+            bitOffset: 0
+            bitWidth: 24
+            access: write-only
+
+      PB_PU:
+        description: GPIO port B pull-up enable
+        addressOffset: 0x70
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PB_PU:
+            description: GPIO port B pull-up enable
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PB_PD:
+        description: GPIO port B pull-down enable
+        addressOffset: 0x74
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PB_PD:
+            description: GPIO port B pull-down enable
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PB_DRV:
+        description: GPIO port B drive capability
+        addressOffset: 0x78
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PB_DRV:
+            description: GPIO port B drive capability
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      PB_SMT:
+        description: GPIO port B Schmitt trigger enable
+        addressOffset: 0x7c
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          PB_SMT:
+            description: GPIO port B Schmitt trigger enable
+            bitOffset: 0
+            bitWidth: 24
+            access: read-write
+
+      # PB ends
+
+      PIN_ALTERNATE:
+        description: GPIO pin alternate function
+        addressOffset: 0x12
+        size: 8
+        access: read-write
+        resetValue: 0x00
+        fields:
+          UART0:
+            description: UART0 alternate function
+            bitOffset: 4
+            bitWidth: 1
+            access: read-write
+          TMR2:
+            description: TMR2 alternate function
+            bitOffset: 2
+            bitWidth: 1
+            access: read-write
+          TMR1:
+            description: TMR1 alternate function
+            bitOffset: 1
+            bitWidth: 1
+            access: read-write
+          MII:
+            description: ETH RMII/RGMII interface
+            bitOffset: 0
+            bitWidth: 1
+            access: read-write
