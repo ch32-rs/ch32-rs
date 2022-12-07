@@ -18,16 +18,16 @@ import os.path
 import argparse
 import re
 
-VERSION = "0.1.5"
+VERSION = "0.1.6"
 SVD2RUST_VERSION = "0.26.0"
 
 CRATE_DOC_FEATURES = {
-    "ch32v3": ["rt", "ch32v30x"],
-    "ch32v2": ["rt", "ch32v20x"],
-    "ch32v1": ["rt", "ch32v103"],
-    "ch57x": ["rt", "ch57x"],
-    "ch56x": ["rt", "ch56x"],
-    "ch58x": ["rt", "ch58x"],
+    "ch32v3": ["rt", "ch32v30x", "critical-section"],
+    "ch32v2": ["rt", "ch32v20x", "critical-section"],
+    "ch32v1": ["rt", "ch32v103", "critical-section"],
+    "ch57x": ["rt", "ch57x", "critical-section"],
+    "ch56x": ["rt", "ch56x", "critical-section"],
+    "ch58x": ["rt", "ch58x", "critical-section"],
 }
 
 CRATE_DOC_TARGETS = {
