@@ -12,3 +12,255 @@ _svd: ../svd/fixed/ch32v103.svd
       - "R32_"
       - "RB_"
       - " "
+
+PWR:
+  CTLR:
+    _modify:
+      LPDS,PDDS,CWUF,CSBF,PLS:
+        _write_constraint: "enum"
+
+    LPDS:
+      Normal: [0, "Regulator works normally at halting mode"]
+      LowPower: [1, "Regulator works at low power at halting mode"]
+
+    PDDS:
+      Halting: [0, "Turn into halting mode on deepsleep"]
+      StandBy: [1, "Turn into stand-by mode on deepsleep"]
+
+    CWUF:
+      _write:
+        Clear: [1, "Clear Wake-Up Flag"]
+
+    CSBF:
+      _write:
+        Clear: [1, "Clear Stand-By Flag"]
+
+    PLS:
+      R265F250: [0, "Rising edge 2.65V, falling edge 2.5V"]
+      R287F270: [1, "Rising edge 2.87V, falling edge 2.7V"]
+      R307F289: [2, "Rising edge 3.07V, falling edge 2.89V"]
+      R327F308: [3, "Rising edge 3.27V, falling edge 3.08V"]
+      R346F327: [4, "Rising edge 3.46V, falling edge 3.27V"]
+      R376F355: [5, "Rising edge 3.76V, falling edge 3.55V"]
+      R407F384: [6, "Rising edge 4.07V, falling edge 3.84V"]
+      R443F413: [7, "Rising edge 4.43V, falling edge 4.13V"]
+
+  CSR:
+    PVDO:
+      _read:
+        Higher: [0, "VDD and VDDA is higher than PVD threshold"]
+        Lower: [1, "VDD and VDDA is lower than PVD threshold"]
+
+RCC:
+  CTLR:
+    "*RDY":
+      _read:
+        NotReady: [0, "Clock not ready"]
+        Ready: [1, "Clock ready"]
+
+    "*ON":
+      "Off": [0, "System Off"]
+      "On": [1, "System On"]
+
+    HSEBYP:
+      NotBypassed: [0, "HSE crystal oscillator not bypassed"]
+      Bypassed: [1, "HSE crystal oscillator bypassed with external clock"]
+    
+  CFGR0:
+    _modify:
+      "*":
+        _write_constraint: "enum"
+      SWS:
+        _write_constraint: "none"
+
+    SW:
+      HSI: [0, "HSI as system clock"]
+      HSE: [1, "HSE as system clock"]
+      PLL: [2, "PLL as system clock"]
+    
+    SWS:
+      _read:
+        HSI: [0, "HSI as system clock"]
+        HSE: [1, "HSE as system clock"]
+        PLL: [2, "PLL as system clock"]
+
+    HPRE:
+      NoDiv: [0, "AHB clock source SYSCLK no division"]
+      Div2: [8, "AHB clock source SYSCLK divided by 2"]
+      Div4: [9, "AHB clock source SYSCLK divided by 4"]
+      Div8: [10, "AHB clock source SYSCLK divided by 8"]
+      Div16: [11, "AHB clock source SYSCLK divided by 16"]
+      Div64: [12, "AHB clock source SYSCLK divided by 64"]
+      Div128: [13, "AHB clock source SYSCLK divided by 128"]
+      Div256: [14, "AHB clock source SYSCLK divided by 256"]
+      Div512: [15, "AHB clock source SYSCLK divided by 512"]
+
+    "PPRE[12]":
+      NoDiv: [0, "APB clock source HCLK no division"]
+      Div2: [4, "APB clock source HCLK divided by 2"]
+      Div4: [5, "APB clock source HCLK divided by 4"]
+      Div8: [6, "APB clock source HCLK divided by 8"]
+      Div16: [7, "APB clock source HCLK divided by 16"]
+
+    ADCPRE:
+      Div2: [0, "ADC clock source PCLK2 divided by 2"]
+      Div4: [1, "ADC clock source PCLK2 divided by 4"]
+      Div6: [2, "ADC clock source PCLK2 divided by 6"]
+      Div8: [3, "ADC clock source PCLK2 divided by 8"]
+
+    PLLSRC:
+      HSI: [0, "HSI as PLL clock source"]
+      HSE: [1, "HSE as PLL clock source"]
+
+    PLLXTPRE:
+      NoDiv: [0, "PLL clock source HSE no division"]
+      Div2: [1, "PLL clock source HSE divided by 2"]
+
+    PLLMUL:
+      Mul2: [0, "PLL output multiplier 2"]
+      Mul3: [1, "PLL output multiplier 3"]
+      Mul4: [2, "PLL output multiplier 4"]
+      Mul5: [3, "PLL output multiplier 5"]
+      Mul6: [4, "PLL output multiplier 6"]
+      Mul7: [5, "PLL output multiplier 7"]
+      Mul8: [6, "PLL output multiplier 8"]
+      Mul9: [7, "PLL output multiplier 9"]
+      Mul10: [8, "PLL output multiplier 10"]
+      Mul11: [9, "PLL output multiplier 11"]
+      Mul12: [10, "PLL output multiplier 12"]
+      Mul13: [11, "PLL output multiplier 13"]
+      Mul14: [12, "PLL output multiplier 14"]
+      Mul15: [13, "PLL output multiplier 15"]
+      Mul16: [14, "PLL output multiplier 16"]
+
+    USBPRE:
+      Direct: [1, "USB clock source use PLL directly"]
+      PLL1P5: [0, "USB clock source PLL divided by 1.5"]
+
+    MCO:
+      NoOutput: [0, "No microcontroller clock output"]
+      SYSCLK: [4, "Output SYSCLK"]
+      HSI: [5, "Output HSI"]
+      HSE: [6, "Output HSE"]
+      PLLDiv2: [7, "Output PLL divided by 2"]
+
+  INTR:
+    _modify:
+      "*C":
+        _write_constraint: "enum"
+
+    "*F":
+      _read:
+        NotInterrupted: [0, "No interrupt occurred"]
+        Interrupted: [1, "Interrupt occurred"]
+
+    "*IE":
+      Disable: [0, "Disable ready interrupt"]
+      Enable: [1, "Enable ready interrupt"]
+
+    
+    "*C":
+      _write:
+        Clear: [1, "Clear interrupt flag"]
+
+  APB?PRSTR,AHBRSTR:
+    "*":
+      _write:
+        Reset: [1, "Reset peripheral"]
+
+  AHBPCENR,APB?PCENR:
+    "*":
+      Disable: [0, "Disable module"]
+      Enable: [1, "Enable module"]
+
+  BDCTLR:
+    _modify:
+      RTCSEL:
+        _write_constraint: "enum"
+
+    LSERDY:
+      _read:
+        NotReady: [0, "Clock not ready"]
+        Ready: [1, "Clock ready"]
+
+    LSEON:
+      "Off": [0, "Clock Off"]
+      "On": [1, "Clock On"]
+
+    LSEBYP:
+      NotBypassed: [0, "LSE crystal oscillator not bypassed"]
+      Bypassed: [1, "LSE crystal oscillator bypassed with external clock"]
+
+    RTCSEL:
+      NoClock: [0, "No clock as RTC clock source"]
+      LSE: [1, "LSE as RTC clock source"]
+      LSI: [2, "LSI as RTC clock source"]
+      HSE: [3, "HSE divided by 128 as RTC clock source"]
+
+    RTCEN:
+      Disable: [0, "Disable RTC"]
+      Enable: [1, "Enable RTC"]
+
+    BDRST:
+      Cancel: [0, "Cancel back domain reset"]
+      Reset: [1, "Reset back domain"]
+
+  RSTSCKR:
+    _modify:
+      RMVF:
+        _write_constraint: "enum"
+
+    "*F":
+      _read:
+        Nothing: [0, "No reset occurred"]
+        HasReset: [1, "Reset occurred"]
+
+    RMVF:
+      _write:
+        Clear: [1, "Remove reset flags"]
+
+    LSIRDY:
+      _read:
+        NotReady: [0, "Clock not ready"]
+        Ready: [1, "Clock ready"]
+
+    LSION:
+      "Off": [0, "Clock Off"]
+      "On": [1, "Clock On"]
+    
+EXTEND:
+  EXTEND_CTR:
+    USBDLS:
+      FullSpeed: [0, "USBD full speed"]
+      LowSpeed: [1, "USBD low speed"]
+
+    USBDPU:
+      Disable: [0, "Disable USBD internal pull-up resistor"]
+      Enable: [1, "Enable USBD internal pull-up resistor"]
+
+    USBHDIO:
+      Other: [0, "Use PB6/PB7 as other functions"]
+      USBHD: [1, "Use PB6/PB7 as USBHD function"]
+
+    USB5VSEL:
+      3V3: [0, "VDD is 3.3V"]
+      5V: [1, "VDD is 5V"]
+
+    HSIPRE:
+      Div2: [0, "HSI divided by 2 as PLL clock source"]
+      NoDiv: [1, "HSI directly as PLL clock source"]
+
+    LKUPEN:
+      Disable: [0, "Disable lock-up reset"]
+      Enable: [1, "Enable lock-up reset"]
+
+    LKUPRESET:
+      _read:
+        Normal: [0, "No lock-up reset occurred"]
+        Reset: [1, "Lock-up reset occurred"]
+      _write:
+        Clear: [1, "Clear reset flag"] # ?? CH32xRM says set 1 to clear
+
+    LDOTRIM:
+      1V5: [0, "LDO output 1.5V"]
+      1V62: [1, "LDO output 1.62V"]
