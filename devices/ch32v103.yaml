@@ -259,7 +259,7 @@ EXTEND:
         Normal: [0, "No lock-up reset occurred"]
         Reset: [1, "Lock-up reset occurred"]
       _write:
-        Clear: [1, "Clear reset flag"] # ?? CH32xRM says set 1 to clear
+        Clear: [1, "Clear reset flag"]
 
     LDOTRIM:
       LDO1V5: [0, "LDO output 1.5V"]
@@ -495,3 +495,133 @@ EXTI:
     "IF*":
       _write:
         Reset: [1, "Reset interrupt flag on this line"]
+
+PFIC:
+  _delete:
+    - STK_CTLR
+
+  CFGR:
+    _modify:
+      "*SET,KEYCODE":
+        _write_constraint: "enum"
+
+    HWSTKCTRL:
+      Enable: [0, "Enable hardware stack"]
+      Disable: [1, "Disable hardware stack"]
+
+    NESTCTRL:
+      Enable: [0, "Enable interrupt nesting"]
+      Disable: [1, "Disable interrupt nesting"]
+
+    NMISET,EXCSET:
+      _write:
+        Set: [1, "Set interrupt"]
+
+    "*RESET":
+      _write:
+        Reset: [1, "Reset the module"]
+
+    KEYCODE:
+      _write:
+        Key1: [0xFA05, "HWSTK and NEST key"]
+        Key2: [0xBCAF, "NMI and EXC key"]
+        Key3: [0xBEEF, "System Reset key"]
+  
+  GISR:
+    NESTSTA:
+      _read:
+        NoInterrupt: [0, "No interrupt ongoing"]
+        Primary: [1, "Primary interrupt ongoing"]
+        Secondary: [3, "Secondary interrupt ongoing"]
+
+    GACTSTA:
+      _read:
+        NoInterrupt: [0, "No interrupt ongoing"]
+        HasInterrupt: [1, "Interrupt ongoing"]
+
+    GPENDSTA:
+      _read:
+        NoPendingInterrupt: [0, "No interrupt pending"]
+        HasPendingInterrupt: [1, "Has interrupt pending"]
+
+  SCTLR:
+    SLEEPONEXIT:
+      Continue: [0, "Don't sleep after exiting interrupt service"]
+      Sleep: [1, "Enter sleep mode after exiting interrupt service"]
+
+    SLEEPDEEP:
+      Sleep: [0, "Sleep mode"]
+      DeepSleep: [1, "Deep Sleep mode"]
+
+    WFITOWFE:
+      Normal: [0, "Nothing"]
+      Enable: [1, "WFI will be treated as WFE"]
+
+    SEVONPEND:
+      OnlyEnabled: [0, "Only enabled events and interrupts can wake up the system"]
+      AllInterrupts: [1, "Enabled events and all interrupts can wake up the system"]
+
+    SETEVENT:
+      _write:
+        Set: [1, "Set WFE event"]
+
+_add:
+  SYSTICK:
+    description: System Tick Peripheral
+    groupName: SYSTICK
+    baseAddress: 0xE000F000
+    addressBlock:
+      offset: 0x0
+      size: 0x14 # FIXME: need to verify
+      usage: "registers"
+    registers:
+      CTLR:
+        description: SysTick Control register
+        addressOffset: 0x0
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          STE:
+            description: Enable SysTick
+            bitOffset: 0
+            bitWidth: 1
+      CNTL:
+        description: SysTick counter low bits
+        addressOffset: 0x4
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          CNTL:
+            description: SysTick counter low bits
+            bitOffset: 0
+            bitWidth: 32
+      CNTH:
+        description: SysTick counter high bits
+        addressOffset: 0x8
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          CNTL:
+            description: SysTick counter high bits
+            bitOffset: 0
+            bitWidth: 32
+      CMPLR:
+        description: SysTick compare low bits
+        addressOffset: 0xC
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          CNTL:
+            description: SysTick compare low bits
+            bitOffset: 0
+            bitWidth: 32
+      CMPHR:
+        description: SysTick compare high bits
+        addressOffset: 0x10
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          CNTL:
+            description: SysTick compare high bits
+            bitOffset: 0
+            bitWidth: 32
