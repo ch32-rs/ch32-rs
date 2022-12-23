@@ -243,8 +243,8 @@ EXTEND:
       USBHD: [1, "Use PB6/PB7 as USBHD function"]
 
     USB5VSEL:
-      3V3: [0, "VDD is 3.3V"]
-      5V: [1, "VDD is 5V"]
+      VDD3V3: [0, "VDD is 3.3V"]
+      VDD5V: [1, "VDD is 5V"]
 
     HSIPRE:
       Div2: [0, "HSI divided by 2 as PLL clock source"]
@@ -262,5 +262,5 @@ EXTEND:
         Clear: [1, "Clear reset flag"] # ?? CH32xRM says set 1 to clear
 
     LDOTRIM:
-      1V5: [0, "LDO output 1.5V"]
-      1V62: [1, "LDO output 1.62V"]
+      LDO1V5: [0, "LDO output 1.5V"]
+      LDO1V62: [1, "LDO output 1.62V"]
