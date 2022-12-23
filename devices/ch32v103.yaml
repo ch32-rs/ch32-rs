@@ -264,3 +264,234 @@ EXTEND:
     LDOTRIM:
       LDO1V5: [0, "LDO output 1.5V"]
       LDO1V62: [1, "LDO output 1.62V"]
+
+BKP:
+  _modify:
+    "*":
+      size: 0x10
+
+  OCTLR:
+    CCO:
+      Disable: [0, "No calibration clock output"]
+      RTCDiv64: [1, "TAMPER output RTC divided by 64"]
+
+    ASOE:
+      Enable: [0, "Enable TAMPER pulse output"]
+      Disable: [1, "Disable TAMPER pulse output"]
+
+    ASOS:
+      Alarm: [0, "Output alarm pulse"]
+      Second: [1, "Output second pulse"]
+
+  TPCTLR:
+    TPE:
+      GPIO: [0, "TAMPER pin as GPIO"]
+      TAMPER: [1, "TAMPER pin as tamper detection"]
+    
+    TPAL:
+      High: [0, "High voltage level will clear all backup registers"]
+      Low: [1, "Low voltage level will clear all backup registers"]
+
+  TPCSR:
+    _modify:
+      CTE,CTI:
+        _write_constraint: "enum"
+
+    CTE:
+      _write:
+        Clear: [1, "Clear tamper event flag"]
+
+    CTI:
+      _write:
+        Clear: [1, "Clear tamper interrupt flag"]
+
+    TPIE:
+      Disable: [0, "Disable tamper interrupt"]
+      Enable: [1, "Enable tamper interrupt"]
+
+    TEF:
+      _read:
+        NotTampered: [0, "Tamper event not occurred"]
+        Tampered: [1, "Tamper event occurred"]
+
+    TIF:
+      _read:
+        NotInterrupted: [0, "Tamper not interrupted"]
+        Interrupted: [1, "Tamper interrupted"]
+
+CRC:
+  _modify:
+    IDATAR:
+      size: 0x8
+
+  CTLR:
+    _modify:
+      RST:
+        _write_constraint: "enum"
+    RST:
+      _write:
+        Reset: [1, "Reset CRC"]
+
+RTC:
+  _modify:
+    "*":
+      size: 0x10
+
+  CTLRH:
+    "*E":
+      Disable: [0, "Disable interrupt"]
+      Enable: [1, "Enable interrupt"]
+
+  CTLRL:
+    _modify:
+      SECF,ALRF,OWF,RSF:
+        _write_constraint: "enum"
+
+    SECF,ALRF,OWF:
+      _read:
+        NoEvent: [0, "No event occurred"]
+        HasEvent: [1, "Event occurred"]
+      _write:
+        Clear: [0, "Clear event flag"]
+
+    RSF:
+      _read:
+        NotSynchronized: [0, "Registers not synchronized"]
+        Synchronized: [1, "Registers synchronized"]
+      _write:
+        Reset: [0, "Reset synchronization state"]
+
+    CNF:
+      Exit: [0, "Exit configuration mode and write"]
+      Enter: [1, "Enter configuration mode"]
+    
+    RTOFF:
+      InProgress: [0, "RTC operation in progress"]
+      Done: [1, "RTC operation done"]
+
+IWDG:
+  _modify:
+    "*":
+      size: 0x10
+
+  CTLR:
+    _modify:
+      KEY:
+        _write_constraint: "enum"
+
+    KEY:
+      Feed: [0xAAAA, "Load IWDG_RLDR register to IWDG counter"]
+      Modify: [0x5555, "Enable modifying IWDG_PSCR and IWDG_RLDR"]
+      Launch: [0xCCCC, "Launch watch dog"]
+
+  PSCR:
+    _modify:
+      PR:
+        name: "PSCR"
+        _write_constraint: "enum"
+
+    PSCR:
+      Div4: [0, "IWDG Clock = LSI / 4"]
+      Div8: [1, "IWDG Clock = LSI / 8"]
+      Div16: [2, "IWDG Clock = LSI / 16"]
+      Div32: [3, "IWDG Clock = LSI / 32"]
+      Div64: [4, "IWDG Clock = LSI / 64"]
+      Div128: [5, "IWDG Clock = LSI / 128"]
+      Div256: [6, "IWDG Clock = LSI / 256"]
+
+  STATR:
+    RUV,PVU:
+      _read:
+        Done: [0, "Update done"]
+        Updating: [1, "Updating data"]
+
+WWDG:
+  _modify:
+    "*":
+      size: 0x10
+
+  CTLR:
+    _modify:
+      WDGA:
+        _write_constraint: "enum"
+
+    WDGA:
+      _read:
+        Disabled: [0, "WWDG disabled"]
+        Enabled: [1, "WWDG enabled"]
+      _write:
+        Enable: [1, "Enable WWDG"]
+
+  CFGR:
+    _modify:
+      WDGTB,EWI:
+        _write_constraint: "enum"
+
+    WDGTB:
+      NoDiv: [0, "WWDG Clock = PCLK1 / 4096"]
+      Div2: [1, "WWDG Clock = PCLK1 / 4096 / 2"]
+      Div4: [2, "WWDG Clock = PCLK1 / 4096 / 4"]
+      Div8: [3, "WWDG Clock = PCLK1 / 4096 / 8"]
+
+    EWI:
+      _read:
+        Disabled: [0, "Early wake up interrupt disabled"]
+        Enabled: [1, "Early wake up interrupt enabled"]
+      _write:
+        Enable: [1, "Enable early wake up interrupt"]
+
+
+  STATR:
+    _modify:
+      WEIF:
+        _write_constraint: "enum"
+
+    WEIF:
+      _read:
+        Normal: [0, "No early wake up"]
+        WakenUp: [1, "Early wake up occurred"]
+      _write:
+        Reset: [0, "Reset early wake up flag"]
+
+EXTI:
+  _modify:
+    INTFR:
+      description: "Interrupt flag register (EXTI_INTFR)"
+
+  INTENR:
+    "MR*":
+      Disable: [0, "Disable interrupt on this line"]
+      Enable: [1, "Enable interrupt on this line"]
+
+  EVENR:
+    "MR*":
+      Disable: [0, "Disable interrupt event on this line"]
+      Enable: [1, "Enable interrupt event on this line"]
+
+  RTENR:
+    "TR*":
+      Disable: [0, "Disable rising edge trigger on this line"]
+      Enable: [1, "Enable rising edge trigger on this line"]
+
+  FTENR:
+    "TR*":
+      Disable: [0, "Disable falling edge trigger on this line"]
+      Enable: [1, "Enable falling edge trigger on this line"]
+
+  SWIEVR:
+    "SWIER*":
+      Reset: [0, "Reset software interrupt on this line"]
+      Trigger: [1, "Trigger software interrupt on this line"]
+
+  INTFR:
+    _merge:
+      IF: "PR*"
+
+    _split:
+      IF:
+        name: IF%s
+        description: Interrupt flag on line %s
+
+    "IF*":
+      _write:
+        Reset: [1, "Reset interrupt flag on this line"]
