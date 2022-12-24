@@ -155,8 +155,8 @@ RCC:
         Interrupted: [1, "Interrupt occurred"]
 
     "*IE":
-      Disable: [0, "Disable ready interrupt"]
-      Enable: [1, "Enable ready interrupt"]
+      Disabled: [0, "Ready interrupt disabled"]
+      Enabled: [1, "Ready interrupt enabled"]
 
     
     "*C":
@@ -164,14 +164,18 @@ RCC:
         Clear: [1, "Clear interrupt flag"]
 
   APB?PRSTR,AHBRSTR:
+    _modify:
+      "*":
+        _write_constraint: "enum"
+
     "*":
       _write:
         Reset: [1, "Reset peripheral"]
 
   AHBPCENR,APB?PCENR:
     "*":
-      Disable: [0, "Disable module"]
-      Enable: [1, "Enable module"]
+      Disable: [0, "Module disabled"]
+      Enabled: [1, "Module enabled"]
 
   BDCTLR:
     _modify:
@@ -198,8 +202,8 @@ RCC:
       HSE: [3, "HSE divided by 128 as RTC clock source"]
 
     RTCEN:
-      Disable: [0, "Disable RTC"]
-      Enable: [1, "Enable RTC"]
+      Disabled: [0, "RTC disabled"]
+      Enabled: [1, "RTC enabled"]
 
     BDRST:
       Cancel: [0, "Cancel back domain reset"]
@@ -230,13 +234,17 @@ RCC:
     
 EXTEND:
   EXTEND_CTR:
+    _modify:
+      USBDLS,USBHDIO,USB5VSEL,HSIPRE,LKUPRESET,LDOTRIM:
+        _write_constraint: "enum"
+
     USBDLS:
       FullSpeed: [0, "USBD full speed"]
       LowSpeed: [1, "USBD low speed"]
 
     USBDPU:
-      Disable: [0, "Disable USBD internal pull-up resistor"]
-      Enable: [1, "Enable USBD internal pull-up resistor"]
+      Disabled: [0, "USBD internal pull-up resistor disabled"]
+      Enabled: [1, "USBD internal pull-up resistor enabled"]
 
     USBHDIO:
       Other: [0, "Use PB6/PB7 as other functions"]
@@ -251,8 +259,8 @@ EXTEND:
       NoDiv: [1, "HSI directly as PLL clock source"]
 
     LKUPEN:
-      Disable: [0, "Disable lock-up reset"]
-      Enable: [1, "Enable lock-up reset"]
+      Disabled: [0, "Lock-up reset disabled"]
+      Enabled: [1, "Lock-up reset enabled"]
 
     LKUPRESET:
       _read:
@@ -271,19 +279,27 @@ BKP:
       size: 0x10
 
   OCTLR:
+    _modify:
+      ASOS:
+        _write_constraint: "enum"
+
     CCO:
       Disable: [0, "No calibration clock output"]
       RTCDiv64: [1, "TAMPER output RTC divided by 64"]
 
     ASOE:
-      Enable: [0, "Enable TAMPER pulse output"]
-      Disable: [1, "Disable TAMPER pulse output"]
+      Enabled: [0, "TAMPER pulse output enabled"]
+      Disabled: [1, "TAMPER pulse output disabled"]
 
     ASOS:
       Alarm: [0, "Output alarm pulse"]
       Second: [1, "Output second pulse"]
 
   TPCTLR:
+    _modify:
+      TPE,TPAL:
+        _write_constraint: "enum"
+
     TPE:
       GPIO: [0, "TAMPER pin as GPIO"]
       TAMPER: [1, "TAMPER pin as tamper detection"]
@@ -306,8 +322,8 @@ BKP:
         Clear: [1, "Clear tamper interrupt flag"]
 
     TPIE:
-      Disable: [0, "Disable tamper interrupt"]
-      Enable: [1, "Enable tamper interrupt"]
+      Disabled: [0, "Tamper interrupt disabled"]
+      Enabled: [1, "Tamper interrupt enabled"]
 
     TEF:
       _read:
@@ -339,12 +355,12 @@ RTC:
 
   CTLRH:
     "*E":
-      Disable: [0, "Disable interrupt"]
-      Enable: [1, "Enable interrupt"]
+      Disabled: [0, "Interrupt disabled"]
+      Enabled: [1, "Interrupt enabled"]
 
   CTLRL:
     _modify:
-      SECF,ALRF,OWF,RSF:
+      SECF,ALRF,OWF,RSF,RTOFF:
         _write_constraint: "enum"
 
     SECF,ALRF,OWF:
@@ -460,28 +476,28 @@ EXTI:
 
   INTENR:
     "MR*":
-      Disable: [0, "Disable interrupt on this line"]
-      Enable: [1, "Enable interrupt on this line"]
+      Disable: [0, "Interrupt on this line disabled"]
+      Enabled: [1, "Interrupt on this line enabled"]
 
   EVENR:
     "MR*":
-      Disable: [0, "Disable interrupt event on this line"]
-      Enable: [1, "Enable interrupt event on this line"]
+      Disabled: [0, "Interrupt event on this line disabled"]
+      Enabled: [1, "Interrupt event on this line enabled"]
 
   RTENR:
     "TR*":
-      Disable: [0, "Disable rising edge trigger on this line"]
-      Enable: [1, "Enable rising edge trigger on this line"]
+      Disabled: [0, "Rising edge trigger on this line disabled"]
+      Enabled: [1, "Rising edge trigger on this line enabled"]
 
   FTENR:
     "TR*":
-      Disable: [0, "Disable falling edge trigger on this line"]
-      Enable: [1, "Enable falling edge trigger on this line"]
+      Disabled: [0, "Falling edge trigger on this line disabled"]
+      Enabled: [1, "Falling edge trigger on this line enabled"]
 
   SWIEVR:
     "SWIER*":
-      Reset: [0, "Reset software interrupt on this line"]
-      Trigger: [1, "Trigger software interrupt on this line"]
+      Reset: [0, "Software interrupt on this line reset"]
+      Triggerred: [1, "Software interrupt on this line triggerred"]
 
   INTFR:
     _merge:
@@ -491,6 +507,10 @@ EXTI:
       IF:
         name: IF%s
         description: Interrupt flag on line %s
+
+    _modify:
+      "IF*":
+        _write_constraint: "enum"
 
     "IF*":
       _write:
@@ -506,12 +526,12 @@ PFIC:
         _write_constraint: "enum"
 
     HWSTKCTRL:
-      Enable: [0, "Enable hardware stack"]
-      Disable: [1, "Disable hardware stack"]
+      Enabled: [0, "Hardware stack enabled"]
+      Disabled: [1, "Hardware stack disabled"]
 
     NESTCTRL:
-      Enable: [0, "Enable interrupt nesting"]
-      Disable: [1, "Disable interrupt nesting"]
+      Enabled: [0, "Interrupt nesting enabled"]
+      Disabled: [1, "Interrupt nesting disabled"]
 
     NMISET,EXCSET:
       _write:
@@ -545,6 +565,10 @@ PFIC:
         HasPendingInterrupt: [1, "Has interrupt pending"]
 
   SCTLR:
+    _modify:
+      "*":
+        _write_constraint: "enum"
+
     SLEEPONEXIT:
       Continue: [0, "Don't sleep after exiting interrupt service"]
       Sleep: [1, "Enter sleep mode after exiting interrupt service"]
@@ -555,7 +579,7 @@ PFIC:
 
     WFITOWFE:
       Normal: [0, "Nothing"]
-      Enable: [1, "WFI will be treated as WFE"]
+      Enabled: [1, "WFI is treated as WFE"]
 
     SEVONPEND:
       OnlyEnabled: [0, "Only enabled events and interrupts can wake up the system"]
@@ -582,7 +606,7 @@ _add:
         resetValue: 0x00000000
         fields:
           STE:
-            description: Enable SysTick
+            description: SysTick enable state
             bitOffset: 0
             bitWidth: 1
       CNTL:
@@ -625,3 +649,428 @@ _add:
             description: SysTick compare high bits
             bitOffset: 0
             bitWidth: 32
+
+SYSTICK:
+  CTLR:
+    STE:
+      Disabled: [0, "SysTick counter disabled"]
+      Enabled: [1, "SysTick counter enabled"]
+
+"GPIO*":
+  CFG?R:
+    _modify:
+      MODE?,CNF?:
+        _write_constraint: "enum"
+
+    MODE?:
+      Input: [0, "Pin used as input"]
+      Output: [1, "Pin used as output with max speed 10MHz"]
+      LowSpeed: [2, "Pin used as output with max speed 2MHz"]
+      HighSpeed: [3, "Pin used as output with max speed 50MHz"]
+
+    CNF?:
+      AInputPPOutput: [0, "Analog input or general purpose push-pull output"]
+      FInputODOutput: [1, "Float input or general purpose open drain output"]
+      PUDInputAlternatePPOutput: [2, "Pull up pull down input or alternate function push-pull output"]
+      AlternateODOutput: [3, "Alternate function open drain output"]
+
+  BSHR:
+    _modify:
+      "BS*,BR*":
+        _write_constraint: "enum"
+
+    "BS*":
+      _write:
+        Set: [1, "Set output bit"]
+
+    "BR*":
+      _write:
+        Reset: [1, "Reset output bit"]
+
+  BCR:
+    _modify:
+      "BR*":
+        _write_constraint: "enum"
+
+    "BR*":
+      _write:
+        Reset: [1, "Reset output bit"]
+
+  LCKR:
+    _modify:
+      LCK0,LCK1,LCK2,LCK3,LCK4,LCK5,LCK6,LCK7,LCK8,LCK9,LCK10,LCK11,LCK12,LCK13,LCK14,LCK15:
+        _write_constraint: "enum"
+
+    LCK0,LCK1,LCK2,LCK3,LCK4,LCK5,LCK6,LCK7,LCK8,LCK9,LCK10,LCK11,LCK12,LCK13,LCK14,LCK15:
+      _write:
+        Lock: [1, "Lock the port"]
+
+    LCKK:
+      _read:
+        Unlocked: [0, "Not locked"]
+        Locked: [1, "Locked"]
+
+AFIO:
+  _delete:
+    - PCFR?
+
+  _add:
+    PCFR:
+      displayName: PCFR
+      description: AF remap and debug I/O configuration register (AFIO_PCFR)
+      addressOffset: 0x4
+      size: 0x20
+      resetValue: 0x00000000
+      fields:
+        SPI1RM:
+          description: SPI1 remapping
+          bitOffset: 0
+          bitWidth: 1
+          access: read-write
+        I2C1RM:
+          description: I2C1 remapping
+          bitOffset: 1
+          bitWidth: 1
+          access: read-write
+        USART1RM:
+          description: USART1 remapping
+          bitOffset: 2
+          bitWidth: 1
+          access: read-write
+        USART2RM:
+          description: USART2 remapping
+          bitOffset: 3
+          bitWidth: 1
+          access: read-write
+        USART3RM:
+          description: USART3 remapping
+          bitOffset: 4
+          bitWidth: 2
+          access: read-write
+        TIM1RM:
+          description: TIM1 remapping
+          bitOffset: 6
+          bitWidth: 2
+          access: read-write
+        TIM2RM:
+          description: TIM2 remapping
+          bitOffset: 8
+          bitWidth: 2
+          access: read-write
+        TIM3RM:
+          description: TIM3 remapping
+          bitOffset: 10
+          bitWidth: 2
+          access: read-write
+        CANRM:
+          description: CAN remapping
+          bitOffset: 13
+          bitWidth: 2
+          access: read-write
+        PD01RM:
+          description: PD01 remapping
+          bitOffset: 15
+          bitWidth: 1
+          access: read-write
+        SWCFG:
+          description: RVSWD configuration
+          bitOffset: 24
+          bitWidth: 3
+          access: write-only
+        
+  ECR:
+    _modify:
+      PORT:
+        _write_constraint: "enum"
+
+    PORT:
+      PA: [0, "Event out to PA port"]
+      PB: [1, "Event out to PB port"]
+      PC: [2, "Event out to PC port"]
+      PD: [3, "Event out to PD port"]
+
+    EVOE:
+      Disabled: [0, "Event out disabled"]
+      Enable: [1, "Event out enabled"]
+
+  PCFR:
+    _modify:
+      USART3RM,TIM1RM,TIM2RM,TIM3RM,CANRM,SWCFG:
+        _write_constraint: "enum"
+
+    SPI1RM,I2C1RM,USART1RM,USART2RM,PD01RM:
+      Default: [0, "Default"]
+      Remapped: [1, "Remapped"]
+
+    USART3RM,TIM1RM:
+      Default: [0, "Default"]
+      PartiallyRemapped: [1, "Partially remapped"]
+      Remapped: [3, "Remapped"]
+
+    TIM2RM:
+      Default: [0, "Default"]
+      PartiallyRemapping1: [1, "Partially remapping case 1"]
+      PartiallyRemapping2: [2, "Partially remapping case 2"]
+      Remapped: [3, "Remapped"]
+
+    TIM3RM:
+      Default: [0, "Default"]
+      PartiallyRemapped: [2, "Partially remapped"]
+      Remapped: [3, "Remapped"]
+
+    CANRM:
+      PA: [0, "CAN mapped to port PA"]
+      PB: [1, "CAN mapped to port PB"]
+
+    SWCFG:
+      _write:
+        Enabled: [0, "SWD enabled"]
+        Disabled: [4, "SWD disabled"]
+
+DMA:
+  INTFR:
+    GIF?:
+      _read:
+        NoInterrupt: [0, "No TEI HTI or TCI occurred"]
+        HasInterrupt: [1, "TEI HTI or TCI occurred"]
+    
+    TCIF?:
+      _read:
+        NoEvent: [0, "No transfer complete event occurred"]
+        HasEvent: [1, "Transfer complete event occurred"]
+
+    HTIF?:
+      _read:
+        NoEvent: [0, "No transfer half event occurred"]
+        HasEvent: [1, "Transfer half event occurred"]
+    
+    TEIF?:
+      _read:
+        NoEvent: [0, "No transfer error event occurred"]
+        HasEvent: [1, "Transfer error event occurred"]
+
+  INTFCR:
+    _modify:
+      "*":
+        _write_constraint: "enum"
+
+    "*":
+      Clear: [1, "Clear the flag"]
+
+  CFGR?:
+    _modify:
+      PSIZE,MSIZE,PL:
+        _write_constraint: "enum"
+
+    EN:
+      Disabled: [0, "DMA channel disabled"]
+      Enabled: [1, "DMA channel enabled"]
+
+    TCIE,HTIE,TEIE:
+      Disabled: [0, "Interrupt disabled"]
+      Enabled: [1, "Interrupt enabled"]
+
+    DIR:
+      Peripheral: [0, "Read from peripheral"]
+      Memory: [1, "Read from memory"]
+
+    CIRC:
+      Once: [0, "Only execute once"]
+      Circulate: [1, "Circulation enabled"]
+
+    PINC:
+      Disabled: [0, "Peripheral address increment disabled"]
+      Enabled: [1, "Peripheral address increment enabled"]
+
+    MINC:
+      Disabled: [0, "Memory address increment disabled"]
+      Enabled: [1, "Memory address increment enabled"]
+
+    PSIZE:
+      B8: [0, "Peripheral address width is 8-bit"]
+      B16: [1, "Peripheral address width is 16-bit"]
+      B32: [2, "Peripheral address width is 32-bit"]
+
+    MSIZE:
+      B8: [0, "Memory address width is 8-bit"]
+      B16: [1, "Memory address width is 16-bit"]
+      B32: [2, "Memory address width is 32-bit"]
+
+    PL:
+      Low: [0, "Channel priority low"]
+      Mid: [1, "Channel priority mid"]
+      High: [2, "Channel priority high"]
+      Highest: [3, "Channel priority highest"]
+
+    MEM2MEM:
+      Disabled: [0, "Memory to memory transfer disabled"]
+      Enabled: [1, "Memory to memory transfer enabled"]
+
+ADC:
+  STATR:
+    _modify:
+      "*":
+        _write_constraint: "enum"
+      JEOC:
+        name: "IEOC"
+      JSTRT:
+        name: "ISTRT"
+      STRT:
+        name: "RSTRT"
+
+    AWD:
+      _read:
+        NoEvent: [0, "No analog watch dog event occurred"]
+        HasEvent: [1, "Analog watch dog event occurred"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    EOC,IEOC:
+      _read:
+        InProgress: [0, "Conversion in progress"]
+        Completed: [1, "Conversion completed"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    ISTRT,RSTRT:
+      _read:
+        Idle: [0, "Conversion not started"]
+        Started: [1, "Conversion started"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+  CTLR1:
+    _delete:
+      - DUALMOD
+
+    _modify:
+      JEOCIE:
+        name: "IEOCIE"
+      JAUTO:
+        name: "IAUTO"
+      JDISCEN:
+        name: "IDISCEN"
+      JAWDEN:
+        name: "IAWDEN"
+
+    "*IE":
+      Disabled: [0, "Interrupt disabled"]
+      Enabled: [1, "Interrupt enabled"]
+
+    SCAN:
+      Disabled: [0, "Scan mode disabled"]
+      Enabled: [1, "Scan mode enabled"]
+
+    AWDSGL:
+      All: [0, "AWDG enabled on all channel in scan mode"]
+      Specific: [1, "AWDG enabled on specific channel in scan mode"]
+
+    IAUTO:
+      Disabled: [0, "Auto injection disabled"]
+      Enabled: [1, "Auto injection enabled"]
+    
+    "?DISCEN":
+      Disabled: [0, "Discontinuous mode disabled"]
+      Enabled: [1, "Discontinuous mode enabled"]
+
+    "?AWDEN":
+      Disabled: [0, "Analog watch dog disabled"]
+      Enabled: [1, "Analog watch dog enabled"]
+
+    TKENABLE:
+      Disabled: [0, "TKEY module disabled"]
+      Enabled: [1, "TKEY module enabled"]
+
+  CTLR2:
+    _modify:
+      JEXTSEL:
+        name: "IEXTSEL"
+      JEXTTRIG:
+        name: "IEXTTRIG"
+      JSWSTART:
+        name: "ISWSTART"
+      EXTSEL:
+        name: "REXTSEL"
+      EXTTRIG:
+        name: "REXTTRIG"
+      SWSTART:
+        name: "RSWSTART"
+      CAL,RSTCAL,ALIGN,IEXTSEL,REXTSEL:
+        _write_constraint: "enum"
+
+    ADON:
+      Disabled: [0, "ADC disabled"]
+      Enabled: [1, "ADC enabled and proceed conversion"]
+
+    CONT:
+      Disabled: [0, "Continuous conversion disabled"]
+      Enabled: [1, "Continuous conversion enabled"]
+
+    CAL:
+      _write:
+        Calibrate: [1, "Start calibration"]
+      _read:
+        Done: [0, "Calibration done"]
+        Calibrating: [1, "Calibration in progress"]
+
+    RSTCAL:
+      _write:
+        Reset: [1, "Reset calibration"]
+      _read:
+        Done: [0, "Reset done"]
+        Resetting: [1, "Reset in progress"]
+
+    DMA:
+      Disabled: [0, "DMA mode disabled"]
+      Enabled: [1, "DMA mode enabled"]
+
+    ALIGN:
+      Right: [0, "Right alignment"]
+      Left: [1, "Left alignment"]
+
+    IEXTSEL:
+      TIM1TRG0: [0, "TIM1 TRG0 event"]
+      TIM1CC4: [1, "TIM1 CC4 event"]
+      TIM2TRG0: [2, "TIM2 TRG0 event"]
+      TIM2CC1: [3, "TIM2 CC1 event"]
+      TIM3CC4: [4, "TIM3 CC4 event"]
+      TIM4TRG0: [5, "TIM4 TRG0 event"]
+      EXTI15: [6, "EXTI line 15"]
+      ISWSTART: [7, "Software trigger"]
+
+    IEXTTRIG:
+      Disabled: [0, "External event trigger disabled"]
+      Enabled: [1, "External event trigger enabled"]
+
+    REXTSEL:
+      TIM1CC1: [0, "TIM1 CC1 event"]
+      TIM1CC2: [1, "TIM1 CC2 event"]
+      TIM1CC3: [2, "TIM1 CC4 event"]
+      TIM2CC2: [3, "TIM2 CC2 event"]
+      TIM3TRG0: [4, "TIM3 TRG0 event"]
+      TIM4CC4: [5, "TIM4 CC4 event"]
+      EXTI11: [6, "EXTI line 11"]
+      RSWSTART: [7, "Software trigger"]
+
+    REXTTRIG:
+      Disabled: [0, "External event trigger disabled"]
+      Enabled: [1, "External event trigger enabled"]
+
+    ISWSTART,RSWSTART:
+      Reset: [0, "Reset state"]
+      Start: [1, "Start conversion"]
+
+    TSVREFE:
+      Disabled: [0, "Temperature and internal voltage channel disabled"]
+      Enabled: [1, "Temperature and internal voltage channel enabled"]
+
+  SAMPTR?:
+    "SMP*":
+      T1P5: [0, "1.5T sampling rate"]
+      T7P5: [1, "7.5T sampling rate"]
+      T13P5: [2, "13.5T sampling rate"]
+      T28P5: [3, "28.5T sampling rate"]
+      T41P5: [4, "41.5T sampling rate"]
+      T55P5: [5, "55.5T sampling rate"]
+      T71P5: [6, "71.5T sampling rate"]
+      T239P5: [7, "239.5T sampling rate"]
