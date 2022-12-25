@@ -13,6 +13,257 @@ _svd: ../svd/fixed/ch32v103.svd
       - "RB_"
       - " "
 
+_add:
+  SYSTICK:
+    description: System Tick Peripheral
+    groupName: SYSTICK
+    baseAddress: 0xE000F000
+    addressBlock:
+      offset: 0x0
+      size: 0x14 # FIXME: need to verify
+      usage: "registers"
+    registers:
+      CTLR:
+        description: SysTick Control register
+        addressOffset: 0x0
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          STE:
+            description: SysTick enable state
+            bitOffset: 0
+            bitWidth: 1
+      CNTL:
+        description: SysTick counter low bits
+        addressOffset: 0x4
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          CNTL:
+            description: SysTick counter low bits
+            bitOffset: 0
+            bitWidth: 32
+      CNTH:
+        description: SysTick counter high bits
+        addressOffset: 0x8
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          CNTL:
+            description: SysTick counter high bits
+            bitOffset: 0
+            bitWidth: 32
+      CMPLR:
+        description: SysTick compare low bits
+        addressOffset: 0xC
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          CNTL:
+            description: SysTick compare low bits
+            bitOffset: 0
+            bitWidth: 32
+      CMPHR:
+        description: SysTick compare high bits
+        addressOffset: 0x10
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          CNTL:
+            description: SysTick compare high bits
+            bitOffset: 0
+            bitWidth: 32
+
+  TKEY: # TODO: check compatibility with ADC
+    description: Touch Key Peripheral
+    groupName: ADC
+    baseAddress: 0x40012400
+    addressBlock:
+      offset: 0x0
+      size: 0x400
+      usage: "registers"
+    registers:
+      FCHARGE1:
+        description: TKEY_F charge control register
+        addressOffset: 0xC
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          TKCG10:
+            description: Touch key configuration channel 10
+            bitOffset: 0
+            bitWidth: 3
+          TKCG11:
+            description: Touch key configuration channel 11
+            bitOffset: 3
+            bitWidth: 3
+          TKCG12:
+            description: Touch key configuration channel 12
+            bitOffset: 6
+            bitWidth: 3
+          TKCG13:
+            description: Touch key configuration channel 13
+            bitOffset: 9
+            bitWidth: 3
+          TKCG14:
+            description: Touch key configuration channel 14
+            bitOffset: 12
+            bitWidth: 3
+          TKCG15:
+            description: Touch key configuration channel 15
+            bitOffset: 15
+            bitWidth: 3
+          TKCG16:
+            description: Touch key configuration channel 16
+            bitOffset: 18
+            bitWidth: 3
+          TKCG17:
+            description: Touch key configuration channel 17
+            bitOffset: 21
+            bitWidth: 3
+
+      FCHARGE2:
+        description: TKEY_F charge control register
+        addressOffset: 0x10
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          TKCG0:
+            description: Touch key configuration channel 0
+            bitOffset: 0
+            bitWidth: 3
+
+          TKCG1:
+            description: Touch key configuration channel 1
+            bitOffset: 3
+            bitWidth: 3
+
+          TKCG2:
+            description: Touch key configuration channel 2
+            bitOffset: 6
+            bitWidth: 3
+
+          TKCG3:
+            description: Touch key configuration channel 3
+            bitOffset: 9
+            bitWidth: 3
+
+          TKCG4:
+            description: Touch key configuration channel 4
+            bitOffset: 12
+            bitWidth: 3
+
+          TKCG5:
+            description: Touch key configuration channel 5
+            bitOffset: 15
+            bitWidth: 3
+
+          TKCG6:
+            description: Touch key configuration channel 6
+            bitOffset: 18
+            bitWidth: 3
+
+          TKCG7:
+            description: Touch key configuration channel 7
+            bitOffset: 21
+            bitWidth: 3
+
+          TKCG8:
+            description: Touch key configuration channel 8
+            bitOffset: 24
+            bitWidth: 3
+
+          TKCG9:
+            description: Touch key configuration channel 9
+            bitOffset: 27
+            bitWidth: 3
+
+      FDISCHARGE:
+        description: TKEY_F charge control register
+        addressOffset: 0x3C
+        access: write-only
+        resetValue: 0x00000000
+        fields:
+          TKDCRGT:
+            description: TKEY_F discharge time
+            bitOffset: 0
+            bitWidth: 8
+
+      FACT:
+        description: TKEY_F act register
+        addressOffset: 0x4C
+        access: write-only
+        resetValue: 0x00000000
+        fields:
+          TKACT:
+            description: TKEY_F action
+            bitOffset: 0
+            bitWidth: 8
+
+      FDR:
+        description: TKEY_F data register
+        addressOffset: 0x4C
+        access: read-only
+        resetValue: 0x00000000
+        fields:
+          DATA:
+            description: Converted data
+            bitOffset: 0
+            bitWidth: 8
+
+      VCTLR:
+        description: TKEY_V control register
+        addressOffset: 0x4
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          TKENABLE:
+            description: TKEY module enable state
+            bitOffset: 24
+            bitWidth: 1
+          TKIEN:
+            description: TKEY counting complete interrupt enable state
+            bitOffset: 25
+            bitWidth: 1
+          TKCPS:
+            description: TKEY counting period selection
+            bitOffset: 26
+            bitWidth: 1
+          TKIF:
+            description: TKEY counting complete flag
+            bitOffset: 27
+            bitWidth: 1
+          CCSEL:
+            description: TKEY_V counting period base frequency
+            bitOffset: 28
+            bitWidth: 3
+      
+      VCHANNEL:
+        description: TKEY_V channel register
+        addressOffset: 0x34
+        access: read-write # read-only on RM, but writing operation is legal
+        resetValue: 0x00000000
+        fields:
+          CHSEL:
+            description: TKEY_V channel selection
+            bitOffset: 0
+            bitWidth: 5
+
+      VSDR:
+        description: TKEY_V state data register
+        addressOffset: 0x4C
+        access: read-only
+        resetValue: 0x00008000
+        fields:
+          TKDR:
+            description: TKEY_V counting conversion value
+            bitOffset: 0
+            bitWidth: 14
+          TKSTA:
+            description: TKEY_V operation state
+            bitOffset: 15
+            bitWidth: 1
+
 PWR:
   CTLR:
     _modify:
@@ -589,67 +840,6 @@ PFIC:
       _write:
         Set: [1, "Set WFE event"]
 
-_add:
-  SYSTICK:
-    description: System Tick Peripheral
-    groupName: SYSTICK
-    baseAddress: 0xE000F000
-    addressBlock:
-      offset: 0x0
-      size: 0x14 # FIXME: need to verify
-      usage: "registers"
-    registers:
-      CTLR:
-        description: SysTick Control register
-        addressOffset: 0x0
-        access: read-write
-        resetValue: 0x00000000
-        fields:
-          STE:
-            description: SysTick enable state
-            bitOffset: 0
-            bitWidth: 1
-      CNTL:
-        description: SysTick counter low bits
-        addressOffset: 0x4
-        access: read-write
-        resetValue: 0x00000000
-        fields:
-          CNTL:
-            description: SysTick counter low bits
-            bitOffset: 0
-            bitWidth: 32
-      CNTH:
-        description: SysTick counter high bits
-        addressOffset: 0x8
-        access: read-write
-        resetValue: 0x00000000
-        fields:
-          CNTL:
-            description: SysTick counter high bits
-            bitOffset: 0
-            bitWidth: 32
-      CMPLR:
-        description: SysTick compare low bits
-        addressOffset: 0xC
-        access: read-write
-        resetValue: 0x00000000
-        fields:
-          CNTL:
-            description: SysTick compare low bits
-            bitOffset: 0
-            bitWidth: 32
-      CMPHR:
-        description: SysTick compare high bits
-        addressOffset: 0x10
-        access: read-write
-        resetValue: 0x00000000
-        fields:
-          CNTL:
-            description: SysTick compare high bits
-            bitOffset: 0
-            bitWidth: 32
-
 SYSTICK:
   CTLR:
     STE:
@@ -1074,3 +1264,87 @@ ADC:
       T55P5: [5, "55.5T sampling rate"]
       T71P5: [6, "71.5T sampling rate"]
       T239P5: [7, "239.5T sampling rate"]
+
+  IOFR?:
+    _modify:
+      JOFFSET?:
+        name: "IOFFSET"
+
+  ISQR:
+    _modify:
+      JSQ1:
+        name: "ISQ1"
+      JSQ2:
+        name: "ISQ2"
+      JSQ3:
+        name: "ISQ3"
+      JSQ4:
+        name: "ISQ4"
+      JL:
+        name: "ILEN"
+
+  IDATAR?:
+    _modify:
+      JDATA:
+        name: "IDATA"
+  
+  # TODO: modify SQy in RSQRx to RSQy
+
+TKEY:
+  FCHARGE?:
+    "TKCG*":
+      T1P5: [0, "1.5T sampling rate"]
+      T7P5: [1, "7.5T sampling rate"]
+      T13P5: [2, "13.5T sampling rate"]
+      T28P5: [3, "28.5T sampling rate"]
+      T41P5: [4, "41.5T sampling rate"]
+      T55P5: [5, "55.5T sampling rate"]
+      T71P5: [6, "71.5T sampling rate"]
+      T239P5: [7, "239.5T sampling rate"]
+
+  FACT:
+    _modify:
+      TKACT:
+        _write_constraint: "enum"
+
+    TKACT:
+      _write:
+        Launch: [0x00, "Start TKEY_F channel detection"]
+
+  VCTLR:
+    _modify:
+      TKIF,CCSEL:
+        _write_constraint: "enum"
+
+    TKENABLE:
+      Disabled: [0, "TKEY module disabled"]
+      Enabled: [1, "TKEY module enabled"]
+
+    TKIEN:
+      Disabled: [0, "TKEY_V interrupt disabled"]
+      Enabled: [1, "TKEY_V interrupt enabled"]
+
+    TKCPS:
+      T500US: [0, "Counting conversion period 500us"]
+      T1MS: [1, "Counting conversion period 1ms"]
+
+    TKIF:
+      _write:
+        Clear: [1, "Clear this flag"]
+      _read:
+        InProgress: [0, "TKEY_V counting in progress"]
+        Done: [1, "TKEY_V counting done"]
+
+    CCSEL:
+      T8MHz: [0, "TKEY_V counting period base frequency 8MHz"]
+      T12MHz: [1, "TKEY_V counting period base frequency 12MHz"]
+      T24MHz: [2, "TKEY_V counting period base frequency 24MHz"]
+      T36MHz: [3, "TKEY_V counting period base frequency 36MHz"]
+      T48MHz: [4, "TKEY_V counting period base frequency 48MHz"]
+      T56MHz: [5, "TKEY_V counting period base frequency 56MHz"]
+
+  VSDR:
+    TKSTA:
+      _read:
+        Paused: [0, "Counting paused, TKDR availabe"]
+        InProgress: [1, "Counting in progress, TKDR unavailabe"]
