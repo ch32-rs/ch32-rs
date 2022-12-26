@@ -13,6 +13,8 @@ _svd: ../svd/fixed/ch32v103.svd
       - "RB_"
       - " "
 
+# TODO: unify _write_constraint rule
+
 _add:
   SYSTICK:
     description: System Tick Peripheral
@@ -763,9 +765,12 @@ EXTI:
       "IF*":
         _write_constraint: "enum"
 
-    "IF*":
+    "IF*": # FIXME: they're write-only in RM, however it seems to be readable
       _write:
         Reset: [1, "Reset interrupt flag on this line"]
+      _read:
+        NotInterrupted: [0, "This line is not interrupted"]
+        Interrupted: [1, "This line is interrupted"]
 
 PFIC:
   _delete:
@@ -1292,6 +1297,10 @@ ADC:
 
 TKEY:
   FCHARGE?:
+    _modify:
+      "TKCG*":
+        _write_constraint: "enum"
+
     "TKCG*":
       T1P5: [0, "1.5T sampling rate"]
       T7P5: [1, "7.5T sampling rate"]
@@ -1348,3 +1357,403 @@ TKEY:
       _read:
         Paused: [0, "Counting paused, TKDR availabe"]
         InProgress: [1, "Counting in progress, TKDR unavailabe"]
+
+# FIXME: some names and description seem to be inappropriate
+
+TIM1:
+  _modify:
+    "*":
+      size: 0x10
+    CHCTLR1_Input:
+      name: "CHCTLR1I"
+      displayName: "CHCTLR1I"
+    CHCTLR1_Output:
+      name: "CHCTLR1O"
+      displayName: "CHCTLR1O"
+    CHCTLR2_Input:
+      name: "CHCTLR2I"
+      displayName: "CHCTLR2I"
+    CHCTLR2_Output:
+      name: "CHCTLR2O"
+      displayName: "CHCTLR2O"
+
+  CTLR1:
+    _modify:
+      URS,DIR,CMS,CKD:
+        _write_constraint: "enum"
+
+    CEN:
+      Disabled: [0, "Counter disabled"]
+      Enabled: [1, "Counter enabled"]
+
+    UDIS:
+      Enabled: [0, "UEV enabled"]
+      Disabled: [1, "UEV disabled"]
+
+    URS:
+      Multiple: [0, "Multiple source for update event"]
+      Overflow: [1, "Only overflow can trigger update event"]
+
+    OPM:
+      Disabled: [0, "One pulse mode disabled"]
+      Enabled: [1, "One pulse mode enabled"]
+
+    DIR:
+      Decrement: [0, "Decrement counter"]
+      Increment: [1, "Increment counter"]
+
+    CMS:
+      Edge: [0, "Counter increment or dicrement according to DIR"]
+      Center1: [1, "Center alignment mode 1"]
+      Center2: [2, "Center alignment mode 2"]
+      Center3: [3, "Center alignment mode 3"]
+
+    ARPE:
+      Disabled: [0, "Auto reload preset disabled"]
+      Enabled: [1, "Auto reload preset enabled"]
+
+    CKD:
+      Tck: [0, "Tdts = Tck_int"]
+      Tck2: [1, "Tdts = Tck_int * 2"]
+      Tck4: [2, "Tdts = Tck_int * 4"]
+
+  CTLR2:
+    _modify:
+      TI1S,MMS,CCDS,CCUS,CCPC:
+        _write_constraint: "enum"
+
+    CCPC:
+      NotPreloaded: [0, "CCxE CCxNE OCxM not preloaded"]
+      Preloaded: [1, "CCxE CCxNE OCxM preloaded"]
+
+    CCUS:
+      COMOnly: [0, "Only update on COM set"]
+      Multiple: [1, "Update on COM set or TRGI rising edge"]
+
+    CCDS:
+      CHxCVR: [0, "Request DMA on CHxCVR"]
+      Update: [1, "Request DMA on update event"]
+
+    MMS:
+      Reset: [0, "TIMx_EGR register UG bit used as trigger output(TRG0)"]
+      Enable: [1, "CNT_EN bit used as trigger output(TRG0)"]
+      Update: [2, "Update event used as trigger input(TRG0)"]
+      CmpCC1IF: [3, "Trigger output(TRG0) on CC1IF set"]
+      CmpOC1REF: [4, "OC1REF signal used as trigger output(TRG0)"]
+      CmpOC2REF: [5, "OC2REF signal used as trigger output(TRG0)"]
+      CmpOC3REF: [6, "OC3REF signal used as trigger output(TRG0)"]
+      CmpOC4REF: [7, "OC4REF signal used as trigger output(TRG0)"]
+    
+    TI1S:
+      Direct: [0, "TIMx_CH1 connected directly to TI1"]
+      Xor: [1, "TIMx_CH1/2/3 connected to TI1 after xor"]
+
+  SMCFGR:
+    _modify:
+      SMS,TS,MSM,ETF,ETPS,ETP:
+        _write_constraint: "enum"
+
+    SMS:
+      Internal: [0, "Core counter driven by CK_INT"]
+      Encoder1: [1, "Core counter increment or decrement on TI1FP1 edge with respect to TI2FP2"]
+      Encoder2: [2, "Core counter increment or decrement on TI2FP2 edge with respect to TI1FP1"]
+      Encoder3: [3, "Core counter increment or decrement on TI1FP1/TI2FP2 edge with respect to another signal"]
+      Reset: [4, "Rising edge on TRGI will reset the counter"]
+      Gate: [5, "Counter clock start/stop with respect to TRGI"]
+      Trigger: [6, "Counter start on TRGI rising edge"]
+      External: [7, "Counter driven by TRGI rising edge"]
+
+    TS:
+      Internal0: [0, "ITR0 as trigger"]
+      Internal1: [1, "ITR1 as trigger"]
+      Internal2: [2, "ITR2 as trigger"]
+      Internal3: [3, "ITR3 as trigger"]
+      TI1Edge: [4, "TI1 edge dector"]
+      TI1FP1: [5, "Filtered timer input 1"]
+      TI2FP2: [6, "Filtered timer input 2"]
+      External: [7, "External trigger input"]
+
+    MSM:
+      NoEffect: [0, "No effect"]
+      TRGIDelayed: [1, "Trigger event on TRGI delayed"]
+
+    ETF:
+      NoFilter: [0, "No filter applied, sampling using Fdts"]
+      FckN2: [1, "Fsampling = Fck_int, N=2"]
+      FckN4: [2, "Fsampling = Fck_int, N=4"]
+      FckN8: [3, "Fsampling = Fck_int, N=8"]
+      Fdts2N6: [4, "Fsampling = Fdts / 2, N=6"]
+      Fdts2N8: [5, "Fsampling = Fdts / 2, N=8"]
+      Fdts4N6: [6, "Fsampling = Fdts / 4, N=6"]
+      Fdts4N8: [7, "Fsampling = Fdts / 4, N=8"]
+      Fdts8N6: [8, "Fsampling = Fdts / 8, N=6"]
+      Fdts8N8: [9, "Fsampling = Fdts / 8, N=8"]
+      Fdts16N5: [10, "Fsampling = Fdts / 16, N=5"]
+      Fdts16N6: [11, "Fsampling = Fdts / 16, N=6"]
+      Fdts16N8: [12, "Fsampling = Fdts / 16, N=8"]
+      Fdts32N5: [13, "Fsampling = Fdts / 32, N=5"]
+      Fdts32N6: [14, "Fsampling = Fdts / 32, N=6"]
+      Fdts32N8: [15, "Fsampling = Fdts / 32, N=8"]
+
+    ETPS:
+      "Off": [0, "Pre-division off"]
+      Div2: [1, "ETRP / 2"]
+      Div4: [2, "ETRP / 4"]
+      Div8: [3, "ETRP / 8"]
+
+    ECE:
+      Disabled: [0, "External Clock Mode 2 disabled"]
+      Enabled: [1, "External Clock Mode 2 enabled"]
+
+    ETP:
+      Direct: [0, "Trigger on ETR high voltage or rising edge"]
+      Inversed: [1, "Trigger on ETR low voltage or falling edge"]
+
+  DMAINTENR:
+    "*IE":
+      Disabled: [0, "Interrupt disabled"]
+      Enabled: [1, "Interrupt enabled"]
+    "*DE":
+      Disabled: [0, "DMA disabled"]
+      Enabled: [1, "DMA enabled"]
+
+  INTFR:
+    _modify:
+      "*":
+        _write_constraint: "enum"
+
+    "*IF":
+      _write:
+        Clear: [0, "Clear interrupt flag"]
+      _read:
+        NotInterrupted: [0, "Not interrupted"]
+        Interrupted: [1, "Interrupted"]
+
+    "*OF":
+      _write:
+        Clear: [0, "Clear overcapture flag"]
+      _read:
+        NotOvercaptured: [0, "Not overcaptured"]
+        Overcaptured: [1, "Overcaptured"]
+
+  SWEVGR:
+    "*":
+      _write:
+        Generate: [1, "Generate event"]
+
+  # FIXME: CHCTLR1O/CHCTLR1I, CHCTLR2O/CHCTLR2I share the same address. Will this mess up with the ownership?
+  CHCTLR1O:
+    _modify:
+      CC?S,OC?M:
+        _write_constraint: "enum"
+
+    # FIXME: RM completely a mess here, need to verify
+    CC1S:
+      Input: [0, "CC1 configured as input"]
+      OutputTI1: [1, "CC1 configured as output. IC1 mapped to TI1"]
+      OutputTI2: [2, "CC1 configured as output. IC1 mapped to TI2"]
+      OutputTRC: [3, "CC1 configured as output. IC1 mapped to TRC"]
+
+    CC2S:
+      Input: [0, "CC2 configured as input"]
+      OutputTI2: [1, "CC2 configured as output. IC2 mapped to TI2"]
+      OutputTI1: [2, "CC2 configured as output. IC2 mapped to TI1"]
+      OutputTRC: [3, "CC2 configured as output. IC2 mapped to TRC"]
+
+    OC?FE:
+      Disabled: [0, "Fast enabling disabled"]
+      Enabled: [1, "Fast enabling enabled"] 
+
+    OC?PE:
+      Disabled: [0, "Preloading disabled"]
+      Enabled: [1, "Preloading enabled"]
+
+    OC1M:
+      Frozen: [0, "No effect on OC1REF"]
+      ForceHighCmp: [1, "OC1REF high when core counter = compare capture register"]
+      ForceLowCmp: [2, "OC1REF low when core counter = compare capture register"]
+      FlipCmp: [3, "OC1REF flipped when core counter = compare capture register"]
+      ForceLow: [4, "OC1REF set low"]
+      ForceHigh: [5, "OC1REF set high"]
+      PWM1: [6, "Before low after high"] # FIXME: PWM1/2 need better description
+      PWM2: [7, "Before high after low"]
+
+    OC2M:
+      Frozen: [0, "No effect on OC2REF"]
+      ForceHighCmp: [1, "OC2REF high when core counter = compare capture register"]
+      ForceLowCmp: [2, "OC2REF low when core counter = compare capture register"]
+      FlipCmp: [3, "OC2REF flipped when core counter = compare capture register"]
+      ForceLow: [4, "OC2REF set low"]
+      ForceHigh: [5, "OC2REF set high"]
+      PWM1: [6, "Before low after high"] # FIXME: PWM1/2 need better description
+      PWM2: [7, "Before high after low"]
+
+    OC?CE:
+      Disabled: [0, "OCxREF reset on ETRF disabled"]
+      Enabled: [1, "OCxREF reset on ETRF enabled"]
+  
+  CHCTLR1I:
+    _modify:
+      "*":
+        _write_constraint: "enum"
+
+    CC1S:
+      Output: [0, "CC1 configured as output"]
+      InputTI1: [1, "CC1 configured as input. IC1 mapped to TI1"]
+      InputTI2: [2, "CC1 configured as input. IC1 mapped to TI2"]
+      InputTRC: [3, "CC1 configured as input. IC1 mapped to TRC"]
+
+    CC2S:
+      Output: [0, "CC2 configured as output"]
+      InputTI2: [1, "CC2 configured as input. IC2 mapped to TI2"]
+      InputTI1: [2, "CC2 configured as input. IC2 mapped to TI1"]
+      InputTRC: [3, "CC2 configured as input. IC2 mapped to TRC"]
+
+    IC?PSC:
+      NoDiv: [0, "Every capture input edge will trigger a capture"]
+      Div2: [1, "Every 2 capture input edges will trigger a capture"]
+      Div4: [2, "Every 4 capture input edges will trigger a capture"]
+      Div8: [3, "Every 8 capture input edges will trigger a capture"]
+
+    IC?F:
+      NoFilter: [0, "No filter applied. Sampling using Fdts"]
+      FckN2: [1, "Fsampling = Fck_int, N=2"]
+      FckN4: [2, "Fsampling = Fck_int, N=4"]
+      FckN8: [3, "Fsampling = Fck_int, N=8"]
+      Fdts2N6: [4, "Fsampling = Fdts / 2, N=6"]
+      Fdts2N8: [5, "Fsampling = Fdts / 2, N=8"]
+      Fdts4N6: [6, "Fsampling = Fdts / 4, N=6"]
+      Fdts4N8: [7, "Fsampling = Fdts / 4, N=8"]
+      Fdts8N6: [8, "Fsampling = Fdts / 8, N=6"]
+      Fdts8N8: [9, "Fsampling = Fdts / 8, N=8"]
+      Fdts16N5: [10, "Fsampling = Fdts / 16, N=5"]
+      Fdts16N6: [11, "Fsampling = Fdts / 16, N=6"]
+      Fdts16N8: [12, "Fsampling = Fdts / 16, N=8"]
+      Fdts32N5: [13, "Fsampling = Fdts / 32, N=5"]
+      Fdts32N6: [14, "Fsampling = Fdts / 32, N=6"]
+      Fdts32N8: [15, "Fsampling = Fdts / 32, N=8"]
+
+  # FIXME: all modification applied to CHCTLR1I/O should be applied correspondingly to CHCTLR2I/O
+  CHCTLR2O:
+    _modify:
+      CC?S,OC?M:
+        _write_constraint: "enum"
+
+    CC3S:
+      Input: [0, "CC3 configured as input"]
+      OutputTI1: [1, "CC3 configured as output. IC3 mapped to TI1"]
+      OutputTI2: [2, "CC3 configured as output. IC3 mapped to TI2"]
+      OutputTRC: [3, "CC3 configured as output. IC3 mapped to TRC"]
+
+    CC4S:
+      Input: [0, "CC4 configured as input"]
+      OutputTI2: [1, "CC4 configured as output. IC4 mapped to TI2"]
+      OutputTI1: [2, "CC4 configured as output. IC4 mapped to TI1"]
+      OutputTRC: [3, "CC4 configured as output. IC4 mapped to TRC"]
+
+    OC?FE:
+      Disabled: [0, "Fast enabling disabled"]
+      Enabled: [1, "Fast enabling enabled"] 
+
+    OC?PE:
+      Disabled: [0, "Preloading disabled"]
+      Enabled: [1, "Preloading enabled"]
+
+    OC3M:
+      Frozen: [0, "No effect on OC3REF"]
+      ForceHighCmp: [1, "OC3REF high when core counter = compare capture register"]
+      ForceLowCmp: [2, "OC3REF low when core counter = compare capture register"]
+      FlipCmp: [3, "OC3REF flipped when core counter = compare capture register"]
+      ForceLow: [4, "OC3REF set low"]
+      ForceHigh: [5, "OC3REF set high"]
+      PWM1: [6, "Before low after high"] # FIXME: PWM1/2 need better description
+      PWM2: [7, "Before high after low"]
+
+    OC4M:
+      Frozen: [0, "No effect on OC4REF"]
+      ForceHighCmp: [1, "OC4REF high when core counter = compare capture register"]
+      ForceLowCmp: [2, "OC4REF low when core counter = compare capture register"]
+      FlipCmp: [3, "OC4REF flipped when core counter = compare capture register"]
+      ForceLow: [4, "OC4REF set low"]
+      ForceHigh: [5, "OC4REF set high"]
+      PWM1: [6, "Before low after high"] # FIXME: PWM1/2 need better description
+      PWM2: [7, "Before high after low"]
+
+    OC?CE:
+      Disabled: [0, "OCxREF reset on ETRF disabled"]
+      Enabled: [1, "OCxREF reset on ETRF enabled"]
+  
+  CHCTLR2I:
+    _modify:
+      "*":
+        _write_constraint: "enum"
+
+    CC3S:
+      Output: [0, "CC3 configured as output"]
+      InputTI1: [1, "CC3 configured as input. IC3 mapped to TI1"]
+      InputTI2: [2, "CC3 configured as input. IC3 mapped to TI2"]
+      InputTRC: [3, "CC3 configured as input. IC3 mapped to TRC"]
+
+    CC4S:
+      Output: [0, "CC4 configured as output"]
+      InputTI2: [1, "CC4 configured as input. IC4 mapped to TI2"]
+      InputTI1: [2, "CC4 configured as input. IC4 mapped to TI1"]
+      InputTRC: [3, "CC4 configured as input. IC4 mapped to TRC"]
+
+    IC?PSC:
+      NoDiv: [0, "Every capture input edge will trigger a capture"]
+      Div2: [1, "Every 2 capture input edges will trigger a capture"]
+      Div4: [2, "Every 4 capture input edges will trigger a capture"]
+      Div8: [3, "Every 8 capture input edges will trigger a capture"]
+
+    IC?F:
+      NoFilter: [0, "No filter applied. Sampling using Fdts"]
+      FckN2: [1, "Fsampling = Fck_int, N=2"]
+      FckN4: [2, "Fsampling = Fck_int, N=4"]
+      FckN8: [3, "Fsampling = Fck_int, N=8"]
+      Fdts2N6: [4, "Fsampling = Fdts / 2, N=6"]
+      Fdts2N8: [5, "Fsampling = Fdts / 2, N=8"]
+      Fdts4N6: [6, "Fsampling = Fdts / 4, N=6"]
+      Fdts4N8: [7, "Fsampling = Fdts / 4, N=8"]
+      Fdts8N6: [8, "Fsampling = Fdts / 8, N=6"]
+      Fdts8N8: [9, "Fsampling = Fdts / 8, N=8"]
+      Fdts16N5: [10, "Fsampling = Fdts / 16, N=5"]
+      Fdts16N6: [11, "Fsampling = Fdts / 16, N=6"]
+      Fdts16N8: [12, "Fsampling = Fdts / 16, N=8"]
+      Fdts32N5: [13, "Fsampling = Fdts / 32, N=5"]
+      Fdts32N6: [14, "Fsampling = Fdts / 32, N=6"]
+      Fdts32N8: [15, "Fsampling = Fdts / 32, N=8"]
+
+  # CCER:
+    # TODO: not documented, need discussion
+
+  BDTR:
+    _modify:
+      LOCK,OSSI,OSSR,BKP:
+        _write_constraint: "enum"
+
+    LOCK:
+      Disabled: [0, "Lock disabled"]
+      LockLevel1: [1, "DTG BKE BKP AOE OISx OISxN not writable"]
+      LockLevel2: [2, "CC polarity + OSSR OSSI + Level1"]
+      LockLevel3: [3, "CC control + Level2"]
+
+    OSSI: # FIXME: need better naming
+      NoAction: [0, "No action on idle"]
+      Output: [1, "Output idle voltage level on OC/OCN when CCxE or CCxNE=1"]
+
+    OSSR:
+      NoAction: [0, "No action on running"]
+      Output: [1, "Output low voltage level on OC/OCN when CCxE or CCxNE=1"]
+
+    BKE:
+      Disabled: [0, "Brake input disabled"]
+      Enabled: [1, "Brake input enabled"]
+    
+    BKP:
+      Low: [0, "Brake input activate on low voltage"]
+      High: [1, "Brake input activate on high voltage"]
+
+    MOE:
+      Disabled: [0, "OCx and OCxN no output or force idle"]
+      Enabled: [1, "OCx and OCxN output enabled"]
