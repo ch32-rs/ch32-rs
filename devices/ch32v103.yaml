@@ -2132,3 +2132,52 @@ TIM2:
 
   # CCER:
     # TODO: not documented, need discussion
+
+DAC1:
+  CTLR:
+    _modify:
+      TSEL?,WAVE?,MAMP?:
+        _write_constraint: "enum"
+        
+    EN?:
+      Disabled: [0, "DAC channel disabled"]
+      Enabled: [1, "DAC channel enabled"]
+
+    BOFF?:
+      Enabled: [0, "DAC channel output buffer enabled"]
+      Disabled: [1, "DAC channel output buffer disabled"]
+
+    TEN?:
+      Disabled: [0, "DAC channel trigger disabled"]
+      Enabled: [1, "DAC channel trigger enabled"]
+
+    TSEL?:
+      TIM3: [1, "TIM3 TRG0"]
+      TIM2: [4, "TIM2 TRG0"]
+      TIM4: [5, "TIM4 TRG0"]
+      EXTI9: [6, "EXTI 9"]
+      Software: [7, "Software trigger"]
+
+    WAVE?:
+      Disabled: [0, "Wave generator disabled"]
+      Noise: [1, "Noise generator enabled"]
+      Triangular: [2, "Triangular wave enabled"]
+      # FIXME: not sure if we can turn both of them on by setting 0b11
+
+    MAMP?:
+      NoShutting0Amp1: [0, "No shutting on LSFR bit 0/Triangular wave amplitude 1"]
+      NoShutting10Amp3: [1, "No shutting on LSFR bits [1:0]/Triangular wave amplitude 3"]
+      NoShutting20Amp7: [2, "No shutting on LSFR bits [2:0]/Triangular wave amplitude 7"]
+      NoShutting30Amp15: [3, "No shutting on LSFR bits [3:0]/Triangular wave amplitude 15"]
+      NoShutting40Amp31: [4, "No shutting on LSFR bits [4:0]/Triangular wave amplitude 31"]
+      NoShutting50Amp63: [5, "No shutting on LSFR bits [5:0]/Triangular wave amplitude 63"]
+      NoShutting60Amp127: [6, "No shutting on LSFR bits [6:0]/Triangular wave amplitude 127"]
+      NoShutting70Amp255: [7, "No shutting on LSFR bits [7:0]/Triangular wave amplitude 255"]
+      NoShutting80Amp511: [8, "No shutting on LSFR bits [8:0]/Triangular wave amplitude 511"]
+      NoShutting90Amp1023: [9, "No shutting on LSFR bits [9:0]/Triangular wave amplitude 1023"]
+      NoShutting100Amp2047: [10, "No shutting on LSFR bits [10:0]/Triangular wave amplitude 2047"]
+      NoShutting110Amp4095: [11, "No shutting on LSFR bits [11:0]/Triangular wave amplitude 4095"]
+
+    DMAEN?:
+      Disabled: [0, "DAC channel DMA disabled"]
+      Enabled: [1, "DAC channel DMA enabled"]
