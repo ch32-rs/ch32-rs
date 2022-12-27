@@ -2181,3 +2181,176 @@ DAC1:
     DMAEN?:
       Disabled: [0, "DAC channel DMA disabled"]
       Enabled: [1, "DAC channel DMA enabled"]
+
+USART1:
+  STATR:
+    _modify:
+      RXNE,TC,LBD,CTS:
+        _write_constraint: "enum"
+
+    PE,FE,NE,ORE:
+      _read:
+        NoError: [0, "No error occurred"]
+        HasError: [1, "Error occurred"]
+
+    IDLE:
+      _read:
+        Busy: [0, "Line busy"]
+        Idle: [1, "Line idle"]
+
+    RXNE:
+      _read:
+        Waiting: [0, "Waiting for data"]
+        Readable: [1, "Data received, register readable"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    TC:
+      _read:
+        InProgress: [0, "Transmission in progress"]
+        Completed: [1, "Transmission completed"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    TXE:
+      _read:
+        InProgress: [0, "Data transfer in progress"]
+        Transferred: [1, "Data transfer completed"]
+
+    LBD:
+      _read:
+        Connected: [0, "LIN disconnection not detected"]
+        Disconnected: [1, "LIN disconnection detected"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    CTS:
+      _read:
+        NoChange: [0, "No change detected on nCTS"]
+        Changed: [1, "Change detected on nCTS"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+  CTLR1:
+    _modify:
+      SBK,RWU,PS,WAKE,M:
+        _write_constraint: "enum"
+
+    SBK:
+      NoBreak: [0, "No break character is transmitted"]
+      Break: [1, "Break character transmitted"]
+
+    RWU:
+      Active: [0, "Receiver in active mode"]
+      Muted: [1, "Receiver in mute mode"]
+      
+    RE,TE:
+      Disabled: [0, "Module disabled"]
+      Enabled: [1, "Module enabled"]
+
+    "*IE":
+      Disabled: [0, "Interrupt disabled"]
+      Enabled: [1, "Interrupt enabled"]
+
+    PS:
+      Even: [0, "Even parity check"]
+      Odd: [1, "Odd parity check"]
+
+    WAKE:
+      IdleLine: [0, "USART wake up on idle line"]
+      AddressMark: [1, "USART wake up on address mark"]
+
+    M:
+      L8: [0, "Word length 8 data bits"]
+      L9: [1, "Word length 9 data bits"]
+
+    UE: # TODO: check if the RM is wrong. It is different from STM32?
+      Enabled: [0, "USART enabled"]
+      Disabled: [1, "USART disabled"]
+
+  CTLR2:
+    _modify:
+      LBDL,CPHA,CPOL,STOP:
+        _write_constraint: "enum"
+
+    LBDL:
+      LBDL10: [0, "10-bit break detection"]
+      LBDL11: [1, "11-bit break detection"]
+
+    LBDIE:
+      Disabled: [0, "LIN break detection disabled"]
+      Enabled: [1, "LIN break detection enabled"]
+
+    LBCL: # FIXME: document wrong here
+
+    # reference: https://github.com/stm32-rs/stm32-rs/blob/master/peripherals/usart/
+    CPHA:
+      First: [0, "The first clock transition is the first data capture edge"]
+      Second: [1, "The second clock transition is the first data capture edge"]  
+    
+    CPOL:
+      Low: [0, "Steady low value on CK pin outside transmission window"]
+      High: [1, "Steady high value on CK pin outside transmission window"]
+    
+    CLKEN:
+      Disabled: [0, "CK pin disabled"]
+      Enabled: [1, "CK pin enabled"]
+    
+    STOP:
+      Stop1: [0, "1 stop bit"]
+      Stop0p5: [1, "0.5 stop bits"]
+      Stop2: [2, "2 stop bits"]
+      Stop1p5: [3, "1.5 stop bits"]
+
+    LINEN:
+      Disabled: [0, "LIN mode disabled"]
+      Enabled: [1, "LIN mode enabled"]
+    
+  CTLR3:
+    _modify:
+      HDSEL,IRLP:
+        _write_constraint: "enum"
+
+    DMAT:
+      Disabled: [0, "DMA mode is disabled for transmission"]
+      Enabled: [1, "DMA mode is enabled for transmission"]
+
+    DMAR:
+      Disabled: [0, "DMA mode is disabled for reception"]
+      Enabled: [1, "DMA mode is enabled for reception"]
+
+    HDSEL:
+      FullDuplex: [0, "Half duplex mode is not selected"]
+      HalfDuplex: [1, "Half duplex mode is selected"]
+
+    IRLP:
+      Normal: [0, "Normal mode"]
+      LowPower: [1, "Low-power mode"]
+
+    IREN:
+      Disabled: [0, "IrDA disabled"]
+      Enabled: [1, "IrDA enabled"]
+
+    EIE:
+      Disabled: [0, "Error interrupt disabled"]
+      Enabled: [1, "Error interrupt enabled"]
+
+    CTSIE:
+      Disabled: [0, "CTS interrupt disabled"]
+      Enabled: [1, "CTS interrupt enabled"]
+
+    CTSE:
+      Disabled: [0, "CTS hardware flow control disabled"]
+      Enabled: [1, "CTS hardware flow control enabled"]
+
+    RTSE:
+      Disabled: [0, "RTS hardware flow control disabled"]
+      Enabled: [1, "RTS hardware flow control enabled"]
+
+    SCEN:
+      Disabled: [0, "Smartcard mode disabled"]
+      Enabled: [1, "Smartcard mode enabled"]
+
+    NACK:
+      Disabled: [0, "NACK transmission in case of parity error is disabled"]
+      Enabled: [1, "NACK transmission during parity error is enabled"]
