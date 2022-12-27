@@ -2354,3 +2354,249 @@ USART1:
     NACK:
       Disabled: [0, "NACK transmission in case of parity error is disabled"]
       Enabled: [1, "NACK transmission during parity error is enabled"]
+
+# reference: https://github.com/stm32-rs/stm32-rs/blob/master/peripherals/i2c/
+I2C1:
+  _modify:
+    "*":
+      size: 0x10
+
+  CTLR1:
+    _modify:
+      SMBUS,SMBTYPE,START,STOP,ACK,POS,ALERT,SWRST:
+        _write_constraint: "enum"
+
+    PE:
+      Disabled: [0, "I2C disabled"]
+      Enabled: [1, "I2C enabled"]
+
+    SMBUS:
+      I2C: [0, "I2C Mode"]
+      SMBus: [1, "SMBus"]
+
+    SMBTYPE:
+      Device: [0, "SMBus Device"]
+      Host: [1, "SMBus Host"]
+
+    ENARP:
+      Disabled: [0, "ARP disabled"]
+      Enabled: [1, "ARP enabled"]
+
+    ENPEC:
+      Disabled: [0, "PEC disabled"]
+      Enabled: [1, "PEC enabled"]
+
+    ENGC:
+      Disabled: [0, "General call enabled"]
+      Enabled: [1, "General call disabled"]
+
+    NOSTRETCH:
+      Enabled: [0, "Clock stretching enabled"]
+      Disabled: [1, "Clock stretching disabled"]
+
+    START:
+      NoStart: [0, "No Start generation"]
+      Start: [1, "In master mode: repeated start generation, in slave mode: start generation when bus is free"]
+
+    STOP:
+      NoStop: [0, "No Stop generation"]
+      Stop: [1, "In master mode: stop generation after current byte/start, in slave mode: release SCL and SDA after current byte"]
+
+    ACK:
+      NAK: [0, "No acknowledge returned"]
+      ACK: [1, "Acknowledge returned after a byte is received"]
+
+    POS:
+      Current: [0, "ACK bit controls the (N)ACK of the current byte being received"]
+      Next: [1, "ACK bit controls the (N)ACK of the next byte to be received"]
+
+    PEC:
+      Disabled: [0, "No PEC transfer"]
+      Enabled: [1, "PEC transfer"]
+
+    ALERT:
+      Release: [0, "SMBA pin released high"]
+      Drive: [1, "SMBA pin driven low"]
+
+    SWRST:
+      NotReset: [0, "I2C peripheral not under reset"]
+      Reset: [1, "I2C peripheral under reset"]
+
+  CTLR2:
+    _modify:
+      LAST:
+        _write_constraint: "enum"
+
+    FREQ: [2, 36]
+
+    ITERREN:
+      Disabled: [0, "Error interrupt disabled"]
+      Enabled: [1, "Error interrupt enabled"]
+
+    ITEVTEN:
+      Disabled: [0, "Event interrupt disabled"]
+      Enabled: [1, "Event interrupt enabled"]
+
+    ITBUFEN:
+      Disabled: [0, "TxE=1 or RxNE=1 does not generate any interrupt"]
+      Enabled: [1, "TxE=1 or RxNE=1 generates Event interrupt"]
+
+    DMAEN:
+      Disabled: [0, "DMA requests disabled"]
+      Enabled: [1, "DMA request enabled when TxE=1 or RxNE=1"]
+
+    LAST:
+      NotLast: [0, "Next DMA EOT is not the last transfer"]
+      Last: [1, "Next DMA EOT is the last transfer"]
+
+  OADDR1:
+    _modify:
+      ADDMODE:
+        _write_constraint: "enum"
+
+    ADDMODE:
+      ADD7: [0, "7-bit slave address"]
+      ADD10: [1, "10-bit slave address"]
+
+  OADDR2:
+    _modify:
+      ENDUAL:
+        _write_constraint: "enum"
+
+    ENDUAL:
+      Single: [0, "Single addressing mode"]
+      Dual: [1, "Dual addressing mode"]
+
+  STAR1:
+    SB:
+      _read:
+        NoStart: [0, "No Start condition"]
+        Start: [1, "Start condition generated"]
+
+    ADDR: # NOTE: RM marked this field as RW0, however it seems to be read-only
+      _read:
+        NotMatch: [0, "Adress mismatched or not received"]
+        Match: [1, "Received slave address matched with one of the enabled slave addresses"]
+
+    BTF:
+      _read:
+        NotFinished: [0, "Data byte transfer not done"]
+        Finished: [1, "Data byte transfer successful"]
+
+    ADD10:
+      _read:
+        NotSent: [0, "First address byte not sent"]
+        Sent: [1, "First address byte sent on 10-bit mode"]
+
+    STOPF:
+      _read:
+        NoStop: [0, "No Stop condition detected"]
+        Stop: [1, "Stop condition detected"]
+
+    RxNE:
+      _read:
+        Empty: [0, "Data register empty"]
+        NotEmpty: [1, "Data register not empty"]
+
+    TxE:
+      _read:
+        NotEmpty: [0, "Data register not empty"]
+        Empty: [1, "Data register empty"]
+
+    BERR:
+      _read:
+        NoError: [0, "No misplaced Start or Stop condition"]
+        Error: [1, "Misplaced Start or Stop condition"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    ARLO:
+      _read:
+        NoLost: [0, "No Arbitration Lost detected"]
+        Lost: [1, "Arbitration Lost detected"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    AF:
+      _read:
+        NoFailure: [0, "No acknowledge failure"]
+        Failure: [1, "Acknowledge failure"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    OVR:
+      _read:
+        NoOverrun: [0, "No overrun/underrun occured"]
+        Overrun: [1, "Overrun/underrun occured"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    PECERR:
+      _read:
+        NoError: [0, "no PEC error: receiver returns ACK after PEC reception (if ACK=1)"]
+        Error: [1, "PEC error: receiver returns NACK after PEC reception (whatever ACK)"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    TIMEOUT:
+      _read:
+        NoTimeout: [0, "No Timeout error"]
+        Timeout: [1, "SCL remained LOW for 25 ms"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    SMBALERT:
+      _read:
+        NoAlert: [0, "No SMBALERT occured"]
+        Alert: [1, "SMBALERT occurred"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+  STAR2:
+    MSL:
+      _read:
+        Slave: [0, "I2C working at slave mode"]
+        Master: [1, "I2C working at master mode"]
+
+    BUSY:
+      _read:
+        Idle: [0, "I2C bus is idle"]
+        Busy: [1, "I2C bus is busy"]
+
+    TRA:
+      _read:
+        Received: [0, "Data received"]
+        Transmitted: [1, "Data transmitted"]
+
+    GENCALL:
+      _read:
+        NotCalled: [0, "No general call received"]
+        Called: [1, "General call received"]
+
+    SMBDEFAULT:
+      _read:
+        NotReceived: [0, "SMBus device default address not received"]
+        Received: [1, "SMBus device default address received"]
+
+    SMBHOST:
+      _read:
+        NotReceived: [0, "SMBus host address not received"]
+        Received: [1, "SMBus host address received"]
+
+    DUALF:
+      _read:
+        OAR1: [0, "Address consistent with OAR1"]
+        OAR2: [1, "Address consistent with OAR2"]
+
+  CKCFGR:
+    _modify:
+      F_S:
+        name: FS
+
+    DUTY:
+      Duty2T1: [0, "Duty cycle t_low/t_high = 2/1"]
+      Duty16T9: [1, "Duty cycle t_low/t_high = 16/9"]
+    
+    FS:
+      Standard: [0, "Standard mode I2C"]
+      Fast: [1, "Fast mode I2C"]
