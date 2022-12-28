@@ -15,6 +15,9 @@ _svd: ../svd/fixed/ch32v103.svd
 
 # TODO: unify _write_constraint rule
 
+_include:
+  - "../peripherals/usbd.yaml"
+
 _modify:
   TIM2:
     description: General timer
@@ -285,11 +288,11 @@ PWR:
       StandBy: [1, "Turn into stand-by mode on deepsleep"]
 
     CWUF:
-      _write:
+      _W1C:
         Clear: [1, "Clear Wake-Up Flag"]
 
     CSBF:
-      _write:
+      _W1C:
         Clear: [1, "Clear Stand-By Flag"]
 
     PLS:
@@ -417,7 +420,7 @@ RCC:
 
     
     "*C":
-      _write:
+      _W1C:
         Clear: [1, "Clear interrupt flag"]
 
   APB?PRSTR,AHBRSTR:
@@ -477,7 +480,7 @@ RCC:
         HasReset: [1, "Reset occurred"]
 
     RMVF:
-      _write:
+      _W1C:
         Clear: [1, "Remove reset flags"]
 
     LSIRDY:
@@ -523,7 +526,7 @@ EXTEND:
       _read:
         Normal: [0, "No lock-up reset occurred"]
         Reset: [1, "Lock-up reset occurred"]
-      _write:
+      _W1C:
         Clear: [1, "Clear reset flag"]
 
     LDOTRIM:
@@ -571,11 +574,11 @@ BKP:
         _write_constraint: "enum"
 
     CTE:
-      _write:
+      _W1C:
         Clear: [1, "Clear tamper event flag"]
 
     CTI:
-      _write:
+      _W1C:
         Clear: [1, "Clear tamper interrupt flag"]
 
     TPIE:
@@ -624,14 +627,14 @@ RTC:
       _read:
         NoEvent: [0, "No event occurred"]
         HasEvent: [1, "Event occurred"]
-      _write:
+      _W0C:
         Clear: [0, "Clear event flag"]
 
     RSF:
       _read:
         NotSynchronized: [0, "Registers not synchronized"]
         Synchronized: [1, "Registers synchronized"]
-      _write:
+      _W0C:
         Reset: [0, "Reset synchronization state"]
 
     CNF:
@@ -723,7 +726,7 @@ WWDG:
       _read:
         Normal: [0, "No early wake up"]
         WakenUp: [1, "Early wake up occurred"]
-      _write:
+      _W0C:
         Reset: [0, "Reset early wake up flag"]
 
 EXTI:
@@ -770,7 +773,7 @@ EXTI:
         _write_constraint: "enum"
 
     "IF*": # FIXME: they're write-only in RM, however it seems to be readable
-      _write:
+      _W1C:
         Reset: [1, "Reset interrupt flag on this line"]
       _read:
         NotInterrupted: [0, "This line is not interrupted"]
@@ -1054,7 +1057,8 @@ DMA:
         _write_constraint: "enum"
 
     "*":
-      Clear: [1, "Clear the flag"]
+      _W1C:
+        Clear: [1, "Clear the flag"]
 
   CFGR?:
     _modify:
@@ -1121,21 +1125,21 @@ ADC:
       _read:
         NoEvent: [0, "No analog watch dog event occurred"]
         HasEvent: [1, "Analog watch dog event occurred"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     EOC,IEOC:
       _read:
         InProgress: [0, "Conversion in progress"]
         Completed: [1, "Conversion completed"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     ISTRT,RSTRT:
       _read:
         Idle: [0, "Conversion not started"]
         Started: [1, "Conversion started"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
   CTLR1:
@@ -1213,7 +1217,7 @@ ADC:
         Calibrating: [1, "Calibration in progress"]
 
     RSTCAL:
-      _write:
+      _W1C:
         Reset: [1, "Reset calibration"]
       _read:
         Done: [0, "Reset done"]
@@ -1342,7 +1346,7 @@ TKEY:
       T1MS: [1, "Counting conversion period 1ms"]
 
     TKIF:
-      _write:
+      _W1C:
         Clear: [1, "Clear this flag"]
       _read:
         InProgress: [0, "TKEY_V counting in progress"]
@@ -1527,14 +1531,14 @@ TIM1:
         _write_constraint: "enum"
 
     "*IF":
-      _write:
+      _W0C:
         Clear: [0, "Clear interrupt flag"]
       _read:
         NotInterrupted: [0, "Not interrupted"]
         Interrupted: [1, "Interrupted"]
 
     "*OF":
-      _write:
+      _W0C:
         Clear: [0, "Clear overcapture flag"]
       _read:
         NotOvercaptured: [0, "Not overcaptured"]
@@ -1929,14 +1933,14 @@ TIM2:
         _write_constraint: "enum"
 
     "*IF":
-      _write:
+      _W0C:
         Clear: [0, "Clear interrupt flag"]
       _read:
         NotInterrupted: [0, "Not interrupted"]
         Interrupted: [1, "Interrupted"]
 
     "*OF":
-      _write:
+      _W0C:
         Clear: [0, "Clear overcapture flag"]
       _read:
         NotOvercaptured: [0, "Not overcaptured"]
@@ -2202,14 +2206,14 @@ USART1:
       _read:
         Waiting: [0, "Waiting for data"]
         Readable: [1, "Data received, register readable"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     TC:
       _read:
         InProgress: [0, "Transmission in progress"]
         Completed: [1, "Transmission completed"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     TXE:
@@ -2221,14 +2225,14 @@ USART1:
       _read:
         Connected: [0, "LIN disconnection not detected"]
         Disconnected: [1, "LIN disconnection detected"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     CTS:
       _read:
         NoChange: [0, "No change detected on nCTS"]
         Changed: [1, "Change detected on nCTS"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
   CTLR1:
@@ -2507,49 +2511,49 @@ I2C1:
       _read:
         NoError: [0, "No misplaced Start or Stop condition"]
         Error: [1, "Misplaced Start or Stop condition"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     ARLO:
       _read:
         NoLost: [0, "No Arbitration Lost detected"]
         Lost: [1, "Arbitration Lost detected"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     AF:
       _read:
         NoFailure: [0, "No acknowledge failure"]
         Failure: [1, "Acknowledge failure"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     OVR:
       _read:
         NoOverrun: [0, "No overrun/underrun occured"]
         Overrun: [1, "Overrun/underrun occured"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     PECERR:
       _read:
         NoError: [0, "no PEC error: receiver returns ACK after PEC reception (if ACK=1)"]
         Error: [1, "PEC error: receiver returns NACK after PEC reception (whatever ACK)"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     TIMEOUT:
       _read:
         NoTimeout: [0, "No Timeout error"]
         Timeout: [1, "SCL remained LOW for 25 ms"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     SMBALERT:
       _read:
         NoAlert: [0, "No SMBALERT occured"]
         Alert: [1, "SMBALERT occurred"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
   STAR2:
@@ -2589,15 +2593,11 @@ I2C1:
         OAR2: [1, "Address consistent with OAR2"]
 
   CKCFGR:
-    _modify:
-      F_S:
-        name: FS
-
     DUTY:
       Duty2T1: [0, "Duty cycle t_low/t_high = 2/1"]
       Duty16T9: [1, "Duty cycle t_low/t_high = 16/9"]
     
-    FS:
+    F_S:
       Standard: [0, "Standard mode I2C"]
       Fast: [1, "Fast mode I2C"]
 
@@ -2719,21 +2719,21 @@ SPI1:
       _read:
         Match: [0, "CRC value received matches the SPIx_RXCRCR value"]
         NoMatch: [1, "CRC value received does not match the SPIx_RXCRCR value"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     MODF:
       _read:
         NoFault: [0, "No mode fault occurred"]
         Fault: [1, "Mode fault occurred"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     OVR:
       _read:
         NoOverrun: [0, "No overrun occurred"]
         Overrun: [1, "Overrun occurred"]
-      _write:
+      _W0C:
         Clear: [0, "Clear this flag"]
 
     BSY:
