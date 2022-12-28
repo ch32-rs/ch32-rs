@@ -2600,3 +2600,143 @@ I2C1:
     FS:
       Standard: [0, "Standard mode I2C"]
       Fast: [1, "Fast mode I2C"]
+
+# reference: https://github.com/stm32-rs/stm32-rs/blob/master/peripherals/spi/spi_common.yaml
+SPI1:
+  _modify:
+    "*":
+      size: 0x10
+
+  _delete:
+    - "I2S*"
+
+  CTLR1:
+    _modify:
+      CPHA,CPOL,MSTR,BR,LSBFIRST,SSI,RXONLY,DFF,CRCNEXT,BIDIOE,BIDIMODE:
+        _write_constraint: "enum"
+  
+    CPHA:
+      FirstEdge: [0, "The first clock transition is the first data capture edge"]
+      SecondEdge: [1, "The second clock transition is the first data capture edge"]
+
+    CPOL:
+      IdleLow: [0, "CK to 0 when idle"]
+      IdleHigh: [1, "CK to 1 when idle"]
+
+    MSTR:
+      Slave: [0, "Slave configuration"]
+      Master: [1, "Master configuration"]
+
+    BR:
+      Div2: [0, "f_PCLK / 2"]
+      Div4: [1, "f_PCLK / 4"]
+      Div8: [2, "f_PCLK / 8"]
+      Div16: [3, "f_PCLK / 16"]
+      Div32: [4, "f_PCLK / 32"]
+      Div64: [5, "f_PCLK / 64"]
+      Div128: [6, "f_PCLK / 128"]
+      Div256: [7, "f_PCLK / 256"]
+
+    SPE:
+      Disabled: [0, "Peripheral disabled"]
+      Enabled: [1, "Peripheral enabled"]
+
+    LSBFIRST:
+      MSBFirst: [0, "Data is transmitted/received with the MSB first"]
+      LSBFirst: [1, "Data is transmitted/received with the LSB first"]
+
+    SSI:
+      SlaveSelected: [0, "0 is forced onto the NSS pin and the I/O value of the NSS pin is ignored"]
+      SlaveNotSelected: [1, "1 is forced onto the NSS pin and the I/O value of the NSS pin is ignored"]
+
+    SSM:
+      Disabled: [0, "Software slave management disabled"]
+      Enabled: [1, "Software slave management enabled"]
+
+    RXONLY:
+      FullDuplex: [0, "Full duplex (Transmit and receive)"]
+      OutputDisabled: [1, "Output disabled (Receive-only mode)"]
+
+    DFF:
+      D8: [0, "Data length 8 bits"]
+      D16: [1, "Data length 16 bits"]
+
+    CRCNEXT:
+      TxBuffer: [0, "Next transmit value is from Tx buffer"]
+      CRC: [1, "Next transmit value is from Tx CRC register"]
+
+    CRCEN:
+      Disabled: [0, "CRC calculation disabled"]
+      Enabled: [1, "CRC calculation enabled"]
+
+    BIDIOE:
+      OutputDisabled: [0, "Output disabled (receive-only mode)"]
+      OutputEnabled: [1, "Output enabled (transmit-only mode)"]
+
+    BIDIMODE:
+      Unidirectional: [0, "2-line unidirectional data mode selected"]
+      Bidirectional: [1, "1-line bidirectional data mode selected"]
+
+  CTLR2:
+    RXDMAEN:
+      Disabled: [0, "Rx buffer DMA disabled"]
+      Enabled: [1, "Rx buffer DMA enabled"]
+
+    TXDMAEN:
+      Disabled: [0, "Tx buffer DMA disabled"]
+      Enabled: [1, "Tx buffer DMA enabled"]
+
+    SSOE:
+      Disabled: [0, "SS output is disabled in master mode"]
+      Enabled: [1, "SS output is enabled in master mode"]
+
+    "*IE":
+      Disabled: [0, "Interrupt disabled"]
+      Enabled: [1, "Interrupt enabled"]
+
+  STATR:
+    _modify:
+      CRCERR,MODF,OVR:
+        _write_constraint: "enum"
+      
+      # NOTE: RM states they're reset by software
+      MODF:
+        access: read-write
+      
+      OVR:
+        access: read-write
+
+    RXNE:
+      _read:
+        Empty: [0, "Rx buffer empty"]
+        NotEmpty: [1, "Rx buffer not empty"]
+
+    TXE:
+      NotEmpty: [0, "Tx buffer not empty"]
+      Empty: [1, "Tx buffer empty"]
+
+    CRCERR:
+      _read:
+        Match: [0, "CRC value received matches the SPIx_RXCRCR value"]
+        NoMatch: [1, "CRC value received does not match the SPIx_RXCRCR value"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    MODF:
+      _read:
+        NoFault: [0, "No mode fault occurred"]
+        Fault: [1, "Mode fault occurred"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    OVR:
+      _read:
+        NoOverrun: [0, "No overrun occurred"]
+        Overrun: [1, "Overrun occurred"]
+      _write:
+        Clear: [0, "Clear this flag"]
+
+    BSY:
+      _read:
+        NotBusy: [0, "SPI not busy"]
+        Busy: [1, "SPI busy"]
