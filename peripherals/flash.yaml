@@ -1,0 +1,97 @@
+FLASH:
+  ACTLR:
+    LATENCY:
+      Zero: [0, "No latency, 0 < SYSCLK <= 24MHz recommended"]
+      One: [1, "24MHz < SYSCLK <= 48MHz recommended"]
+      Two: [2, "48MHz < SYSCLK <= 72MHz recommended"]
+
+    PRFTBE:
+      Disabled: [0, "Prefetch buffer disabled"]
+      Enabled: [1, "Prefetch buffer enabled"]
+
+    PRFTBS:
+      _read:
+        Disabled: [0, "Prefetch buffer disabled"]
+        Enabled: [1, "Prefetch buffer enabled"]
+
+  KEYR:
+    KEYR:
+      _write:
+        RDPRT: [0x000000A5, "RDPRT"]
+        Key1: [0x45670123, "Key1"]
+        Key2: [0xCDEF89AB, "Key2"]
+
+  STATR:
+    EOP:
+      _read:
+        Operating: [0, "Operating"]
+        Done: [1, "End of operation"]
+      _W1C:
+        Clear: [1, "Clear this flag"]
+
+    WRPRTERR:
+      _read:
+        NoError: [0, "No error"]
+        Error: [1, "Error"]
+      _W1C:
+        Clear: [1, "Clear this flag"]
+
+    BSY:
+      _read:
+        Idle: [0, "Operation accomplished or error"]
+        Busy: [1, "FLASH in operation"]
+
+  CTLR:
+    BUFRST:
+      Reset: [1, "Conduct buffer data clear"]
+    BUFLOAD:
+      Load: [1, "Conduct buffer data load"]
+    FTER:
+      Erase: [1, "Conduct fast erase"]
+    FTPG:
+      Program: [1, "Conduct fast programming"]
+    FLOCK:
+      _read:
+        Unlocked: [0, "Unlocked"]
+        Locked: [1, "Locked"]
+      _write:
+        Lock: [1, "Lock"]
+    EOPIE,ERRIE:
+      Disabled: [0, "Interrupt disabled"]
+      Enabled: [1, "Interrupt enabled"]
+    OBWRE:
+      _W0C: {}
+    LOCK:
+      _write:
+        Lock: [1, "Lock"]
+    STRT:
+      _write:
+        Start: [1, "Conduct erase or programming"]
+    OBER:
+      Erase: [1, "Conduct erase"]
+    OBPG:
+      Program: [1, "Conduct programming"]
+    MER:
+      Erase: [1, "Erase USER"]
+    PER:
+      Erase: [1, "Erase 1KB"]
+    PG:
+      Program: [1, "Conduct programming"]
+
+  OBR:
+    _delete:
+      - Data?
+
+  WPR:
+    _split: [WRP]
+
+    "WRP*":
+      _read:
+        Activated: [0, "Write protection activated"]
+        Deactivated: [1, "Write protection deactivated"]
+
+  MODEKEYR:
+    MODEKEYR:
+      _write:
+        Key1: [0x45670123, "Key1"]
+        Key2: [0xCDEF89AB, "Key2"]
