@@ -17,6 +17,7 @@ _svd: ../svd/fixed/ch32v103.svd
 
 _include:
   - "../peripherals/usbd.yaml"
+  - "../peripherals/flash.yaml"
 
 _modify:
   TIM2:
