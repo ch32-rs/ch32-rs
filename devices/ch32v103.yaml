@@ -32,6 +32,9 @@ _add:
       offset: 0x0
       size: 0x14 # FIXME: need to verify
       usage: "registers"
+    interrupts:
+      SysTick:
+        value: 12
     registers:
       CTLR:
         description: SysTick Control register
@@ -313,6 +316,11 @@ PWR:
         Lower: [1, "VDD and VDDA is lower than PVD threshold"]
 
 RCC:
+  _modify:
+    _interrupts:
+      RCC:
+        value: 21
+
   CTLR:
     "*RDY":
       _read:
@@ -784,6 +792,17 @@ PFIC:
   _delete:
     - STK_CTLR
 
+  _add:
+    _interrupts:
+      Reset:
+        value: 1
+      NMI:
+        value: 2
+      EXC:
+        value: 3
+      SWI:
+        value: 14
+
   CFGR:
     _modify:
       "*SET,KEYCODE":
@@ -1031,6 +1050,23 @@ AFIO:
         Disabled: [4, "SWD disabled"]
 
 DMA:
+  _modify:
+    _interrupts:
+      DMA1_Channel1:
+        name: DMA1_CH1
+      DMA1_Channel2:
+        name: DMA1_CH2
+      DMA1_Channel3:
+        name: DMA1_CH3
+      DMA1_Channel4:
+        name: DMA1_CH4
+      DMA1_Channel5:
+        name: DMA1_CH5
+      DMA1_Channel6:
+        name: DMA1_CH6
+      DMA1_Channel7:
+        name: DMA1_CH7
+
   INTFR:
     GIF?:
       _read:
@@ -1385,6 +1421,16 @@ TIM1:
     CHCTLR2_Output:
       name: "CHCTLR2O"
       displayName: "CHCTLR2O"
+    _interrupts:
+      TIM1_BRK_TIM9:
+        name: TIM1_BRK
+        description: TIM1 Break interrupt
+      TIM1_UP_TIM10:
+        name: TIM1_UP
+        description: TIM1 Update interrupt
+      TIM1_TRG_COM_TIM11:
+        name: TIM1_TRG_COM
+        description: TIM1 Trigger and Commutation interrupts
 
   CTLR1:
     _modify:

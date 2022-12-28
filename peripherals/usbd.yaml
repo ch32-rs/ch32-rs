@@ -4,6 +4,9 @@ USBD:
   _modify:
     "*":
       size: 0x10
+    _interrupts:
+      USB_FS_WKUP:
+        name: USBWakeUp
 
   CNTR:
     _modify:
