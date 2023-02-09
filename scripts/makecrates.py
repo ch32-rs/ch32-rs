@@ -54,8 +54,8 @@ license = "MIT/Apache-2.0"
 
 [dependencies]
 critical-section = {{ version = "1.0", optional = true }}
-riscv = "0.9.0"
-riscv-rt = {{ version = "0.10.0", optional = true }}
+riscv = "0.10.1"
+riscv-rt = {{ version = "0.11.0", optional = true }}
 vcell = "0.1.0"
 
 [package.metadata.docs.rs]
