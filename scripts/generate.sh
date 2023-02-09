@@ -8,7 +8,7 @@ set -ex
 
 
 svd patch devices/ch56x.yaml
-xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch56x.svd.patched
+xmllint --schema svd/CMSIS-SVD.xsd --noout svd/fixed/ch56x.svd.patched
 
 mkdir -p ch56x/src/ch56x
 svd2rust -m --target riscv -o ch56x/src/ch56x -g --strict --pascal_enum_values --max_cluster_size -i svd/fixed/ch56x.svd.patched
@@ -21,7 +21,7 @@ rustfmt --config-path="rustfmt.toml" ch56x/src/ch56x/mod.rs
 
 
 svd patch devices/ch57x.yaml
-xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch57x.svd.patched
+xmllint --schema svd/CMSIS-SVD.xsd --noout svd/fixed/ch57x.svd.patched
 
 mkdir -p ch57x/src/ch57x
 svd2rust -m --target riscv -o ch57x/src/ch57x -g --strict --pascal_enum_values --max_cluster_size -i svd/fixed/ch57x.svd.patched
@@ -33,7 +33,7 @@ rustfmt --config-path="rustfmt.toml" ch57x/src/ch57x/mod.rs
 
 
 svd patch devices/ch32v30x.yaml
-xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v30x.svd.patched
+xmllint --schema svd/CMSIS-SVD.xsd --noout svd/fixed/ch32v30x.svd.patched
 
 mkdir -p ch32v3/src/ch32v30x
 svd2rust -m --target riscv -o ch32v3/src/ch32v30x -g --strict --pascal_enum_values --max_cluster_size -i svd/fixed/ch32v30x.svd.patched
@@ -46,7 +46,7 @@ rustfmt --config-path="rustfmt.toml" ch32v3/src/ch32v30x/mod.rs
 
 
 svd patch devices/ch32v20x.yaml
-xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v20x.svd.patched
+xmllint --schema svd/CMSIS-SVD.xsd --noout svd/fixed/ch32v20x.svd.patched
 
 mkdir -p ch32v2/src/ch32v20x
 svd2rust -m --target riscv -g --strict --pascal_enum_values --max_cluster_size \
@@ -60,7 +60,7 @@ rustfmt --config-path="rustfmt.toml" ch32v2/src/ch32v20x/mod.rs
 
 
 svd patch devices/ch32v103.yaml
-xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch32v103.svd.patched
+xmllint --schema svd/CMSIS-SVD.xsd --noout svd/fixed/ch32v103.svd.patched
 
 mkdir -p ch32v1/src/ch32v103
 svd2rust -m --target riscv -g --strict --pascal_enum_values --max_cluster_size \
@@ -74,7 +74,7 @@ rustfmt --config-path="rustfmt.toml" ch32v1/src/ch32v103/mod.rs
 
 
 svd patch devices/ch58x.yaml
-xmllint --schema svd/cmsis-svd.xsd --noout svd/fixed/ch58x.svd.patched
+xmllint --schema svd/CMSIS-SVD.xsd --noout svd/fixed/ch58x.svd.patched
 
 mkdir -p ch58x/src/ch58x
 svd2rust -m --target riscv -o ch58x/src/ch58x -g --strict --pascal_enum_values --max_cluster_size -i svd/fixed/ch58x.svd.patched
