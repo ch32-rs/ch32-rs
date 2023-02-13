@@ -15,7 +15,9 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 - [x] Support CH32V103x family
 - [ ] Toolchains
   - [x] [wchisp](https://github.com/ch32-rs/wchisp) for Linux/macOS/Windows
+  - [x] [probe-rs + WCH-Link, WIP...](https://github.com/probe-rs/probe-rs/pull/1437)
 - [ ] HAL crate for CH32V3x/CH32V2x family
+  - <https://github.com/ch32-rs/ch32v20x-hal> WIP...
 - [ ] HAL crate for CH32V103x family
 - [ ] CHxxx interface or BLE MCUs.
 - [ ] Cortex-M MCUs.
