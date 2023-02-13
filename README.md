@@ -1,5 +1,6 @@
 # ch32-rs - WCH's CH32 Peripheral Access Crates
 
+[![crates.io](https://img.shields.io/crates/v/ch32v0.svg?label=ch32v0)](https://crates.io/crates/ch32v0)
 [![crates.io](https://img.shields.io/crates/v/ch32v1.svg?label=ch32v1)](https://crates.io/crates/ch32v1)
 [![crates.io](https://img.shields.io/crates/v/ch32v2.svg?label=ch32v2)](https://crates.io/crates/ch32v2)
 [![crates.io](https://img.shields.io/crates/v/ch32v3.svg?label=ch32v3)](https://crates.io/crates/ch32v3)
@@ -12,10 +13,11 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 ## Roadmap
 
 - [x] Support CH32V3x/CH32V2x family
-- [x] Support CH32V103x family
+- [x] Support CH32V103 family
+- [ ] Support CH32V003 family (RV32EC is not supported by Rust)
 - [ ] Toolchains
   - [x] [wchisp](https://github.com/ch32-rs/wchisp) for Linux/macOS/Windows
-  - [x] [probe-rs + WCH-Link, WIP...](https://github.com/probe-rs/probe-rs/pull/1437)
+  - [ ] [probe-rs + WCH-Link, WIP...](https://github.com/probe-rs/probe-rs/pull/1437)
 - [ ] HAL crate for CH32V3x/CH32V2x family
   - <https://github.com/ch32-rs/ch32v20x-hal> WIP...
 - [ ] HAL crate for CH32V103x family

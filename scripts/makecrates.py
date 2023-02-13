@@ -187,10 +187,6 @@ def main(devices_path, yes, families):
         else:
             family = re.match(r'ch32[a-z]*[0-9]', yamlfile)[0]
 
-        if family == 'ch32v0':
-            continue # skip for now
-
-
         device = os.path.splitext(yamlfile)[0].lower()
         if len(families) == 0 or family in families:
             if family not in devices:
