@@ -20,6 +20,7 @@ _include:
   - "../peripherals/flash.yaml"
 
 _modify:
+  name: CH32V103
   TIM2:
     description: General timer
 

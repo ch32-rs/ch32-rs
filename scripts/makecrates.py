@@ -55,7 +55,6 @@ license = "MIT/Apache-2.0"
 [dependencies]
 critical-section = {{ version = "1.0", optional = true }}
 riscv = "0.10.1"
-riscv-rt = {{ version = "0.11.0", optional = true }}
 vcell = "0.1.0"
 
 [package.metadata.docs.rs]
@@ -64,8 +63,8 @@ default-target = "{doc_target}"
 targets = []
 
 [features]
-default = ["rt"]
-rt = ["riscv-rt"]
+default = []
+rt = []
 {features}
 """
 
@@ -114,11 +113,12 @@ compile the device(s) you want. To use, in your Cargo.toml:
 ```toml
 [dependencies.{crate}]
 version = "{version}"
-features = ["{device}"]
-```
+features = ["{device}", "critical-section"]
 
-The `rt` feature is enabled by default and brings in support for `riscv-rt`.
-To disable, specify `default-features = false` in `Cargo.toml`.
+[dependencies.riscv]
+version = "0.10.1"
+features = ["critical-section-single-hart"]
+```
 
 In your code:
 

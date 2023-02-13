@@ -17,8 +17,11 @@ _svd: ../svd/fixed/ch32v20x.svd
     _strip_end:
       - "_"
 
+_modify:
+  name: CH32V20x
+
 _include:
-  - ../peripherals/systick_64bit.yaml
+  - ../peripherals/systick_v4.yaml
 
 # CH32V203 excluding CH32V203RB
 RCC:
@@ -72,6 +75,10 @@ RCC:
       HSI: [0b00, "HSI selected as system clock"]
       HSE: [0b01, "HSE selected as system clock"]
       PLL: [0b10, "PLL selected as system clock"]
+
+#USB:
+#  _array:
+#    "EP?R": {}
 
 USB_OTG_FS:
   _delete:

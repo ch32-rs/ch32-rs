@@ -20,6 +20,19 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 - [ ] CHxxx interface or BLE MCUs.
 - [ ] Cortex-M MCUs.
 
+## Development
+
+```shell
+# Do not use rust version of svdtools
+pip install svdtools
+
+# install xmlint
+
+cargo install svd2rust
+
+./scripts/generate.sh && ./scripts/update.sh
+```
+
 ## MCU list
 
 - [32-bit General Purpose RISC-V](http://www.wch-ic.com/products/categories/47.html?pid=5)
@@ -67,8 +80,11 @@ CH32F20x_D8W: CH32F208RB and CH32F208WB.
 ## Toolchain
 
 - [MRS: MounRiver Studio](http://www.mounriver.com/)
+  - Precompiled binary of OpenOCD is included in MRS(Windows, Linux, and macOS)
+  - But it requires WCH-Link to be force upgraded to 2.7
 - [Official Flash Tool: NanjingQinheng/WCH-Link](https://github.com/NanjingQinheng/WCH-Link)
 - [OpenOCD fork with WCH-Link support(wlink)](https://github.com/jiegec/riscv-openocd/tree/wch)
+  - Buggy, compatible with WCH-Link 2.3
 - [ch32-rs/wchisp](https://github.com/ch32-rs/wchisp)
 
 ## Ref

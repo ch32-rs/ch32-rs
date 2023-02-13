@@ -15,5 +15,8 @@ _svd: ../svd/fixed/ch32v30x.svd
     _strip_end:
       - "_"
 
+_modify:
+  name: CH32V30X
+
 _include:
-  - ../peripherals/systick_64bit.yaml
+  - ../peripherals/systick_v4.yaml

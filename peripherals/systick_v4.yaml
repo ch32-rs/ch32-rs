@@ -3,7 +3,7 @@
 
 _add:
   SYSTICK:
-    description: Systick registers, 64-bit downcounter
+    description: Systick registers, 64-bit downcounter for QingKeV4
     groupName: SYSTICK
     baseAddress: 0xE000F000
     registers:
@@ -52,6 +52,16 @@ _add:
             bitOffset: 0
             bitWidth: 1
             access: read-write
+      CNT:
+        description: System counter register
+        addressOffset: 0x8
+        size: 64
+        access: read-write
+        fields:
+          CNT:
+            description: System counter register
+            bitOffset: 0
+            bitWidth: 64
       CNTL:
         description: System counter low register
         addressOffset: 0x8
@@ -72,6 +82,16 @@ _add:
             description: System counter high register
             bitOffset: 0
             bitWidth: 32
+      CMPR:
+        description: System count compare register
+        addressOffset: 0x10
+        size: 64
+        access: read-write
+        fields:
+          CMP:
+            description: System count compare register
+            bitOffset: 0
+            bitWidth: 64
       CMPLR:
         description: System count compare low register
         addressOffset: 0x10
