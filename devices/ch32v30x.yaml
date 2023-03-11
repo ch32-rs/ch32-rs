@@ -20,3 +20,4 @@ _modify:
 
 _include:
   - ../peripherals/systick_v4.yaml
+  - "common_patches/dma/dma_v1.yaml"
