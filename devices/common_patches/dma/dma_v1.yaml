@@ -1,0 +1,6 @@
+"DMA1":
+  _include:
+    - dma1_v1_array.yaml
+"DMA2":
+  _include:
+    - dma2_v1_array.yaml

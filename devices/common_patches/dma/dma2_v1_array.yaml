@@ -1,0 +1,21 @@
+_cluster:
+  "CHL%s":
+    description: "Channel cluster: CFGR?, CNTR?, PADDR?, and MADDR? registers"
+    "CFGR[1234567]":
+      name: CFGR
+    "CNTR[1234567]":
+      name: CNTR
+    "PADDR[1234567]":
+      name: PADDR
+    "MADDR[1234567]":
+      name: MADDR
+  "CHH%s":
+    description: "Channel cluster: CFGR?, CNTR?, PADDR?, and MADDR? registers"
+    "CFGR[89],CFGR??":
+      name: CFGR
+    "CNTR[89],CNTR??":
+      name: CNTR
+    "PADDR[89],PADDR??":
+      name: PADDR
+    "MADDR[89],MADDR??":
+      name: MADDR
