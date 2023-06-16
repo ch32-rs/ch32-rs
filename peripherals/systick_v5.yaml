@@ -1,0 +1,66 @@
+# 32-bit downcounter
+# Applied for general-purpose MCUs designed based on 32-bit RISC-V instruction set and architecture.
+
+_add:
+  SYSTICK:
+    description: Systick registers, 32-bit downcounter for QingKeV2
+    groupName: SYSTICK
+    baseAddress: 0xE000F000
+    registers:
+      CTLR:
+        description: System count control register
+        addressOffset: 0x0
+        size: 32
+        access: read-write
+        fields:
+          SWIE:
+            description: Software interrupt enable
+            bitOffset: 31
+            bitWidth: 1
+          STRE:
+            description: Auto reload count enable bit
+            bitOffset: 3
+            bitWidth: 1
+          STCLK:
+            description: Counter system clock sourse selection bit
+            bitOffset: 2
+            bitWidth: 1
+          STIE:
+            description: Counter interrupt enable control bit
+            bitOffset: 1
+            bitWidth: 1
+          STE:
+            description: Counter enable control bit
+            bitOffset: 0
+            bitWidth: 1
+      SR:
+        description: System count status register
+        addressOffset: 0x4
+        size: 32
+        access: read-write
+        fields:
+          CNTIF:
+            description: Count value compare flag
+            bitOffset: 0
+            bitWidth: 1
+            access: read-write
+      CNT:
+        description: System counter register
+        addressOffset: 0x8
+        size: 32
+        access: read-write
+        fields:
+          CNT:
+            description: System counter register
+            bitOffset: 0
+            bitWidth: 32
+      CMPR:
+        description: System count compare register
+        addressOffset: 0x10
+        size: 32
+        access: read-write
+        fields:
+          CMP:
+            description: System count compare register
+            bitOffset: 0
+            bitWidth: 32
