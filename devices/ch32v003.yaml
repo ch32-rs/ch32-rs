@@ -12,3 +12,13 @@ _svd: ../svd/fixed/ch32v003.svd
       - "R32_"
       - "RB_"
       - " "
+
+_include:
+  - ../peripherals/systick_v5.yaml
+
+# Move systick to separate peripheral
+
+PFIC:
+  _delete:
+      - "STK_*"
+
