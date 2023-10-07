@@ -18,7 +18,7 @@ import os.path
 import argparse
 import re
 
-VERSION = "0.1.6"
+VERSION = "0.1.7"
 SVD2RUST_VERSION = "0.26.0"
 
 CRATE_DOC_FEATURES = {
@@ -29,6 +29,7 @@ CRATE_DOC_FEATURES = {
     "ch57x": ["rt", "ch57x", "critical-section"],
     "ch56x": ["rt", "ch56x", "critical-section"],
     "ch58x": ["rt", "ch58x", "critical-section"],
+    "ch59x": ["rt", "ch59x", "critical-section"],
     "ch32x0": ["rt", "ch32x035", "critical-section"],
 }
 
@@ -40,6 +41,7 @@ CRATE_DOC_TARGETS = {
     "ch56x": "riscv32imac-unknown-none-elf",
     "ch57x": "riscv32imac-unknown-none-elf",
     "ch58x": "riscv32imac-unknown-none-elf",
+    "ch59x": "riscv32imac-unknown-none-elf",
     "ch32x0": "riscv32imac-unknown-none-elf",
 }
 
@@ -57,9 +59,9 @@ categories = ["embedded", "no-std", "hardware-support"]
 license = "MIT/Apache-2.0"
 
 [dependencies]
-critical-section = {{ version = "1.0", optional = true }}
+critical-section = {{ version = "1.1", optional = true }}
 riscv = "0.10.1"
-vcell = "0.1.0"
+vcell = "0.1"
 
 [package.metadata.docs.rs]
 features = {docs_features}

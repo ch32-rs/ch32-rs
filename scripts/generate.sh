@@ -87,6 +87,18 @@ rm ch58x/src/ch58x/build.rs
 rustfmt --config-path="rustfmt.toml" ch58x/src/ch58x/mod.rs
 
 
+$SVDTOOLS patch devices/ch59x.yaml
+# xmllint --schema svd/CMSIS-SVD.xsd --noout svd/fixed/ch59x.svd.patched
+
+mkdir -p ch59x/src/ch59x
+svd2rust -m --target riscv -o ch59x/src/ch59x -g --strict --pascal_enum_values --max_cluster_size -i svd/fixed/ch59x.svd.patched
+
+mv ch59x/src/ch59x/generic.rs ch59x/src/
+rm ch59x/src/ch59x/build.rs
+
+rustfmt --config-path="rustfmt.toml" ch59x/src/ch59x/mod.rs
+
+
 
 $SVDTOOLS patch devices/ch32v003.yaml
 xmllint --schema svd/CMSIS-SVD.xsd --noout svd/fixed/ch32v003.svd.patched
