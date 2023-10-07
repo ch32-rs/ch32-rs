@@ -4,9 +4,11 @@
 [![crates.io](https://img.shields.io/crates/v/ch32v1.svg?label=ch32v1)](https://crates.io/crates/ch32v1)
 [![crates.io](https://img.shields.io/crates/v/ch32v2.svg?label=ch32v2)](https://crates.io/crates/ch32v2)
 [![crates.io](https://img.shields.io/crates/v/ch32v3.svg?label=ch32v3)](https://crates.io/crates/ch32v3)
+[![crates.io](https://img.shields.io/crates/v/ch32x0.svg?label=ch32x0)](https://crates.io/crates/ch32x0)
 [![crates.io](https://img.shields.io/crates/v/ch56x.svg?label=ch56x)](https://crates.io/crates/ch56x)
 [![crates.io](https://img.shields.io/crates/v/ch57x.svg?label=ch57x)](https://crates.io/crates/ch57x)
 [![crates.io](https://img.shields.io/crates/v/ch58x.svg?label=ch58x)](https://crates.io/crates/ch58x)
+[![crates.io](https://img.shields.io/crates/v/ch59x.svg?label=ch59x)](https://crates.io/crates/ch59x)
 
 Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 
@@ -14,7 +16,7 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 
 - [x] Support CH32V3x/CH32V2x family
 - [x] Support CH32V103 family
-- [ ] Support CH32V003 family (RV32EC is not supported by Rust) [Check this](https://noxim.xyz/blog/rust-ch32v003/custom-rust/)
+- [x] Support CH32V003 family (RV32EC is not supported by Rust) [Check this](https://noxim.xyz/blog/rust-ch32v003/custom-rust/)
 - [ ] Toolchains
   - [x] [wchisp](https://github.com/ch32-rs/wchisp) for Linux/macOS/Windows
   - [x] [wlink](https://github.com/ch32-rs/wlink) for Linux/macOS/Windows

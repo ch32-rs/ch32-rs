@@ -19,7 +19,7 @@ import argparse
 import re
 
 VERSION = "0.1.7"
-SVD2RUST_VERSION = "0.26.0"
+SVD2RUST_VERSION = "0.29.0"
 
 CRATE_DOC_FEATURES = {
     "ch32v3": ["rt", "ch32v30x", "critical-section"],
