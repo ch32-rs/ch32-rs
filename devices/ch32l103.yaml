@@ -1,0 +1,24 @@
+_svd: ../svd/fixed/ch32l103.svd
+
+"*":
+  _strip:
+    - "R8_"
+    - "R16_"
+    - "R32_"
+  _strip_end:
+    - "_"
+  "*":
+    _strip:
+      - "R8_"
+      - "R16_"
+      - "R32_"
+      - "RB_"
+      - " "
+    _strip_end:
+      - "_"
+
+_modify:
+  name: CH32L103
+
+_include:
+  - ../peripherals/systick_v4.yaml

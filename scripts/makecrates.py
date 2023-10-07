@@ -26,11 +26,12 @@ CRATE_DOC_FEATURES = {
     "ch32v2": ["rt", "ch32v20x", "critical-section"],
     "ch32v1": ["rt", "ch32v103", "critical-section"],
     "ch32v0": ["rt", "ch32v003", "critical-section"],
+    "ch32x0": ["rt", "ch32x035", "critical-section"],
+    "ch32l1": ["rt", "ch32l103", "critical-section"],
     "ch57x": ["rt", "ch57x", "critical-section"],
     "ch56x": ["rt", "ch56x", "critical-section"],
     "ch58x": ["rt", "ch58x", "critical-section"],
     "ch59x": ["rt", "ch59x", "critical-section"],
-    "ch32x0": ["rt", "ch32x035", "critical-section"],
 }
 
 CRATE_DOC_TARGETS = {
@@ -38,11 +39,12 @@ CRATE_DOC_TARGETS = {
     "ch32v2": "riscv32imac-unknown-none-elf",
     "ch32v1": "riscv32imac-unknown-none-elf",
     "ch32v0": "riscv32i-unknown-none-elf", # FIXME: RV32EC support is not included in Rust
+    "ch32x0": "riscv32imac-unknown-none-elf",
+    "ch32l1": "riscv32imac-unknown-none-elf",
     "ch56x": "riscv32imac-unknown-none-elf",
     "ch57x": "riscv32imac-unknown-none-elf",
     "ch58x": "riscv32imac-unknown-none-elf",
     "ch59x": "riscv32imac-unknown-none-elf",
-    "ch32x0": "riscv32imac-unknown-none-elf",
 }
 
 CARGO_TOML_TPL = """\
