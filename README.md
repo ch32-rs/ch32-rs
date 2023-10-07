@@ -18,10 +18,10 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 
 - [x] Support CH32V3x/CH32V2x family
 - [x] Support CH32V103 family
-- [x] Support CH32V003 family (RV32EC is not supported by Rust) [Check this](https://noxim.xyz/blog/rust-ch32v003/custom-rust/)
+- [x] Support CH32V003 family, [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal)
 - [ ] Toolchains
-  - [x] [wchisp](https://github.com/ch32-rs/wchisp) for Linux/macOS/Windows
-  - [x] [wlink](https://github.com/ch32-rs/wlink) for Linux/macOS/Windows
+  - [x] [wchisp](https://github.com/ch32-rs/wchisp) for USB-ISP
+  - [x] [wlink](https://github.com/ch32-rs/wlink) for WCH-Link probe
   - [ ] [probe-rs support, WIP...](https://github.com/probe-rs/probe-rs/pull/1437)
 - [ ] HAL crate for CH32V3x/CH32V2x family
   - <https://github.com/ch32-rs/ch32v20x-hal> WIP...
@@ -60,22 +60,19 @@ cargo install svd2rust
 
 ### RISC-V
 
-Nick name: "赤菟"(Chitu). IP Core brand: 青稞(Qingke).
+Nick name: "赤菟"(Chitu). IP Core brand: 青稞(Qingke). V2, V3, V4A, V4B, V4C, V4F.
 
-- CH32V103x Qingke-V3A RV32IMAC
-- CH32V203x Qingke-V4B Hardware Interrupt stack
-- CH32V208x Qingke-V4C Hardware division, memory protect
-- CH32V303x/305x/307x Qingke-V4F Hardware floating point
+- CH32V103: Qingke-V3A
+- CH32V203: Qingke-V4B
+- CH32V208: Qingke-V4C
+- CH32V303/305/307: Qingke-V4F
+- CH32L103 RISC-V4C, Low power
+- CH32X035/033: RISC-V4C
 - CH56x: RISC-V3A
-- CH571, CH573: RISC-V3A BLE
-- CH58x: RISC-V3A BLE
-
-```
-CH32V20x_D6: CH32V203F6, CH32V203G6, CH32V203K6, CH32V203K8, CH32V203C6 and CH32V203C8. CH32V20x_D8: CH32V203RB.
-CH32V20x_D8W: CH32V208GB, CH32V208CB, CH32V208RB and CH32V208WB.
-CH32V30x_D8: CH32V303CB, CH32V303RB, CH32V303RC and CH32V303VC.
-CH32V30x_D8C: CH32V305FB, CH32V305RB, CH32V307RC, CH32V307WC and CH32V307VC.
-```
+- CH571, CH573: RISC-V3A BLE 4.2
+- CH58x: RISC-V4A, BLE
+- CH59x: RISC-V4C, BLE 5.4
+- CH643: RISC-V4C RGB driver MCU
 
 ### Cortex-M
 
