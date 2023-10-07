@@ -5,6 +5,8 @@
 [![crates.io](https://img.shields.io/crates/v/ch32v2.svg?label=ch32v2)](https://crates.io/crates/ch32v2)
 [![crates.io](https://img.shields.io/crates/v/ch32v3.svg?label=ch32v3)](https://crates.io/crates/ch32v3)
 [![crates.io](https://img.shields.io/crates/v/ch32x0.svg?label=ch32x0)](https://crates.io/crates/ch32x0)
+[![crates.io](https://img.shields.io/crates/v/ch32l1.svg?label=ch32l1)](https://crates.io/crates/ch32l1)
+
 [![crates.io](https://img.shields.io/crates/v/ch56x.svg?label=ch56x)](https://crates.io/crates/ch56x)
 [![crates.io](https://img.shields.io/crates/v/ch57x.svg?label=ch57x)](https://crates.io/crates/ch57x)
 [![crates.io](https://img.shields.io/crates/v/ch58x.svg?label=ch58x)](https://crates.io/crates/ch58x)
