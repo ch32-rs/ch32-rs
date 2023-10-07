@@ -138,3 +138,16 @@ mv ch32l1/src/ch32l103/generic.rs ch32l1/src/
 rm ch32l1/src/ch32l103/build.rs
 
 rustfmt --config-path="rustfmt.toml" ch32l1/src/ch32l103/mod.rs
+
+
+$SVDTOOLS patch devices/ch643.yaml
+xmllint --schema svd/CMSIS-SVD.xsd --noout svd/fixed/ch643.svd.patched
+
+mkdir -p ch643/src/ch643
+svd2rust -m --target riscv -g --strict --pascal_enum_values --max_cluster_size \
+    -o ch643/src/ch643 -i svd/fixed/ch643.svd.patched
+
+mv ch643/src/ch643/generic.rs ch643/src/
+rm ch643/src/ch643/build.rs
+
+rustfmt --config-path="rustfmt.toml" ch643/src/ch643/mod.rs

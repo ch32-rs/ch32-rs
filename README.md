@@ -11,6 +11,7 @@
 [![crates.io](https://img.shields.io/crates/v/ch57x.svg?label=ch57x)](https://crates.io/crates/ch57x)
 [![crates.io](https://img.shields.io/crates/v/ch58x.svg?label=ch58x)](https://crates.io/crates/ch58x)
 [![crates.io](https://img.shields.io/crates/v/ch59x.svg?label=ch59x)](https://crates.io/crates/ch59x)
+[![crates.io](https://img.shields.io/crates/v/ch643.svg?label=ch643)](https://crates.io/crates/ch643)
 
 Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 

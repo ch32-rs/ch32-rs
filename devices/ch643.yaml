@@ -1,0 +1,16 @@
+_svd: ../svd/fixed/ch643.svd
+
+_delete:
+  - BLE
+
+"*":
+  _strip:
+    - "R8_"
+    - "R16_"
+    - "R32_"
+  "*":
+    _strip:
+      - "R8_"
+      - "R16_"
+      - "R32_"
+      - "RB_"
