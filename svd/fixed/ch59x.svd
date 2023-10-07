@@ -364,13 +364,13 @@
                     <resetValue>0x00000000</resetValue>
                     <fields>
                         <field>
-                            <name>RB_TKEY_WAKE_EN</name>
+                            <name>RB_TKEY_WAKE_EN_5_0</name>
                             <description>RWA, Touch button wake-up enable: 1: On; 0: Close. Each digit corresponds to a button.</description>
                             <bitRange>[5:0]</bitRange>
                             <access>read-write</access>
                         </field>
                         <field>
-                            <name>RB_TKEY_WAKE_EN</name>
+                            <name>RB_TKEY_WAKE_EN_13_8</name>
                             <description>RWA, Touch button wake-up enable: 1: On; 0: Close. Each digit corresponds to a button</description>
                             <bitRange>[13:8]</bitRange>
                             <access>read-write</access>
@@ -5403,17 +5403,17 @@
                             <bitRange>[7:7]</bitRange>
                         </field>
                         <field>
-                            <name>LCD_SEG_EN</name>
+                            <name>LCD_SEG_0_7_EN</name>
                             <description>RW, Enabling SEG0-SEG7 segments</description>
                             <bitRange>[15:8]</bitRange>
                         </field>
                         <field>
-                            <name>LCD_SEG_EN</name>
+                            <name>LCD_SEG_8_15_EN</name>
                             <description>RW, Enabling SEG8-SEG15 segments</description>
                             <bitRange>[23:16]</bitRange>
                         </field>
                         <field>
-                            <name>LCD_SEG_EN</name>
+                            <name>LCD_SEG_16_19_EN</name>
                             <description>RW, Enabling SEG16-SEG19 segments</description>
                             <bitRange>[27:24]</bitRange>
                         </field>
