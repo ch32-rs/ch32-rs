@@ -14,3 +14,159 @@ _delete:
       - "R16_"
       - "R32_"
       - "RB_"
+
+_modify:
+  System_control:
+    name: SYSCTL
+
+_derive:
+    UART2: UART1
+    UART3: UART1
+
+UART*:
+  _strip:
+    - "UART[0123]_"
+  "*":
+    _strip:
+      - "*_"
+
+SYSCTL:
+  _add:
+    FLASH_CFG:
+      addressOffset: 0x807
+      size: 8
+      access: read-write
+      resetValue: 0x07
+    FLASH_CTRL:
+      addressOffset: 0x806
+      size: 8
+      access: read-write
+      resetValue: 0x40
+
+LCD:
+  _strip:
+    - "LCD_"
+  "*":
+    _strip:
+      - "LCD_"
+  CMD:
+    _add:
+      SEG_EN:
+        description: LCD segment enable, SEG0~SEG23
+        access: read-write
+        bitRange: "[27:8]"
+  "RAM?":
+    _array:
+      "SEG*": {}
+
+
+PFIC:
+  _strip:
+    - "PFIC_"
+  "*":
+    _strip:
+      - "PFIC_"
+
+
+RTC:
+  _strip:
+    - "RTC_"
+  "*":
+    _strip:
+      - "RTC_"
+  #_add:
+  #  CNT_TICK:
+  #    description: RTC tick counter. Combine CNT_32K and CNT_2S to get 32-bit tick counter.
+  #    addressOffset: 0x38
+  #    size: 32
+  #    access: read-write
+
+GPIO:
+  PA_DIR:
+    _delete:
+      - "PA_DIR*"
+    _add:
+      PA_DIR:
+        description: GPIO PA I/O direction
+        access: read-write
+        bitRange: "[15:0]"
+  PA_PIN:
+    _delete:
+      - "PA_PIN*"
+    _add:
+      PA_PIN:
+        description: GPIO PA input data
+        access: read-write
+        bitRange: "[15:0]"
+  PA_OUT:
+    _delete:
+      - "PA_OUT*"
+    _add:
+      PA_OUT:
+        description: GPIO PA output data
+        access: read-write
+        bitRange: "[15:0]"        
+  PA_PD_DRV:
+    _delete:
+      - "PA_PD_DRV*"
+    _add:
+      PA_PD_DRV:
+        description: GPIO PA pull-down drive strength
+        access: read-write
+        bitRange: "[15:0]"
+  PA_PU:
+    _delete:
+      - "PA_PU*"
+    _add:
+      PA_PU:
+        description: GPIO PA pull-up enable
+        access: read-write
+        bitRange: "[15:0]"
+  PA_CLR:
+    _delete:
+      - "PA_CLR*"
+    _add:
+      PA_CLR:
+        description: GPIO PA output clear
+        access: read-write
+        bitRange: "[15:0]"
+  PB_PD_DRV:
+    _delete:
+      - "PB_PD_DRV*"
+    _add:
+      PB_PD_DRV:
+        description: GPIO PB pull-down drive strength
+        access: read-write
+        bitRange: "[23:0]"
+  PB_PU:
+    _delete:
+      - "PB_PU*"
+    _add:
+      PB_PU:
+        description: GPIO PB pull-up enable
+        access: read-write
+        bitRange: "[23:0]"
+  PB_CLR:
+    _delete:
+      - "PB_CLR*"
+    _add:
+      PB_CLR:
+        description: GPIO PB output clear
+        access: read-write
+        bitRange: "[23:0]"
+  PB_OUT:
+    _delete:
+      - "PB_OUT*"
+    _add:
+      PB_OUT:
+        description: GPIO PB output data
+        access: read-write
+        bitRange: "[23:0]"
+  PB_DIR:
+    _delete:
+      - "PB_DIR*"
+    _add:
+      PB_DIR:
+        description: GPIO PB I/O direction
+        access: read-write
+        bitRange: "[23:0]"
