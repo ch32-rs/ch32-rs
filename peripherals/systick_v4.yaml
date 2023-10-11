@@ -1,5 +1,6 @@
 # 64-bit downcounter
 # Applied for general-purpose MCUs designed based on 32-bit RISC-V instruction set and architecture.
+# Qingke-V4
 
 _add:
   SYSTICK:
@@ -57,58 +58,18 @@ _add:
         addressOffset: 0x8
         size: 64
         access: read-write
-        fields:
-          CNT:
-            description: System counter register
-            bitOffset: 0
-            bitWidth: 64
-      CNTL:
-        description: System counter low register
-        addressOffset: 0x8
-        size: 32
-        access: read-write
-        fields:
-          CNTL:
-            description: System counter low register
-            bitOffset: 0
-            bitWidth: 32
-      CNTH:
-        description: System counter high register
-        addressOffset: 0xC
-        size: 32
-        access: read-write
-        fields:
-          CNTH:
-            description: System counter high register
-            bitOffset: 0
-            bitWidth: 32
-      CMPR:
+      CMP:
         description: System count compare register
         addressOffset: 0x10
         size: 64
         access: read-write
-        fields:
-          CMP:
-            description: System count compare register
-            bitOffset: 0
-            bitWidth: 64
-      CMPLR:
-        description: System count compare low register
-        addressOffset: 0x10
-        size: 32
-        access: read-write
-        fields:
-          CMPL:
-            description: System count compare low register
-            bitOffset: 0
-            bitWidth: 32
-      CMPHR:
-        description: System count compare high register
-        addressOffset: 0x14
-        size: 32
-        access: read-write
-        fields:
-          CMPH:
-            description: System count compare high register
-            bitOffset: 0
-            bitWidth: 32
+
+
+SYSTICK:
+  CTLR:
+    MODE:
+      Upcount: [0, "Upcount"]
+      Downcount: [1, "Downcount"]
+    STCLK:
+      HCLK_DIV8: [0, "HCLK/8"]
+      HCLK: [1, "HCLK"]

@@ -7,7 +7,7 @@ _add:
     groupName: SYSTICK
     baseAddress: 0xE000F000
     registers:
-      CTLR:
+      CTRL:
         description: System count control register
         addressOffset: 0x0
         size: 32
@@ -57,58 +57,8 @@ _add:
         addressOffset: 0x8
         size: 64
         access: read-write
-        fields:
-          CNT:
-            description: System counter register
-            bitOffset: 0
-            bitWidth: 64
-      CNTL:
-        description: System counter low register
-        addressOffset: 0x8
-        size: 32
-        access: read-write
-        fields:
-          CNTL:
-            description: System counter low register
-            bitOffset: 0
-            bitWidth: 32
-      CNTH:
-        description: System counter high register
-        addressOffset: 0xC
-        size: 32
-        access: read-write
-        fields:
-          CNTH:
-            description: System counter high register
-            bitOffset: 0
-            bitWidth: 32
-      CMPR:
+      CMP:
         description: System count compare register
         addressOffset: 0x10
         size: 64
         access: read-write
-        fields:
-          CMP:
-            description: System count compare register
-            bitOffset: 0
-            bitWidth: 64
-      CMPLR:
-        description: System count compare low register
-        addressOffset: 0x10
-        size: 32
-        access: read-write
-        fields:
-          CMPL:
-            description: System count compare low register
-            bitOffset: 0
-            bitWidth: 32
-      CMPHR:
-        description: System count compare high register
-        addressOffset: 0x14
-        size: 32
-        access: read-write
-        fields:
-          CMPH:
-            description: System count compare high register
-            bitOffset: 0
-            bitWidth: 32

@@ -1,0 +1,11 @@
+# GPIO for CH59x
+
+
+_add:
+  GPIO:
+    description: GPIO
+    groupName: General Purpose I/O and Alternate Functions
+    # The same as SYS
+    baseAddress: 0x40001000
+    registers:
+      

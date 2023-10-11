@@ -1641,7 +1641,7 @@
                     <name>R16_ADC_DMA_NOW</name>
                     <description>RO, ADC DMA current address</description>
                     <addressOffset>0x64</addressOffset>
-                    <size>8</size>
+                    <size>16</size>
                     <access>read-only</access>
                     
                     <fields>
@@ -1656,7 +1656,7 @@
                     <name>R16_ADC_DMA_BEG</name>
                     <description>RW, ADC DMA begin address</description>
                     <addressOffset>0x68</addressOffset>
-                    <size>8</size>
+                    <size>16</size>
                     <access>read-write</access>
                     
                     <fields>
@@ -1671,7 +1671,7 @@
                     <name>R16_ADC_DMA_END</name>
                     <description>RW, ADC DMA end address</description>
                     <addressOffset>0x6C</addressOffset>
-                    <size>8</size>
+                    <size>16</size>
                     <access>read-write</access>
                     
                     <fields>
@@ -1904,14 +1904,9 @@
                     <resetValue>0x00000000</resetValue>
                     <fields>
                         <field>
-                            <name>R8_PA_PD_DRV_0</name>
-                            <description>PA pulldown for input or PA driving capability for output byte 0</description>
-                            <bitRange>[7:0]</bitRange>
-                        </field>
-                        <field>
-                            <name>R8_PA_PD_DRV_1</name>
-                            <description>PA pulldown for input or PA driving capability for output byte 1</description>
-                            <bitRange>[15:8]</bitRange>
+                            <name>R8_PA_PD_DRV</name>
+                            <description>PA pulldown for input or PA driving capability for output</description>
+                            <bitRange>[15:0]</bitRange>
                         </field>
                     </fields>
                 </register>

@@ -2,6 +2,7 @@ _svd: ../svd/fixed/ch59x.svd
 
 _delete:
   - BLE
+  - Systick
 
 "*":
   _strip:
@@ -14,6 +15,9 @@ _delete:
       - "R16_"
       - "R32_"
       - "RB_"
+
+_include:
+  - ../peripherals/systick_v4.yaml
 
 _modify:
   System_control:
