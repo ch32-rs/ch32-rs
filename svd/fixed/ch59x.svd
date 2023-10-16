@@ -1476,7 +1476,7 @@
                             <access>read-write</access>
                         </field>
                         <field>
-                            <name>RB_ADC_PGA_GAIN_10</name>
+                            <name>RB_ADC_PGA_GAIN</name>
                             <description>RW, set ADC input PGA gain: 00=-12dB, 01=-6dB, 10=0dB, 11=6dB</description>
                             <bitRange>[5:4]</bitRange>
                             <access>read-write</access>
@@ -1860,7 +1860,7 @@
                     <description>WZ, GPIO PA clear output: 0=keep, 1=clear</description>
                     <addressOffset>0xAC</addressOffset>
                     <size>32</size>
-                    <access>write-only</access>
+                    <access>read-write</access>
                     <resetValue>0x00000000</resetValue>
                     <fields>
                         <field>
