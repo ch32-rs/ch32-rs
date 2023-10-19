@@ -2,6 +2,8 @@ _svd: ../svd/fixed/ch58x.svd
 
 _delete:
   - BLE
+  - Systick
+  - SYSTICK
 
 "*":
   _strip:
@@ -15,11 +17,34 @@ _delete:
       - "R32_"
       - "RB_"
 
+_include:
+  - ../peripherals/systick_v4.yaml
+
+_derive:
+  # NOTE: unsafe, only UART0 has MODEM support
+  # R8_UART0_MSR
+  UART1: UART0
+  UART2: UART0
+  UART3: UART0
+  TMR3: TMR0
+  TMR2: TMR1
+
 SYS:
+  _delete:
+    _interrupts:
+      - RTC
+
   "CK32K_CONFIG":
     _modify:
       32K_CLK_PIN:
         name: CLK_32K_PIN
+
+  _add:
+    FLASH_CFG:
+      description: Flash configuration
+      addressOffset: 0x807 # 0x40001807
+      size: 8
+      access: read-write
 
   _modify:
     RESET_STATUS_*_GLOB_ROM_CFG:
@@ -28,10 +53,6 @@ SYS:
     # SLV_RD_DATA is undocumented
     PB_OUT__R8_SLV_RD_DATA:
       name: PB_OUT
-
-_modify:
-  Systick:
-    name: SYSTICK
 
 SYSTICK:
   _strip:
@@ -63,7 +84,7 @@ UART*:
     - "UART*_"
   "*":
     _strip:
-      - "UART*_"
+      - "*_"
 
   LCR:
     _delete:
@@ -123,3 +144,431 @@ USB2:
   _strip:
     - "U2"
     - "USB2_"
+
+# ADC of CH58x
+_add:
+  ADC:
+    description: ADC, split from SYS
+    baseAddress: 0x40001000
+    addressBlock:
+      offset: 0x0
+      size: 0x400
+      usage: "registers"
+    interrupts:
+      ADC:
+        value: 29
+    registers:
+      CHANNEL:
+        description: ADC channel select
+        addressOffset: 0x58
+        size: 8
+        access: read-write
+        resetValue: 0x0F
+        fields:
+          CH_IDX:
+            description: ADC input channel index
+            bitRange: "[3:0]"
+      CFG:
+        description: ADC configuration
+        addressOffset: 0x59
+        size: 8
+        access: read-write
+        resetValue: 0xA0
+        fields:
+          POWER_ON:
+            description: ADC power on
+            bitRange: "[0:0]"
+          BUF_EN:
+            description: ADC input buffer enable
+            bitRange: "[1:1]"
+          DIFF_EN:
+            description: ADC differential input mode, 0=single-end, 1=differnetial
+            bitRange: "[2:2]"
+          OFS_TEST:
+            description: enable ADC offset test mode, 0=normal mode, 1=short to test offset
+            bitRange: "[3:3]"
+          PGA_GAIN:
+            description: ADC PGA gain, 00=-12dB, 01=-6dB, 10=0dB, 11=6dB
+            bitRange: "[5:4]"
+          CLK_DIV:
+            description: ADC clock divider, 00=3.2MHz, 01=2.67MHz, 10=5.33MHz, 11=4MHz
+            bitRange: "[7:6]"
+      CONVERT:
+        description: ADC conversion control
+        addressOffset: 0x5A
+        size: 8
+        access: read-write
+        resetValue: 0x00
+        fields:
+          START:
+            description: ADC conversion start
+            bitRange: "[0:0]"
+          EOC:
+            description: ADC conversion end of conversion
+            bitRange: "[7:7]"
+      TEM_SENSOR:
+        description: ADC temperature sensor
+        addressOffset: 0x5B
+        size: 8
+        access: read-write
+        resetValue: 0x00
+        fields:
+          POWER_ON:
+            description: ADC temperature sensor enable
+            bitRange: "[7:7]"
+      DATA:
+        description: ADC conversion data
+        addressOffset: 0x5C
+        size: 16
+        access: read-only
+        resetValue: 0x0000
+        fields:
+          DATA:
+            description: ADC conversion data, 12 bits
+            bitRange: "[11:0]"
+      INT_FLAG:
+        description: ADC interrupt flag
+        addressOffset: 0x5E
+        size: 8
+        access: read-write
+        resetValue: 0x00
+        fields:
+          EOC:
+            description: ADC interrupt flag, end of conversion
+            bitRange: "[7:7]"
+      DMA_CTRL:
+        description: ADC DMA control. Renamed from CTRL_DMA
+        addressOffset: 0x61
+        size: 8
+        access: read-write
+        resetValue: 0x00
+        fields:
+          DMA_EN:
+            description: ADC DMA enable
+            bitRange: "[0:0]"
+          DMA_LOOP:
+            description: ADC DMA address loop enable
+            bitRange: "[2:2]"
+          DMA_END_IE:
+            description: ADC DMA end interrupt enable, renamed from IE_DMA_END
+            bitRange: "[3:3]"
+          EOC_IE:
+            description: ADC end of conversion interrupt enable, renamed from IE_EOC
+            bitRange: "[4:4]"
+          COUNT_EN:
+            description: enable contineous conversion
+            bitRange: "[6:6]"
+          AUTO_EN:
+            description: enable auto continuing ADC for DMA
+            bitRange: "[7:7]"
+      DMA_IF:
+        description: ADC DMA interrupt flag
+        addressOffset: 0x62
+        size: 8
+        access: read-write
+        resetValue: 0x00
+        fields:
+          DMA_END:
+            description: ADC DMA end interrupt flag, renamed from IF_DMA_END
+            bitRange: "[3:3]"
+          EOC:
+            description: ADC end of conversion interrupt flag, renamed from IF_END_ADC
+            bitRange: "[4:4]"
+      AUTO_CYCLE:
+        description: ADC auto cycle for contineous conversion
+        addressOffset: 0x63
+        size: 8
+        access: read-write
+        resetValue: 0x00
+      DMA_NOW:
+        description: ADC DMA address, current
+        addressOffset: 0x64
+        size: 16
+        access: read-write
+      DMA_BEG:
+        description: ADC DMA address, begin
+        addressOffset: 0x68
+        size: 16
+        access: read-write
+      DMA_END:
+        description: ADC DMA address, end
+        addressOffset: 0x6C
+        size: 16
+        access: read-write
+
+  GPIOCTL:
+    description: GPIOCTL, split from GPIO
+    baseAddress: 0x40001000
+    registers:
+      PIN_ALTERNATE:
+        description: GPIO pin remap
+        addressOffset: 0x18
+        size: 16
+        access: read-write
+        resetValue: 0x0000
+        fields:
+          RF_ANT_SW_EN:
+            description: RF antenna switch enable
+            bitRange: "[15:15]"
+          UART0_INV:
+            description: UART0 RX/TX pin inversion
+            bitRange: "[14:14]"
+          INTX:
+            description: Remap INT from  PB[8]/PB[9] to PB[22]/PB[23]
+            bitRange: "[13:13]"
+          MODEM:
+            description: UART0 MODEM pin remap, DSR/DTR remap from PB[1]/PB[5] to PB[14]/PB[15]
+            bitRange: "[12:12]"
+          I2C:
+            description: I2C pin remap
+            bitRange: "[11:11]"
+          PWMX:
+            description: PWMx pin remap
+            bitRange: "[10:10]"
+          # NO SPI1 here
+          SPI0:
+            description: SPI0 pin remap
+            bitRange: "[8:8]"
+          UART3:
+            description: UART3 pin remap
+            bitRange: "[7:7]"
+          UART2:
+            description: UART2 pin remap
+            bitRange: "[6:6]"
+          UART1:
+            description: UART1 pin remap
+            bitRange: "[5:5]"
+          UART0:
+            description: UART0 pin remap
+            bitRange: "[4:4]"
+          TMR3:
+            description: TMR3 pin remap
+            bitRange: "[3:3]"
+          TMR2:
+            description: TMR2 pin remap
+            bitRange: "[2:2]"
+          TMR1:
+            description: TMR1 pin remap
+            bitRange: "[1:1]"
+          TMR0:
+            description: TMR0 pin remap
+            bitRange: "[0:0]"
+      PIN_ANALOG_IE:
+        description: GPIO pin analog, 1 disable digitial input. 0 enable digital input
+        addressOffset: 0x1A
+        size: 16
+        access: read-write
+        resetValue: 0x0000
+        fields:
+          ADC8_9_IE:
+            description: ADC8/9 input enable
+            bitRange: "[0:0]"
+          ADC6_7_IE:
+            description: ADC6/7 input enable
+            bitRange: "[1:1]"
+          ADC10_IE:
+            description: ADC10 input enable
+            bitRange: "[2:2]"
+          ADC11_IE:
+            description: ADC11 input enable
+            bitRange: "[3:3]"
+          USB2_DP_PU:
+            description: USB2_DP pull-up enable
+            bitRange: "[4:4]"
+          USB2_IE:
+            description: USB2 enable, PB12, PB13
+            bitRange: "[5:5]"
+          USB_DP_PU:
+            description: USB_DP pull-up enable
+            bitRange: "[6:6]"
+          USB_IE:
+            description: USB enable, PB10, PB11
+            bitRange: "[7:7]"
+          ADC0_IE:
+            description: ADC0 input enable
+            bitRange: "[9:9]"
+          ADC1_IE:
+            description: ADC1 input enable
+            bitRange: "[10:10]"
+          ADC12_IE:
+            description: ADC12 input enable
+            bitRange: "[11:11]"
+          ADC13_IE:
+            description: ADC13 input enable
+            bitRange: "[12:12]"
+          XT32K_IE:
+            description: XT32K LSE input enable
+            bitRange: "[13:13]"
+          ADC2_3_IE:
+            description: ADC2/3 input enable
+            bitRange: "[14:14]"
+          ADC4_5_IE:
+            description: ADC4/5 input enable
+            bitRange: "[15:15]"
+      # not aligned to register block boundary
+      PA_INT_EN:
+        description: GPIO PA interrupt enable
+        addressOffset: 0x90
+        size: 16
+        access: read-write
+        resetValue: 0x0000
+      PB_INT_EN:
+        description: GPIO PB interrupt enable, [9:8] might be remapped to [23:22]
+        addressOffset: 0x92
+        size: 16
+        access: read-write
+        resetValue: 0x0000
+      PA_INT_MODE:
+        description: GPIO PA interrupt mode
+        addressOffset: 0x94
+        size: 16
+        access: read-write
+        resetValue: 0x0000
+      PB_INT_MODE:
+        description: GPIO PB interrupt mode, [9:8] might be remapped to [23:22]
+        addressOffset: 0x96
+        size: 16
+        access: read-write
+        resetValue: 0x0000
+      PA_INT_IF:
+        description: GPIO PA interrupt flag
+        addressOffset: 0x9C
+        size: 16
+        access: read-write
+        resetValue: 0x0000
+      PB_INT_IF:
+        description: GPIO PB interrupt flag, [9:8] might be remapped to [23:22]
+        addressOffset: 0x9E
+        size: 16
+        access: read-write
+        resetValue: 0x0000
+
+  GPIOA:
+    description: GPIO, split from SYS
+    baseAddress: 0x400010A0
+    interrupts:
+      GPIOA:
+        value: 17
+    registers:
+      DIR:
+        description: GPIO PA I/O direction
+        addressOffset: 0x00
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+      PIN:
+        description: GPIO PA input data
+        addressOffset: 0x04
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+      OUT:
+        description: GPIO PA output data
+        addressOffset: 0x08
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+      CLR:
+        description: GPIO PA output clear
+        addressOffset: 0x0C
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+      PU:
+        description: GPIO PA pull-up enable
+        addressOffset: 0x10
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+      PD_DRV:
+        description: GPIO PA pull-down enable or drive strength select
+        addressOffset: 0x14
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+
+  GPIOB:
+    derivedFrom: GPIOA
+    baseAddress: 0x400010C0
+    interrupts:
+      GPIOB:
+        value: 18
+
+  RTC:
+    description: RTC, split from SYS
+    baseAddress: 0x40001000
+    interrupts:
+      RTC:
+        value: 16
+    registers:
+      FLAG_CTRL:
+        description: RTC flag and clear control
+        addressOffset: 0x30
+        size: 8
+        access: read-write
+        resetValue: 0x30
+        fields:
+          TRIG_FLAG:
+            description: RTC trigger flag
+            bitRange: "[7:7]"
+            access: read-only
+          TMR_FLAG:
+            description: RTC timer flag
+            bitRange: "[6:6]"
+            access: read-only
+          TRIG_CLR:
+            description: RTC trigger flag clear
+            bitRange: "[5:5]"
+          TMR_CLR:
+            description: RTC timer flag clear
+            bitRange: "[4:4]"
+      MODE_CTRL:
+        description: RTC mode control
+        addressOffset: 0x31
+        size: 8
+        access: read-write
+        resetValue: 0x02
+        fields:
+          LOAD_HI:
+            description: RTC load TRIG to high word
+            bitRange: "[7:7]"
+          LOAD_LO:
+            description: RTC load TRIG to low word
+            bitRange: "[6:6]"
+          TRIG_EN:
+            description: RTC trigger enable
+            bitRange: "[5:5]"
+          TMR_EN:
+            description: RTC timer enable
+            bitRange: "[4:4]"
+          IGNORE_B0:
+            description: RTC ignore compare bit 0
+            bitRange: "[3:3]"
+          TMR_MODE:
+            description: RTC timer mode, 0=0.125S, 111; 16S
+            bitRange: "[2:0]"
+      TRIG:
+        description: RTC trigger control
+        addressOffset: 0x34
+        size: 32
+        access: read-write
+        resetValue: 0x00000000
+      CNT_32K:
+        description: RTC 32K-based counter
+        addressOffset: 0x38
+        size: 16
+        access: read-write
+      CNT_2S:
+        description: RTC 2-second-based counter
+        addressOffset: 0x3A
+        size: 16
+        access: read-write
+      CNT_DAY:
+        description: RTC day-based counter
+        addressOffset: 0x3C
+        size: 32
+        access: read-write
+        fields:
+          CNT_DAY:
+            description: RTC day-based counter
+            bitRange: "[13:0]"
