@@ -499,7 +499,7 @@ _add:
     baseAddress: 0x40001000
     interrupts:
       RTC:
-        value: 16
+        value: 28
     registers:
       FLAG_CTRL:
         description: RTC flag and clear control
