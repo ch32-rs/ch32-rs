@@ -21,6 +21,11 @@ import re
 VERSION = "0.1.7"
 SVD2RUST_VERSION = "0.29.0"
 
+CRATE_VERSIONS = {
+    "ch58x": "0.2.0",
+    "ch59x": "0.1.8",
+}
+
 CRATE_DOC_FEATURES = {
     "ch32v3": ["rt", "ch32v30x", "critical-section"],
     "ch32v2": ["rt", "ch32v20x", "critical-section"],
@@ -211,6 +216,8 @@ def main(devices_path, yes, families):
         input("Enter to continue, ctrl-C to cancel")
 
     for family in devices:
+        version = CRATE_VERSIONS.get(family, VERSION)
+
         devices[family] = sorted(devices[family])
         crate = family.lower()
         features = make_features(devices[family])
@@ -218,13 +225,14 @@ def main(devices_path, yes, families):
         mods = make_mods(devices[family])
         ufamily = family.upper()
         cargo_toml = CARGO_TOML_TPL.format(
-            family=ufamily, crate=crate, version=VERSION, features=features,
+            family=ufamily, crate=crate, version=version, features=features,
             docs_features=str(CRATE_DOC_FEATURES[crate]),
             doc_target=CRATE_DOC_TARGETS[crate])
         readme = README_TPL.format(
             family=ufamily, crate=crate, device=devices[family][0],
-            version=VERSION, svd2rust_version=SVD2RUST_VERSION,
+            version=version, svd2rust_version=SVD2RUST_VERSION,
             devices="") # TODO: get devices
+        
         lib_rs = SRC_LIB_RS_TPL.format(family=ufamily, mods=mods, crate=crate,
                                        svd2rust_version=SVD2RUST_VERSION)
         build_rs = BUILD_TPL.format(device_clauses=clauses)
