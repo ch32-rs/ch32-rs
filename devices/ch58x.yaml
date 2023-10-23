@@ -68,9 +68,18 @@ TMR*:
 I2C:
   _strip:
     - "I2C_*"
+  # duplicated in svd: RB_I2C_PECX
+  _delete:
+    - "*_PEC"
+
   "*":
     _strip:
       - "I2C_"
+
+  # UNSAFE: only error flags should be RW0
+  _modify:
+    STAR1:
+      access: read-write
 
 PFIC:
   _strip:
@@ -107,9 +116,23 @@ SPI*:
     - "SPI[01]_*"
   "*":
     _strip:
-      - "SPI?_"
+      - "*_"
 
-SPI0:
+  CTRL_MOD:
+    _modify:
+      "2WIRE_MOD":
+        name: "TWO_WIRE_MODE"
+      "*MST_SCK_MOD__RB_SPI_SLV_CMD_MOD":
+        name: "MST_SCK_MOD"
+  
+    _add:
+      SLV_CMD_MOD:
+        description: SPI slave command mode
+        bitRange: "[3:3]"
+        access: read-write
+      
+
+SPI0:      
   _delete:
     - CLOCK_DIV__R8_SPI0_SLAVE_PRE
 
