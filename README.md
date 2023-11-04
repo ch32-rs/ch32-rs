@@ -11,6 +11,7 @@
 [![crates.io](https://img.shields.io/crates/v/ch57x.svg?label=ch57x)](https://crates.io/crates/ch57x)
 [![crates.io](https://img.shields.io/crates/v/ch58x.svg?label=ch58x)](https://crates.io/crates/ch58x)
 [![crates.io](https://img.shields.io/crates/v/ch59x.svg?label=ch59x)](https://crates.io/crates/ch59x)
+[![crates.io](https://img.shields.io/crates/v/ch641.svg?label=ch641)](https://crates.io/crates/ch641)
 [![crates.io](https://img.shields.io/crates/v/ch643.svg?label=ch643)](https://crates.io/crates/ch643)
 
 Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
@@ -20,13 +21,11 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
 - [x] Support CH32V3x/CH32V2x family
 - [x] Support CH32V103 family
 - [x] Support CH32V003 family, [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal)
-- [ ] Toolchains
+- [ ] Toolchains for Flashing and Debugging
   - [x] [wchisp](https://github.com/ch32-rs/wchisp) for USB-ISP
   - [x] [wlink](https://github.com/ch32-rs/wlink) for WCH-Link probe
   - [ ] [probe-rs support, WIP...](https://github.com/probe-rs/probe-rs/pull/1437)
-- [ ] HAL crate for CH32V3x/CH32V2x family
-  - <https://github.com/ch32-rs/ch32v20x-hal> WIP...
-- [ ] HAL crate for CH32V103x family
+- [ ] HAL crates
 - [ ] CHxxx interface or BLE MCUs.
 - [ ] Cortex-M MCUs.
 
@@ -52,48 +51,48 @@ cargo install svd2rust
 
 **NOTE**: Will never support 8-bit MCUs.
 
-### Subdivision
-
-- D6: Low-and-medium-density general
-- D8: High-density general
-- D8C: Connectivity or interconnectivity
-- D8W: Wireless
-
 ### RISC-V
 
-Nick name: "赤菟"(Chitu). IP Core brand: 青稞(Qingke). V2, V3, V4A, V4B, V4C, V4F.
+Nick name: "赤菟"(Chitu). IP Core brand: 青稞(Qingke). V2A, V3A, V4A, V4B, V4C, V4F.
 
+- CH32V003: Qingke-V2A
 - CH32V103: Qingke-V3A
 - CH32V203: Qingke-V4B
-- CH32V208: Qingke-V4C
-- CH32V303/305/307: Qingke-V4F
-- CH32L103 RISC-V4C, Low power
-- CH32X035/033: RISC-V4C
-- CH56x: RISC-V3A
-- CH571, CH573: RISC-V3A BLE 4.2
-- CH58x: RISC-V4A, BLE
-- CH59x: RISC-V4C, BLE 5.4
-- CH643: RISC-V4C RGB driver MCU
+- CH32V208: Qingke-V4C, BLE
+- CH32V30x: Qingke-V4F
+- CH32L103 Qingke-V4C, Low power
+- CH32X03x: Qingke-V4C, USB PD
+- CH56x: Qingke-V3A
+- CH571, CH573: Qingke-V3A BLE 4.2
+- CH58x: Qingke-V4A, BLE
+- CH59x: Qingke-V4C, BLE 5.4
+- CH643: Qingke-V4C RGB driver MCU
+- CH641: Qingke-V2A, USB PD
 
 ### Cortex-M
 
-```
-CH32F20x_D6: CH32F203K8, CH32F203C6 and CH32F203C8.
-CH32F20x_D8: CH32F203CB, CH32F203RC and CH32F203VC.
-CH32F20x_D8C: CH32F205RB and CH32F207VC.
-CH32F20x_D8W: CH32F208RB and CH32F208WB.
-```
+CH32F uses Cortex-M3.
+CH577/CH578/CH579 uses Cortex-M0.
+
+- CH32F103
+- CH32F203
+- CH32F205
+- CH32F207
+- CH32F208
+- CH577/CH578/CH579
 
 ## Toolchain
 
 - [MRS: MounRiver Studio](http://www.mounriver.com/)
   - Precompiled binary of OpenOCD is included in MRS(Windows, Linux, and macOS)
-  - But it requires WCH-Link to be force upgraded to 2.7
+  - WCH-LinkUtility is included in MRS
+  - WCHISPTool is included in MRS
 - [Official Flash Tool: NanjingQinheng/WCH-Link](https://github.com/NanjingQinheng/WCH-Link)
 - [OpenOCD fork with WCH-Link support(wlink)](https://github.com/jiegec/riscv-openocd/tree/wch)
   - Buggy, compatible with WCH-Link 2.3
 - [ch32-rs/wchisp](https://github.com/ch32-rs/wchisp)
+- [ch32-rs/wlink](https://github.com/ch32-rs/wlink)
 
 ## Ref
 
-- https://github.com/openwch
+- <https://github.com/openwch>
