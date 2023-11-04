@@ -14,7 +14,7 @@ _svd: ../svd/fixed/ch32v003.svd
       - " "
 
 _include:
-  - ../peripherals/systick_v5.yaml
+  - ../peripherals/systick_v2.yaml
 
 # Move systick to separate peripheral
 
