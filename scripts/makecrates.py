@@ -24,6 +24,7 @@ SVD2RUST_VERSION = "0.29.0"
 CRATE_VERSIONS = {
     "ch58x": "0.2.0",
     "ch59x": "0.1.8",
+    "ch641": "0.0.1",
 }
 
 CRATE_DOC_FEATURES = {
@@ -38,13 +39,14 @@ CRATE_DOC_FEATURES = {
     "ch58x": ["rt", "ch58x", "critical-section"],
     "ch59x": ["rt", "ch59x", "critical-section"],
     "ch643": ["rt", "ch643", "critical-section"],
+    "ch641": ["rt", "ch641", "critical-section"],
 }
 
 CRATE_DOC_TARGETS = {
     "ch32v3": "riscv32imac-unknown-none-elf",
     "ch32v2": "riscv32imac-unknown-none-elf",
     "ch32v1": "riscv32imac-unknown-none-elf",
-    "ch32v0": "riscv32i-unknown-none-elf", # FIXME: RV32EC support is not included in Rust
+    "ch32v0": "riscv32i-unknown-none-elf", # TODO: use riscv32ec when it is supported
     "ch32x0": "riscv32imac-unknown-none-elf",
     "ch32l1": "riscv32imac-unknown-none-elf",
     "ch56x": "riscv32imac-unknown-none-elf",
@@ -52,6 +54,7 @@ CRATE_DOC_TARGETS = {
     "ch58x": "riscv32imac-unknown-none-elf",
     "ch59x": "riscv32imac-unknown-none-elf",
     "ch643": "riscv32imac-unknown-none-elf",
+    "ch641": "riscv32i-unknown-none-elf", # TODO: use riscv32ec when it is supported
 }
 
 CARGO_TOML_TPL = """\
@@ -197,6 +200,8 @@ def main(devices_path, yes, families):
         yamlfile = os.path.basename(path)
         if "ch643" in yamlfile:
             family = "ch643"
+        elif "ch641" in yamlfile:
+            family = "ch641"
         elif "ch5" in yamlfile:
             family = yamlfile.split('.')[0]
         else:
