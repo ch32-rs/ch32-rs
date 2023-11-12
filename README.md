@@ -14,19 +14,26 @@
 [![crates.io](https://img.shields.io/crates/v/ch641.svg?label=ch641)](https://crates.io/crates/ch641)
 [![crates.io](https://img.shields.io/crates/v/ch643.svg?label=ch643)](https://crates.io/crates/ch643)
 
-Embedded Rust device crates for WCH's RISC-V and Cortex-M microcontrollers.
+---
+
+Embedded Rust device crates for WCH's RISC-V and Cortex-M(planned) microcontrollers.
 
 ## Roadmap
 
 - [x] Support CH32V3x/CH32V2x family
 - [x] Support CH32V103 family
 - [x] Support CH32V003 family, [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal)
-- [ ] Toolchains for Flashing and Debugging
+- [x] Toolchains for Flashing and Debugging
   - [x] [wchisp](https://github.com/ch32-rs/wchisp) for USB-ISP
   - [x] [wlink](https://github.com/ch32-rs/wlink) for WCH-Link probe
-  - [ ] [probe-rs support, WIP...](https://github.com/probe-rs/probe-rs/pull/1437)
+  - [x] [probe-rs support](https://github.com/probe-rs/probe-rs/pull/1437)
+    - [x] [CH32V003 support](https://github.com/probe-rs/probe-rs/pull/1876)
+    - [x] [flash-algorithms](https://github.com/ch32-rs/flash-algorithms)
+    - [ ] Support other families
 - [ ] HAL crates
-- [ ] CHxxx interface or BLE MCUs.
+  - [ch58x-hal](https://github.com/ch32-rs/ch58x-hal) - working
+  - [ch59x-hal](https://github.com/ch32-rs/ch59x-hal) - early stage
+  - [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal) - early stage, requires [rust with RV32EC](https://github.com/ch32-rs/rust)
 - [ ] Cortex-M MCUs.
 
 ## Development
