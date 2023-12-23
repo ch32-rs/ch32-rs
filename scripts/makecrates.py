@@ -19,12 +19,13 @@ import argparse
 import re
 
 VERSION = "0.1.7"
-SVD2RUST_VERSION = "0.29.0"
+SVD2RUST_VERSION = "0.31.2"
 
 CRATE_VERSIONS = {
     "ch58x": "0.2.0",
     "ch59x": "0.1.8",
     "ch641": "0.0.1",
+    "ch32v0": "0.2.0",
 }
 
 CRATE_DOC_FEATURES = {

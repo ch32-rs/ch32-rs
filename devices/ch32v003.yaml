@@ -22,3 +22,16 @@ PFIC:
   _delete:
       - "STK_*"
 
+RCC:
+  CFGR0:
+    _delete:
+      - PLLSRC
+    _add:
+      PLLSRC:
+        description: "PLL entry clock source"
+        bitOffset: 16
+        bitWidth: 2
+
+    PLLSRC:
+      HSI_MUL2: [0b00, "HSI clock divided by 2 selected as PLL input clock"]
+      HSE_MUL2: [0b11, "HSE clock divided by 2 selected as PLL input clock"]

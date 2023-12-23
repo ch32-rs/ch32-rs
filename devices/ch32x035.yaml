@@ -12,3 +12,6 @@ _svd: ../svd/fixed/ch32x035.svd
       - "R32_"
       - "RB_"
       - " "
+
+_include:
+  - ../peripherals/systick_v4.yaml
