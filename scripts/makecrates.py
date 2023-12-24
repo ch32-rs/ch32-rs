@@ -19,7 +19,7 @@ import argparse
 import re
 
 VERSION = "0.1.7"
-SVD2RUST_VERSION = "0.31.2"
+SVD2RUST_VERSION = "0.29.0"
 
 CRATE_VERSIONS = {
     "ch58x": "0.2.0",
