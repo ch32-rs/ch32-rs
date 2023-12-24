@@ -212,162 +212,162 @@ _add:
         addressOffset: 0x1F
         size: 8
         access: read-write
-      DATA0:
+      DATA_REG0:
         description: PIOC data register0
         addressOffset: 0x20
         size: 8
         access: read-write
-      DATA1:
+      DATA_REG1:
         description: PIOC data register1
         addressOffset: 0x21
         size: 8
         access: read-write
-      DATA2:
+      DATA_REG2:
         description: PIOC data register2
         addressOffset: 0x22
         size: 8
         access: read-write
-      DATA3:
+      DATA_REG3:
         description: PIOC data register3
         addressOffset: 0x23
         size: 8
         access: read-write
-      DATA4:
+      DATA_REG4:
         description: PIOC data register4
         addressOffset: 0x24
         size: 8
         access: read-write
-      DATA5:
+      DATA_REG5:
         description: PIOC data register5
         addressOffset: 0x25
         size: 8
         access: read-write
-      DATA6:
+      DATA_REG6:
         description: PIOC data register6
         addressOffset: 0x26
         size: 8
         access: read-write
-      DATA7:
+      DATA_REG7:
         description: PIOC data register7
         addressOffset: 0x27
         size: 8
         access: read-write
-      DATA8:
+      DATA_REG8:
         description: PIOC data register8
         addressOffset: 0x28
         size: 8
         access: read-write
-      DATA9:
+      DATA_REG9:
         description: PIOC data register9
         addressOffset: 0x29
         size: 8
         access: read-write
-      DATA10:
+      DATA_REG10:
         description: PIOC data register10
         addressOffset: 0x2A
         size: 8
         access: read-write
-      DATA11:
+      DATA_REG11:
         description: PIOC data register11
         addressOffset: 0x2B
         size: 8
         access: read-write
-      DATA12:
+      DATA_REG12:
         description: PIOC data register12
         addressOffset: 0x2C
         size: 8
         access: read-write
-      DATA13:
+      DATA_REG13:
         description: PIOC data register13
         addressOffset: 0x2D
         size: 8
         access: read-write
-      DATA14:
+      DATA_REG14:
         description: PIOC data register14
         addressOffset: 0x2E
         size: 8
         access: read-write
-      DATA15:
+      DATA_REG15:
         description: PIOC data register15
         addressOffset: 0x2F
         size: 8
         access: read-write
-      DATA16:
+      DATA_REG16:
         description: PIOC data register16
         addressOffset: 0x30
         size: 8
         access: read-write
-      DATA17:
+      DATA_REG17:
         description: PIOC data register17
         addressOffset: 0x31
         size: 8
         access: read-write
-      DATA18:
+      DATA_REG18:
         description: PIOC data register18
         addressOffset: 0x32
         size: 8
         access: read-write
-      DATA19:
+      DATA_REG19:
         description: PIOC data register19
         addressOffset: 0x33
         size: 8
         access: read-write
-      DATA20:
+      DATA_REG20:
         description: PIOC data register20
         addressOffset: 0x34
         size: 8
         access: read-write
-      DATA21:
+      DATA_REG21:
         description: PIOC data register21
         addressOffset: 0x35
         size: 8
         access: read-write
-      DATA22:
+      DATA_REG22:
         description: PIOC data register22
         addressOffset: 0x36
         size: 8
         access: read-write
-      DATA23:
+      DATA_REG23:
         description: PIOC data register23
         addressOffset: 0x37
         size: 8
         access: read-write
-      DATA24:
+      DATA_REG24:
         description: PIOC data register24
         addressOffset: 0x38
         size: 8
         access: read-write
-      DATA25:
+      DATA_REG25:
         description: PIOC data register25
         addressOffset: 0x39
         size: 8
         access: read-write
-      DATA26:
+      DATA_REG26:
         description: PIOC data register26
         addressOffset: 0x3A
         size: 8
         access: read-write
-      DATA27:
+      DATA_REG27:
         description: PIOC data register27
         addressOffset: 0x3B
         size: 8
         access: read-write
-      DATA28:
+      DATA_REG28:
         description: PIOC data register28
         addressOffset: 0x3C
         size: 8
         access: read-write
-      DATA29:
+      DATA_REG29:
         description: PIOC data register29
         addressOffset: 0x3D
         size: 8
         access: read-write
-      DATA30:
+      DATA_REG30:
         description: PIOC data register30
         addressOffset: 0x3E
         size: 8
         access: read-write
-      DATA31:
+      DATA_REG31:
         description: PIOC data register31
         addressOffset: 0x3F
         size: 8
@@ -375,7 +375,7 @@ _add:
 
 PIOC:
   _array:
-    DATA*: {}
+    DATA_REG*: {}
 
 _modify:
   UART4:
