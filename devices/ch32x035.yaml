@@ -25,6 +25,11 @@ _add:
       PIOC:
         value: 47
     registers:
+      STATUS:
+        description: SFR_STATUS_REG
+        addressOffset: 0x03
+        size: 8
+        access: read-only
       INDIR_ADDR:
         description: PIOC indirect address register
         addressOffset: 0x04
@@ -76,6 +81,16 @@ _add:
         addressOffset: 0x08
         size: 8
         access: read-write
+        fields:
+          CYCLE:
+            description: CYCLE
+            bitOffset: 0
+            bitWidth: 6
+          TX_O0:
+            description: TX_O0
+            bitOffset: 7
+            bitWidth: 1
+
       INDIR_ADDR2:
         description: PIOC indirect address register2
         addressOffset: 0x09
@@ -158,7 +173,45 @@ _add:
             bitOffset: 7
             bitWidth: 1
 
-      # BIT_CONFIG
+      BIT_CONFIG:
+        description: PIOC bit configuration register
+        addressOffset: 0x0C
+        size: 8
+        access: read-write
+        fields:
+          CYC_CNT3:
+            description: CYC_CNT3
+            bitOffset: 0
+            bitWidth: 1
+          CYC_CNT4:
+            description: CYC_CNT4
+            bitOffset: 1
+            bitWidth: 1
+          CYC_CNT5:
+            description: CYC_CNT5
+            bitOffset: 2
+            bitWidth: 1
+          CYC_CNT6:
+            description: CYC_CNT6
+            bitOffset: 3
+            bitWidth: 1
+          CYC_TAIL:
+            description: CYC_TAIL
+            bitOffset: 4
+            bitWidth: 1
+          IN_EDGE:
+            description: IN_EDGE, 引脚输入电平采样时点选择
+            bitOffset: 5
+            bitWidth: 1
+          CODE_MOD:
+            description: CODE_MOD, 编码位的调制方式
+            bitOffset: 6
+            bitWidth: 1
+          TX_EN:
+            description: TX_EN, 编码位的发送使能
+            bitOffset: 7
+            bitWidth: 1
+
       SYS_CFG:
         description: PIOC system configuration register
         addressOffset: 0x1C
@@ -203,7 +256,7 @@ _add:
         size: 8
         access: read-write
       CTRL_WR:
-        description: PIOC control write register
+        description: PIOC control write register. SFR_CTRL_WR. master read-write, host read-only
         addressOffset: 0x1E
         size: 8
         access: read-write
