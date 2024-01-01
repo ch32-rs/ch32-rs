@@ -7,9 +7,6 @@ _add:
     description: Systick registers, 64-bit downcounter for QingKeV4
     groupName: SYSTICK
     baseAddress: 0xE000F000
-    interrupts:
-      SysTick:
-        value: 12
     registers:
       CTLR:
         description: System count control register
