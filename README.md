@@ -78,13 +78,14 @@ Nick name: "赤菟"(Chitu). IP Core brand: 青稞(Qingke). V2A, V3A, V4A, V4B, V
 - CH32V208: Qingke-V4C, BLE
 - CH32V30x: Qingke-V4F
 - CH32L103 Qingke-V4C, Low power
-- CH32X03x: Qingke-V4C, USB PD
-- CH56x: Qingke-V3A
-- CH571, CH573: Qingke-V3A BLE 4.2
-- CH58x: Qingke-V4A, BLE
+- CH32X03x: Qingke-V4C, USB PD, PIOC
+- CH56x: Qingke-V3A, USB 3.0 SS
+- CH571, CH573: Qingke-V3A, BLE 4.2
+- CH58x: Qingke-V4A, BLE 5.3
 - CH59x: Qingke-V4C, BLE 5.4
-- CH643: Qingke-V4C RGB driver MCU
 - CH641: Qingke-V2A, USB PD
+- CH643: Qingke-V4C RGB/LED/PWM, PIOC, USB PD
+- CH645: Qingke-V4C, USB PD + USB HS
 
 ### Cortex-M
 
@@ -95,8 +96,8 @@ CH577/CH578/CH579 uses Cortex-M0.
 - CH32F203
 - CH32F205
 - CH32F207
-- CH32F208
-- CH577/CH578/CH579
+- CH32F208, BLE 5.3
+- CH577/CH578/CH579, BLE 4.2
 
 ## Toolchain
 
