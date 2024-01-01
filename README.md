@@ -18,11 +18,21 @@
 
 Embedded Rust device crates for WCH's RISC-V and Cortex-M(planned) microcontrollers.
 
+## HAL creats
+
+- [ch58x-hal](https://github.com/ch32-rs/ch58x-hal) - embassy, gpio, spi, i2c, ble
+- [ch32x0-hal](https://github.com/ch32-rs/ch32x0-hal) - embassy, gpio
+- [ch59x-hal](https://github.com/ch32-rs/ch59x-hal) - early stage, ch58x-hal can be used with very minor changes
+- ch57x-hal - planning, ch58x-hal can be used with very minor changes
+- [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal) - early stage, requires [rust with RV32EC](https://github.com/ch32-rs/rust)
+
+## Runtime Support
+
+- [qingke, qingke-rt](https://github.com/ch32-rs/qingke)
+- [wchble](https://github.com/ch32-rs/wchble) - planning
+
 ## Roadmap
 
-- [x] Support CH32V3x/CH32V2x family
-- [x] Support CH32V103 family
-- [x] Support CH32V003 family, [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal)
 - [x] Toolchains for Flashing and Debugging
   - [x] [wchisp](https://github.com/ch32-rs/wchisp) for USB-ISP
   - [x] [wlink](https://github.com/ch32-rs/wlink) for WCH-Link probe
@@ -31,9 +41,9 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M(planned) microcontroll
     - [x] [flash-algorithms](https://github.com/ch32-rs/flash-algorithms)
     - [ ] Support other families
 - [ ] HAL crates
-  - [ch58x-hal](https://github.com/ch32-rs/ch58x-hal) - working
-  - [ch59x-hal](https://github.com/ch32-rs/ch59x-hal) - early stage
-  - [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal) - early stage, requires [rust with RV32EC](https://github.com/ch32-rs/rust)
+  - [x] Support CH32V3x/CH32V2x family
+  - [x] Support CH32V103 family
+  - [x] Support CH32V003 family, [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal)
 - [ ] Cortex-M MCUs.
 
 ## Development
