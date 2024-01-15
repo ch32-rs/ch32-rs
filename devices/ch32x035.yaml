@@ -434,6 +434,16 @@ _modify:
   UART4:
     name: USART4
 
+# .svd files are buggy. for CH32X0 series, UART4 is a USART
+USART4:
+  _delete:
+    _interrupts:
+      - UART4
+  _add:
+    _interrupts:
+      USART4:
+        value: 43
+
 OPA:
   _add:
     _interrupts:
@@ -457,7 +467,6 @@ TIM2:
     _interrupts:
       TIM2_UP:
         value: 38
-
 
 USBPD:
   CONFIG:
@@ -484,17 +493,17 @@ USBPD:
         access: read-write
     CC_CE:
       Closed: [0b000, "Closed"]
-      V0_22:  [0b010, "0.22V"]
-      V0_43:  [0b011, "0.43V"]
-      V0_55:  [0b100, "0.55V"]
-      V0_66:  [0b101, "0.66V"]
-      V0_96:  [0b110, "0.96V"]
-      V1_23:  [0b111, "1.23V"]
+      V0_22: [0b010, "0.22V"]
+      V0_43: [0b011, "0.43V"]
+      V0_55: [0b100, "0.55V"]
+      V0_66: [0b101, "0.66V"]
+      V0_96: [0b110, "0.96V"]
+      V1_23: [0b111, "1.23V"]
     CC_PU:
       Closed: [0b00, "No pull up current"]
-      uA330:  [0b01, "330uA"]
-      uA180:  [0b10, "180uA"]
-      uA80:   [0b11, "80uA"]
+      uA330: [0b01, "330uA"]
+      uA180: [0b10, "180uA"]
+      uA80: [0b11, "80uA"]
 
   PORT_CC2:
     _modify:
@@ -507,22 +516,22 @@ USBPD:
         name: CC_LVE
       CC2_CE:
         name: CC_CE
-    _add:
-      CC_PD:
-        description: "CC port pull-down resistor enable"
-        bitOffset: 1
-        bitWidth: 1
-        access: read-write
+    #_add:
+    #  CC_PD:
+    #    description: "CC port pull-down resistor enable"
+    #    bitOffset: 1
+    #    bitWidth: 1
+    #    access: read-write
     CC_CE:
       Closed: [0b000, "Closed"]
-      V0_22:  [0b010, "0.22V"]
-      V0_43:  [0b011, "0.43V"]
-      V0_55:  [0b100, "0.55V"]
-      V0_66:  [0b101, "0.66V"]
-      V0_96:  [0b110, "0.96V"]
-      V1_23:  [0b111, "1.23V"]    
+      V0_22: [0b010, "0.22V"]
+      V0_43: [0b011, "0.43V"]
+      V0_55: [0b100, "0.55V"]
+      V0_66: [0b101, "0.66V"]
+      V0_96: [0b110, "0.96V"]
+      V1_23: [0b111, "1.23V"]
     CC_PU:
       Closed: [0b00, "No pull up current"]
-      uA330:  [0b01, "330uA"]
-      uA180:  [0b10, "180uA"]
-      uA80:   [0b11, "80uA"]
+      uA330: [0b01, "330uA"]
+      uA180: [0b10, "180uA"]
+      uA80: [0b11, "80uA"]
