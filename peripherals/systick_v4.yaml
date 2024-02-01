@@ -58,10 +58,20 @@ _add:
         addressOffset: 0x8
         size: 64
         access: read-write
+      CNTL:
+        description: System counter register, lower 32-bit
+        addressOffset: 0x8
+        size: 32
+        access: read-write
       CMP:
         description: System count compare register
         addressOffset: 0x10
         size: 64
+        access: read-write
+      CMPL:
+        description: System count compare register, lower 32-bit
+        addressOffset: 0x10
+        size: 32
         access: read-write
 
 
