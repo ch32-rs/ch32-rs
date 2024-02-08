@@ -18,7 +18,7 @@
 
 Embedded Rust device crates for WCH's RISC-V and Cortex-M(planned) microcontrollers.
 
-## HAL creats
+## HAL crates
 
 - [ch58x-hal](https://github.com/ch32-rs/ch58x-hal) - embassy, gpio, spi, i2c, ble
 - [ch32x0-hal](https://github.com/ch32-rs/ch32x0-hal) - embassy, gpio
