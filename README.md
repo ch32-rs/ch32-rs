@@ -24,7 +24,7 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M(planned) microcontroll
 - [ch32x0-hal](https://github.com/ch32-rs/ch32x0-hal) - embassy, gpio
 - [ch59x-hal](https://github.com/ch32-rs/ch59x-hal) - early stage, ch58x-hal can be used with very minor changes
 - ch57x-hal - planning, ch58x-hal can be used with very minor changes
-- [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal) - early stage, requires [rust with RV32EC](https://github.com/ch32-rs/rust)
+- [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal) - early stage, requires nightly rust for RV32EC support
 
 ## Runtime Support
 
