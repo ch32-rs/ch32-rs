@@ -81,18 +81,22 @@ USBPD:
       PA_CC1_AI:
         name: PA_CC_AI
         access: read-only
+        description: "CC port comparator analog input"
       CC1_PU:
         name: CC_PU
+        description: "CC port pull-up current"
       CC1_LV0:
         name: CC_LVE
+        description: "CC port level 0 voltage"
       CC1_CE:
         name: CC_CE
-    _add:
-      CC_PD:
-        description: "CC port pull-down resistor enable"
-        bitOffset: 1
-        bitWidth: 1
-        access: read-write
+        description: "CC port comparator enable"
+    # _add:
+    #   CC_PD:
+    #     description: "CC port pull-down resistor enable"
+    #     bitOffset: 1
+    #     bitWidth: 1
+    #     access: read-write
     CC_CE:
       Closed: [0b000, "Closed"]
       V0_22: [0b010, "0.22V"]
@@ -112,12 +116,16 @@ USBPD:
       PA_CC2_AI:
         name: PA_CC_AI
         access: read-only
+        description: "CC port comparator analog input"
       CC2_PU:
         name: CC_PU
+        description: "CC port pull-up current"
       CC2_LV0:
         name: CC_LVE
+        description: "CC port level 0 voltage"
       CC2_CE:
         name: CC_CE
+        description: "CC port comparator enable"
     #_add:
     #  CC_PD:
     #    description: "CC port pull-down resistor enable"
