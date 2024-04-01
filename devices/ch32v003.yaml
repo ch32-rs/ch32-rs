@@ -23,6 +23,13 @@ PFIC:
       - "STK_*"
 
 RCC:
+  APB1PRSTR:
+    _add:
+      TIM2RST:
+        description: "TIM2 reset"
+        bitOffset: 0
+        bitWidth: 1
+
   CFGR0:
     _delete:
       - PLLSRC
@@ -31,7 +38,7 @@ RCC:
         description: "PLL entry clock source"
         bitOffset: 16
         bitWidth: 2
-
+  
     PLLSRC:
       HSI_MUL2: [0b00, "HSI clock divided by 2 selected as PLL input clock"]
       HSE_MUL2: [0b11, "HSE clock divided by 2 selected as PLL input clock"]
