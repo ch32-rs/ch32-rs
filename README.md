@@ -18,6 +18,15 @@
 
 Embedded Rust device crates for WCH's RISC-V and Cortex-M(planned) microcontrollers.
 
+> **Note**
+> This project is not affiliated with WCH. This is a hobby project.
+
+## Alternatives to PAC crates
+
+The ch32-rs team also working on a unified "metapac" solution for all WCH's MCUs, using metadata to generate an "all-in-one" PAC crate.
+It's still in early stage, but you can check it out at [ch32-rs/ch32-data](https://github.com/ch32-rs/ch32-data) and
+[ch32-rs/ch32-metapac](https://github.com/ch32-rs/ch32-metapac).
+
 ## HAL crates
 
 - [ch58x-hal](https://github.com/ch32-rs/ch58x-hal) - embassy, gpio, spi, i2c, ble
@@ -25,6 +34,7 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M(planned) microcontroll
 - [ch59x-hal](https://github.com/ch32-rs/ch59x-hal) - early stage, ch58x-hal can be used with very minor changes
 - ch57x-hal - planning, ch58x-hal can be used with very minor changes
 - [ch32v00x-hal](https://github.com/ch32-rs/ch32v00x-hal) - early stage, requires nightly rust for RV32EC support
+- [ch32-hal](https://github.com/ch32-rs/ch32-hal) - wip unified hal for all WCH's MCUs
 
 ## Runtime Support
 
@@ -38,6 +48,7 @@ Embedded Rust device crates for WCH's RISC-V and Cortex-M(planned) microcontroll
   - [x] [wlink](https://github.com/ch32-rs/wlink) for WCH-Link probe
   - [x] [probe-rs support](https://github.com/probe-rs/probe-rs/pull/1437)
     - [x] [CH32V003 support](https://github.com/probe-rs/probe-rs/pull/1876)
+    - [x] [CH32V307 support](https://github.com/probe-rs/probe-rs/pull/2136), should work with CH32V20x too
     - [x] [flash-algorithms](https://github.com/ch32-rs/flash-algorithms)
     - [ ] Support other families
 - [ ] HAL crates
