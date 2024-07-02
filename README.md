@@ -27,6 +27,18 @@ The ch32-rs team also working on a unified "metapac" solution for all WCH's MCUs
 It's still in early stage, but you can check it out at [ch32-rs/ch32-data](https://github.com/ch32-rs/ch32-data) and
 [ch32-rs/ch32-metapac](https://github.com/ch32-rs/ch32-metapac).
 
+## Notes on License
+
+The original SVD files were distributed with MounRiver IDE without explicit license information.
+These files have been extensively modified and corrected for use in this project.
+If you believe this project violates any licensing terms or if you have any concerns, please contact the project maintainers immediately.
+
+If you are planing to use these SVD files in another product, please contact WCH for license information.
+
+To handle the license issue, [ch32-data](https://github.com/ch32-rs/ch32-data) is created.
+The data in ch32-data has been manually created and curated, referencing the original SVD files and official datasheets but incorporating significant modifications and corrections.
+And, the most important, ch32-data is released under the MIT license.
+
 ## HAL crates
 
 - [ch58x-hal](https://github.com/ch32-rs/ch58x-hal) - embassy, gpio, spi, i2c, ble
