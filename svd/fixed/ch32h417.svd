@@ -13996,34 +13996,34 @@
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>RB_UH_PORT_EN__RB_UD_PORT_EN</name>
+						<name>RB_UH_PORT_EN__UD_PORT_EN</name>
 						<description>enable USB port: 0=disable, 1=enable port, automatic disabled if USB device detached</description>
 						<bitRange>[0:0]</bitRange>		
 					</field>
 					<field>
-						<name>RB_UH_BUS_RESET__RB_UD_GP_BIT</name>
+						<name>RB_UH_BUS_RESET__UD_GP_BIT</name>
 						<description>force clear FIFO and count of USB</description>
 						<bitRange>[1:1]</bitRange>
 					</field>
 					<field>
-						<name>RB_UH_LOW_SPEED__RB_UD_LOW_SPEED</name>
+						<name>RB_UH_LOW_SPEED__UD_LOW_SPEED</name>
 						<description>enable USB port low speed: 0=full speed, 1=low speed</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UH_DM_PIN__RB_UD_DM_PIN</name>
+						<name>RB_UH_DM_PIN__UD_DM_PIN</name>
 						<description>ReadOnly: indicate current UDM pin level</description>
 						<bitRange>[4:4]</bitRange>
 						<access>read-only</access>
 					</field>
 					<field>
-						<name>RB_UH_DP_PIN__RB_UD_DP_PIN</name>
+						<name>RB_UH_DP_PIN__UD_DP_PIN</name>
 						<description>USB device enable and internal pullup resistance enable</description>
 						<bitRange>[5:5]</bitRange>
 						<access>read-only</access>
 					</field>
 					<field>
-						<name>RB_UH_PD_DIS__RB_UD_PD_DIS</name>
+						<name>RB_UH_PD_DIS__UD_PD_DIS</name>
 						<description>disable USB UDP/UDM pulldown resistance: 0=enable pulldown, 1=disable</description>
 						<bitRange>[7:7]</bitRange>
 					</field>
@@ -14037,7 +14037,7 @@
 				<access>read-write</access>
 				<fields>
 					<field>
-						<name>RB_UIE_BUS_RST__RB_UIE_DETECT</name>
+						<name>RB_UIE_BUS_RST__UIE_DETECT</name>
 						<description>enable interrupt for USB bus reset event for USB device mode</description>
 						<bitRange>[0:0]</bitRange>
 					
@@ -14153,7 +14153,7 @@
 				<access>read-write</access>
 				<fields>
 					<field>
-						<name>RB_UIF_BUS_RST__RB_UIF_DETECT</name>
+						<name>RB_UIF_BUS_RST__UIF_DETECT</name>
 						<description>bus reset event interrupt flag for USB device mode, direct bit address clear or write 1 to clear;device detected event interrupt flag for USB host mode, direct bit address clear or write 1 to clear</description>
 						<bitRange>[0:0]</bitRange>
 					</field>
@@ -14268,14 +14268,14 @@
 				</fields>
 			</register>
 			<register>
-				<name>R8_UEP2_3_MOD__R8_UH_EP_MOD</name>
+				<name>R8_UEP2_3_MOD__UH_EP_MOD</name>
 				<description>endpoint 2/3 mode;host endpoint mode</description>
 				<addressOffset>0x0D</addressOffset>
 				<size>8</size>
 				<access>read-write</access>
 				<fields>
 					<field>
-						<name>RB_UEP2_BUF_MOD__RB_UH_EP_RBUF_MOD</name>
+						<name>RB_UEP2_BUF_MOD__UH_EP_RBUF_MOD</name>
 						<description>buffer mode of USB endpoint 2;buffer mode of USB host IN endpoint</description>
 						<bitRange>[0:0]</bitRange>
 					</field>
@@ -14285,17 +14285,17 @@
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP2_RX_EN__RB_UH_EP_RX_EN</name>
+						<name>RB_UEP2_RX_EN__UH_EP_RX_EN</name>
 						<description>enable USB endpoint 2 receiving (OUT);enable USB host IN endpoint receiving</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP3_BUF_MOD__RB_UH_EP_TBUF_MOD</name>
+						<name>RB_UEP3_BUF_MOD__UH_EP_TBUF_MOD</name>
 						<description>buffer mode of USB endpoint 3;buffer mode of USB host OUT endpoint</description>
 						<bitRange>[4:4]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP3_TX_EN__RB_UH_EP_TX_EN</name>
+						<name>RB_UEP3_TX_EN__UH_EP_TX_EN</name>
 						<description>enable USB endpoint 3 transmittal (IN);enable USB host OUT endpoint transmittal</description>
 						<bitRange>[6:6]</bitRange>
 					</field>
@@ -14386,14 +14386,14 @@
 				<access>read-write</access>
 			</register>
 			<register>
-				<name>R32_UEP2_DMA__R32_UH_RX_DMA</name>
+				<name>R32_UEP2_DMA__UH_RX_DMA</name>
 				<description>endpoint 2 DMA buffer address;host rx endpoint buffer high address</description>
 				<addressOffset>0x18</addressOffset>
 				<size>0x20</size>
 				<access>read-write</access>
 			</register>
 			<register>
-				<name>R32_UEP3_DMA__R32_UH_TX_DMA</name>
+				<name>R32_UEP3_DMA__UH_TX_DMA</name>
 				<description>endpoint 3 DMA buffer address;host tx endpoint buffer high address</description>
 				<addressOffset>0x1C</addressOffset>
 				<size>0x20</size>
@@ -14604,17 +14604,17 @@
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>MASK_UEP_R_RES___RB_UH_R_RES</name>
+						<name>MASK_UEP_R_RES___UH_R_RES</name>
 						<description>bit mask of handshake response type for USB endpoint X receiving (OUT)</description>
 						<bitRange>[1:0]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_R_TOG___RB_UH_R_TOG</name>
+						<name>RB_UEP_R_TOG___UH_R_TOG</name>
 						<description>expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_AUTO_TOG___RB_UH_R_AUTO_TOG</name>
+						<name>RB_UEP_AUTO_TOG___UH_R_AUTO_TOG</name>
 						<description>enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -14636,17 +14636,17 @@
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>MASK_UEP_T_RES___RB_UH_T_RES</name>
+						<name>MASK_UEP_T_RES___UH_T_RES</name>
 						<description>bit mask of handshake response type for USB endpoint X transmittal (IN)</description>
 						<bitRange>[1:0]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_T_TOG___RB_UH_T_TOG</name>
+						<name>RB_UEP_T_TOG___UH_T_TOG</name>
 						<description>prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_AUTO_TOG__RB_UH_T_AUTO_TOG</name>
+						<name>RB_UEP_AUTO_TOG__UH_T_AUTO_TOG</name>
 						<description>enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -14699,12 +14699,12 @@
 						<bitRange>[1:0]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_T_TOG___RB_UH_T_TOG</name>
+						<name>RB_UEP_T_TOG___UH_T_TOG</name>
 						<description>prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_AUTO_TOG__RB_UH_T_AUTO_TOG</name>
+						<name>RB_UEP_AUTO_TOG__UH_T_AUTO_TOG</name>
 						<description>enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -14757,12 +14757,12 @@
 						<bitRange>[1:0]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_T_TOG___RB_UH_T_TOG</name>
+						<name>RB_UEP_T_TOG___UH_T_TOG</name>
 						<description>prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_AUTO_TOG__RB_UH_T_AUTO_TOG</name>
+						<name>RB_UEP_AUTO_TOG__UH_T_AUTO_TOG</name>
 						<description>enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -14815,12 +14815,12 @@
 						<bitRange>[1:0]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_T_TOG___RB_UH_T_TOG</name>
+						<name>RB_UEP_T_TOG___UH_T_TOG</name>
 						<description>prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_AUTO_TOG__RB_UH_T_AUTO_TOG</name>
+						<name>RB_UEP_AUTO_TOG__UH_T_AUTO_TOG</name>
 						<description>enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -14872,12 +14872,12 @@
 						<bitRange>[1:0]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_T_TOG___RB_UH_T_TOG</name>
+						<name>RB_UEP_T_TOG___UH_T_TOG</name>
 						<description>prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_AUTO_TOG__RB_UH_T_AUTO_TOG</name>
+						<name>RB_UEP_AUTO_TOG__UH_T_AUTO_TOG</name>
 						<description>enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -40819,14 +40819,14 @@
 							<access>read-write</access>
 						</field>					
 						<field>
-							<name>RB_UDIE_STATUS__RB_UHIE_NOTIF</name>
+							<name>RB_UDIE_STATUS__UHIE_NOTIF</name>
 							<description>Device mode: Receiving STATUS transaction completion interrupt enabled;
 							Host mode: Interrupt enabled for receiving DEV_NOTIF-TP</description>
 							<bitRange>[18:18]</bitRange>
 							<access>read-write</access>
 						</field>
 						<field>
-							<name>RB_UDIE_SETUP__RB_UHIE_ERDY</name>
+							<name>RB_UDIE_SETUP__UHIE_ERDY</name>
 							<description>Device Mode: Receive SETUP Transaction Completion Interrupt Enabled;
 							Host mode:Receive SETUP Transaction Completion Interrupt Enabled</description>
 							<bitRange>[17:17]</bitRange>
@@ -40957,14 +40957,14 @@
 							<access>read-write</access>
 						</field>	
 						<field>
-							<name>RB_UHIF_NOTIF__RB_UDIF_STATUS</name>
+							<name>RB_UHIF_NOTIF__UDIF_STATUS</name>
 							<description>Host Mode: Receive DEV_NOTIF-TP Complete Interrupt Flag;
 							Device Mode: Receive STATUS Transaction Completion Interrupt Flag</description>
 							<bitRange>[2:2]</bitRange>
 							<access>read-write</access>
 						</field>
 						<field>
-							<name>RB_UHIF_ERDY__RB_UDIF_SETUP</name>
+							<name>RB_UHIF_ERDY__UDIF_SETUP</name>
 							<description>Host Mode: Receive ERDY-TP Complete Interrupt Flag;
 							Device Mode: Receive SETUP Transaction Completion Interrupt Flag</description>
 							<bitRange>[1:1]</bitRange>
