@@ -16,3 +16,19 @@ Cargo.lock
 *.patched
 
 .DS_Store
+tmp/
+
+# Auto-generated PAC crates (rebuild with scripts/generate.sh)
+/ch32h4/
+/ch32l1/
+/ch32v0/
+/ch32v1/
+/ch32v2/
+/ch32v3/
+/ch32x0/
+/ch56x/
+/ch57x/
+/ch58x/
+/ch59x/
+/ch641/
+/ch643/
