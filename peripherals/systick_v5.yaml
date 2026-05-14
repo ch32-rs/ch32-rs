@@ -1,0 +1,132 @@
+# 32-bit downcounter
+
+_add:
+  SYSTICK:
+    description: Systick registers, 32-bit downcounter for QingKeV2
+    groupName: SYSTICK
+    baseAddress: 0xE000F000
+    registers:
+      CTLR_0:
+        description: System count control register core 0
+        addressOffset: 0x0
+        size: 32
+        access: read-write
+        fields:
+          CID:
+            description: Core ID for distributing interrupts to core 0
+            bitOffset: 6
+            bitWidth: 1
+            access: read-write
+          DOWN_MODE:
+            description: Count mode - 1 down, 0 up
+            bitOffset: 4
+            bitWidth: 1
+            access: read-write
+          AUTO_RELOAD:
+            description: Auto reload enable
+            bitOffset: 3
+            bitWidth: 1
+            access: read-write
+          NO_RTC:
+            description: Counter clock source selection - 1 HCLK, 0 HCLK/8
+            bitOffset: 2
+            bitWidth: 1
+            access: read-write
+          IE:
+            description: Counter interrupt enable
+            bitOffset: 1
+            bitWidth: 1
+            access: read-write
+          EN:
+            description: Counter enable
+            bitOffset: 0
+            bitWidth: 1
+            access: read-write
+      ISR:
+        description: System count interrupt status register
+        addressOffset: 0x4
+        size: 32
+        access: read-write
+        fields:
+          ISR1:
+            description: Systick1 interrupt flag
+            bitOffset: 1
+            bitWidth: 1
+            access: read-write
+          ISR0:
+            description: Systick0 interrupt flag
+            bitOffset: 0
+            bitWidth: 1
+            access: read-write
+      CNT_0:
+        description: System counter register core 0
+        addressOffset: 0x8
+        size: 32
+        access: read-write
+      CMP_0:
+        description: System count compare register core 0
+        addressOffset: 0x10
+        size: 32
+        access: read-write
+      CTLR_1:
+        description: System count control register core 1
+        addressOffset: 0x80
+        size: 32
+        access: read-write
+        fields:
+          CID:
+            description: Core ID for distributing interrupts to core 1
+            bitOffset: 6
+            bitWidth: 1
+            access: read-write
+          DOWN_MODE:
+            description: Count mode - 1 down, 0 up
+            bitOffset: 4
+            bitWidth: 1
+            access: read-write
+          AUTO_RELOAD:
+            description: Auto reload enable
+            bitOffset: 3
+            bitWidth: 1
+            access: read-write
+          NO_RTC:
+            description: Counter clock source selection - 1 HCLK, 0 HCLK/8
+            bitOffset: 2
+            bitWidth: 1
+            access: read-write
+          IE:
+            description: Counter interrupt enable
+            bitOffset: 1
+            bitWidth: 1
+            access: read-write
+          EN:
+            description: Counter enable
+            bitOffset: 0
+            bitWidth: 1
+            access: read-write
+      CNT_1:
+        description: System counter register core 1
+        addressOffset: 0x88
+        size: 32
+        access: read-write
+      CMP_1:
+        description: System count compare register core 1
+        addressOffset: 0x90
+        size: 32
+        access: read-write
+
+SYSTICK:
+  CTLR_0:
+    DOWN_MODE:
+      Upcount: [0, "Upcount"]
+      Downcount: [1, "Downcount"]
+    NO_RTC:
+      HCLK_DIV8: [0, "HCLK/8"]
+      HCLK: [1, "HCLK"]
+  CTLR_1:
+    DOWN_MODE:
+      Upcount: [0, "Upcount"]
+      Downcount: [1, "Downcount"]
+    NO_RTC:
+      HCLK_DIV8: [0, "HCLK/8"]
+      HCLK: [1, "HCLK"]

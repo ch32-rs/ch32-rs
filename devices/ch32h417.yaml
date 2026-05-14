@@ -1,0 +1,28 @@
+_svd: ../svd/fixed/ch32h417.svd
+
+# Vendor SVD declares UHSIF without registers and without derivedFrom, which
+# breaks svdtools' "*":"*" patching. Drop it until WCH provides real registers.
+_delete:
+  - UHSIF
+
+"*":
+  _strip:
+    - "R8_"
+    - "R16_"
+    - "R32_"
+  "*":
+    _strip:
+      - "R8_"
+      - "R16_"
+      - "R32_"
+      - "RB_"
+      - " "
+    _strip_end:
+      - "_"
+
+_modify:
+  name: CH32H41X
+
+_include:
+  - ../peripherals/systick_v5.yaml
+#   - "common_patches/dma/dma_v1.yaml"
