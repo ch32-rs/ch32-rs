@@ -51,7 +51,7 @@ SYS:
       name: RESET_STATUS__GLOB_ROM_CFG
 
     # SLV_RD_DATA is undocumented
-    PB_OUT__R8_SLV_RD_DATA:
+    PB_OUT__SLV_RD_DATA:
       name: PB_OUT
 
 SYSTICK:
@@ -122,7 +122,7 @@ SPI*:
     _modify:
       "2WIRE_MOD":
         name: "TWO_WIRE_MODE"
-      "*MST_SCK_MOD__RB_SPI_SLV_CMD_MOD":
+      "*MST_SCK_MOD__SPI_SLV_CMD_MOD":
         name: "MST_SCK_MOD"
   
     _add:
@@ -134,7 +134,7 @@ SPI*:
 
 SPI0:      
   _delete:
-    - CLOCK_DIV__R8_SPI0_SLAVE_PRE
+    - CLOCK_DIV__SPI0_SLAVE_PRE
 
   _add:
     CLOCK_DIV:

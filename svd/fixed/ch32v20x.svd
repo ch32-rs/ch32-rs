@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<device schemaVersion="1.1"
-xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<device xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.1" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
   <vendor>WCH Ltd.</vendor>                                       <!-- device vendor name -->
   <vendorID>WCH</vendorID>                                        <!-- device vendor short name -->
   <name>CH32V20xxx</name>
@@ -28985,7 +28984,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>RB_UIE_BUS_RST__RB_UIE_DETECT</name>
+						<name>RB_UIE_BUS_RST__UIE_DETECT</name>
 						<description>enable interrupt for USB bus reset event for USB device mode;enable interrupt for USB device detected event for USB host mode</description>
 						<bitRange>[0:0]</bitRange>
 					</field>
@@ -31796,7 +31795,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				<access>read-write</access>
 				<fields>
 					<field>
-						<name>RB_UIF_BUS_RST__RB_UIF_DETECT</name>
+						<name>RB_UIF_BUS_RST__UIF_DETECT</name>
 						<description>bus reset event interrupt flag for USB device mode, direct bit address clear or write 1 to clear;device detected event interrupt flag for USB host mode, direct bit address clear or write 1 to clear</description>
 						<bitRange>[0:0]</bitRange>
 					</field>
@@ -31911,14 +31910,14 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				</fields>
 			</register>
 			<register>
-				<name>R8_UEP2_3_MOD__R8_UH_EP_MOD</name>
+				<name>R8_UEP2_3_MOD__UH_EP_MOD</name>
 				<description>endpoint 2/3 mode;host endpoint mode</description>
 				<addressOffset>0x0D</addressOffset>
 				<size>8</size>
 				<access>read-write</access>
 				<fields>
 					<field>
-						<name>RB_UEP2_BUF_MOD__RB_UH_EP_RBUF_MOD</name>
+						<name>RB_UEP2_BUF_MOD__UH_EP_RBUF_MOD</name>
 						<description>buffer mode of USB endpoint 2;buffer mode of USB host IN endpoint</description>
 						<bitRange>[0:0]</bitRange>
 					</field>
@@ -31928,17 +31927,17 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP2_RX_EN__RB_UH_EP_RX_EN</name>
+						<name>RB_UEP2_RX_EN__UH_EP_RX_EN</name>
 						<description>enable USB endpoint 2 receiving (OUT);enable USB host IN endpoint receiving</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP3_BUF_MOD__RB_UH_EP_TBUF_MOD</name>
+						<name>RB_UEP3_BUF_MOD__UH_EP_TBUF_MOD</name>
 						<description>buffer mode of USB endpoint 3;buffer mode of USB host OUT endpoint</description>
 						<bitRange>[4:4]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP3_TX_EN__RB_UH_EP_TX_EN</name>
+						<name>RB_UEP3_TX_EN__UH_EP_TX_EN</name>
 						<description>enable USB endpoint 3 transmittal (IN);enable USB host OUT endpoint transmittal</description>
 						<bitRange>[6:6]</bitRange>
 					</field>
@@ -32029,14 +32028,14 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				<access>read-write</access>
 			</register>
 			<register>
-				<name>R32_UEP2_DMA__R32_UH_RX_DMA</name>
+				<name>R32_UEP2_DMA__UH_RX_DMA</name>
 				<description>endpoint 2 DMA buffer address;host rx endpoint buffer high address</description>
 				<addressOffset>0x18</addressOffset>
 				<size>0x20</size>
 				<access>read-write</access>
 			</register>
 			<register>
-				<name>R32_UEP3_DMA__R32_UH_TX_DMA</name>
+				<name>R32_UEP3_DMA__UH_TX_DMA</name>
 				<description>endpoint 3 DMA buffer address;host tx endpoint buffer high address</description>
 				<addressOffset>0x1C</addressOffset>
 				<size>0x20</size>

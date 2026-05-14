@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<device schemaVersion="1.1"
-xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<device xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.1" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
   <vendor>WCH Ltd.</vendor>                                       <!-- device vendor name -->
   <vendorID>WCH</vendorID>                                        <!-- device vendor short name -->
   <name>CH32L103</name>
@@ -22527,7 +22526,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>RB_UIE_BUS_RST__RB_UIE_DETECT</name>
+						<name>RB_UIE_BUS_RST__UIE_DETECT</name>
 						<description>enable interrupt for USB bus reset event for USB device mode;enable interrupt for USB device detected event for USB host mode</description>
 						<bitRange>[0:0]</bitRange>
 					</field>
@@ -22682,7 +22681,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 						<bitRange>[1:1]</bitRange>
 					</field>
 					<field>
-						<name>RB_UIF_DETECT__RB_UIF_BUS_RST</name>
+						<name>RB_UIF_DETECT__UIF_BUS_RST</name>
 						<description>interrupt flag bit</description>
 						<bitRange>[0:0]</bitRange>
 					</field>					
@@ -22735,7 +22734,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				</fields>
 			</register>
 			<register>
-				<name>UDEV_CTRL__R8_UHOST_CTRL</name>
+				<name>UDEV_CTRL__UHOST_CTRL</name>
 				<description>USB host physical port control register;USB host physical port control register</description>
 				<addressOffset>0x01</addressOffset>
 				<size>0x08</size>
@@ -22815,7 +22814,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				</fields>
 			</register>
 			<register>
-				<name>R8_UEP2_3_MOD__R8_UH_EP_MOD</name>
+				<name>R8_UEP2_3_MOD__UH_EP_MOD</name>
 				<description>endpoint 2/3 mode;USB host endpoint mode control register</description>
 				<addressOffset>0x0D</addressOffset>
 				<size>0x08</size>
@@ -22828,12 +22827,12 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 						<bitRange>[7:7]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP3_TX_EN__RB_UH_EP_TX_EN</name>
+						<name>RB_UEP3_TX_EN__UH_EP_TX_EN</name>
 						<description>enable USB endpoint 3 transmittal (IN);endpoint send enable</description>
 						<bitRange>[6:6]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP3_BUF_MOD__RB_UH_DM_PIN</name>
+						<name>RB_UEP3_BUF_MOD__UH_DM_PIN</name>
 						<description>buffer mode of USB endpoint 3;endpoint send the data buffer mode control</description>
 						<bitRange>[4:4]</bitRange>
 					</field>
@@ -22843,12 +22842,12 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 						<bitRange>[3:3]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP2_TX_EN__RB_UH_LOW_SPEED</name>
+						<name>RB_UEP2_TX_EN__UH_LOW_SPEED</name>
 						<description>enable USB endpoint 2 transmittal (IN);host endpoint receive enable</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP2_BUF_MOD__RB_UH_PORT_EN</name>
+						<name>RB_UEP2_BUF_MOD__UH_PORT_EN</name>
 						<description>buffer mode of USB endpoint 2;endpoint receive the data buffer mode control</description>
 						<bitRange>[0:0]</bitRange>
 					</field>				
@@ -22950,7 +22949,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				</fields>
 			</register>
 			<register>
-				<name>R32_UEP2_DMA__R16_UH_RX_DMA</name>
+				<name>R32_UEP2_DMA__UH_RX_DMA</name>
 				<description>endpoint 2 DMA buffer address</description>
 				<addressOffset>0x18</addressOffset>
 				<size>0x20</size>
@@ -22958,14 +22957,14 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				<resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
-						<name>UEP2_DMA__R16_UH_RX_DMA</name>
+						<name>UEP2_DMA__UH_RX_DMA</name>
 						<description>endpoint buffer start address</description>
 						<bitRange>[15:0]</bitRange>
 					</field>
 				</fields>				
 			</register>
 			<register>
-				<name>R32_UEP3_DMA__R16_UH_TX_DMA</name>
+				<name>R32_UEP3_DMA__UH_TX_DMA</name>
 				<description>endpoint 3 DMA buffer address</description>
 				<addressOffset>0x1C</addressOffset>
 				<size>0x20</size>
@@ -22973,7 +22972,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				<resetValue>0x00000000</resetValue>
 				<fields>
 					<field>
-						<name>UEP3_DMA__R16_UH_TX_DMA</name>
+						<name>UEP3_DMA__UH_TX_DMA</name>
 						<description>endpoint buffer start address</description>
 						<bitRange>[15:0]</bitRange>
 					</field>
@@ -23121,7 +23120,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				</fields>
 			</register>
 			<register>
-				<name>R16_UEP3_T_LEN__R16_UH_TX_LEN</name>
+				<name>R16_UEP3_T_LEN__UH_TX_LEN</name>
 				<description>endpoint send length register</description>
 				<addressOffset>0x3C</addressOffset>
 				<size>0x10</size>
@@ -23134,7 +23133,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 						<bitRange>[15:10]</bitRange>
 					</field>			
 					<field>
-						<name>R8_UEP3_T_LEN__R8_UH_TX_LEN</name>
+						<name>R8_UEP3_T_LEN__UH_TX_LEN</name>
 						<description>set USB endpoint send data bytes</description>
 						<bitRange>[9:0]</bitRange>
 					</field>
@@ -23243,7 +23242,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				</fields>								
 			</register>			
 			<register>
-				<name>R16_UEP1_CTRL__R16_UH_SETUP</name>
+				<name>R16_UEP1_CTRL__UH_SETUP</name>
 				<description>endpoint control register</description>
 				<addressOffset>0x36</addressOffset>
 				<size>0x10</size>
@@ -23256,7 +23255,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 						<bitRange>[11:11]</bitRange>
 					</field>
 					<field>
-						<name>MASK_UEP_R_TOG__RB_UH_PRE_PID_EN</name>
+						<name>MASK_UEP_R_TOG__UH_PRE_PID_EN</name>
 						<description>desired synchronization trigger bit for receiver of USB endpoint
 						(handling OUT transactions);low-speed lead packet PRE PID enable</description>
 						<bitRange>[10:10]</bitRange>
@@ -23272,7 +23271,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 						<bitRange>[3:3]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_T_TOG__RB_UH_SOF_EN</name>
+						<name>RB_UEP_T_TOG__UH_SOF_EN</name>
 						<description>synchronization trigger bit for sender of USB endpoint
 						(handling IN transactions);aoto generate SOF packet enable</description>
 						<bitRange>[2:2]</bitRange>
@@ -23327,7 +23326,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 				</fields>								
 			</register>
 			<register>
-				<name>R16_UEP3_CTRL__R8_UH_TX_CTRL</name>
+				<name>R16_UEP3_CTRL__UH_TX_CTRL</name>
 				<description>endpoint control register;USB host send endpoint control register</description>
 				<addressOffset>0x3E</addressOffset>
 				<size>0x10</size>
@@ -23351,12 +23350,12 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 						<bitRange>[9:8]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_T_AUTO_TOG__RB_UH_T_AUTO_TOG</name>
+						<name>RB_UEP_T_AUTO_TOG__UH_T_AUTO_TOG</name>
 						<description>sync trigger bit aoto flip enable control</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_T_TOG__RB_UH_T_TOG</name>
+						<name>RB_UEP_T_TOG__UH_T_TOG</name>
 						<description>synchronization trigger bit for sender of USB endpoint
 						(handling IN transactions)</description>
 						<bitRange>[2:2]</bitRange>
@@ -23367,7 +23366,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocatio
 						<bitRange>[1:1]</bitRange>
 					</field>
 					<field>
-						<name>MASK_UEP_T_RES__RB_UH_T_RES</name>
+						<name>MASK_UEP_T_RES__UH_T_RES</name>
 						<description>response control of endpoint's receiver to the IN transaction;
 						host send response control for OUT/SETUP transactions</description>
 						<bitRange>[0:0]</bitRange>

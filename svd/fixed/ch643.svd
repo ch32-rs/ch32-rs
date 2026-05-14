@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<device xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.1" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
   <vendor>WCH Ltd.</vendor><!-- device vendor name -->
   <vendorID>WCH</vendorID><!-- device vendor short name -->
   <name>CH643</name>
@@ -9983,7 +9983,7 @@
           <resetValue>0x00</resetValue>
           <fields>
             <field>
-              <name>RB_UIE_BUS_RST__RB_UIE_DETECT</name>
+              <name>RB_UIE_BUS_RST__UIE_DETECT</name>
               <description>enable interrupt for USB bus reset event for USB device mode;enable interrupt for USB device detected event for USB host mode</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<device schemaVersion="1.1"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<device xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.1" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
     <vendor>WCH Ltd.</vendor>    <!-- device vendor name -->
     <vendorID>WCH</vendorID>    <!-- device vendor short name -->
     <name>CH592SFR</name>    <!-- name of part-->
@@ -2138,7 +2137,7 @@
                         </field>
                         <field>
                             <name>RB_TMR_IE_FIFO_HF</name>
-                            <description>RW, enable interrupt for timer FIFO half (capture fifo >=4 or PWM fifo less than 3)</description>
+                            <description>RW, enable interrupt for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3)</description>
                             <bitRange>[2:2]</bitRange>
                         </field>
                         <field>
@@ -2173,7 +2172,7 @@
                         </field>
                         <field>
                             <name>RB_TMR_IF_FIFO_HF</name>
-                            <description>RW1, interrupt flag for timer FIFO half (capture fifo >=4 or PWM fifo less than 3 </description>
+                            <description>RW1, interrupt flag for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3 </description>
                             <bitRange>[2:2]</bitRange>
                         </field>
                         <field>
@@ -2346,7 +2345,7 @@
                         </field>
                         <field>
                             <name>RB_TMR_IE_FIFO_HF</name>
-                            <description>RW, enable interrupt for timer FIFO half (capture fifo >=4 or PWM fifo less than 3)</description>
+                            <description>RW, enable interrupt for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3)</description>
                             <bitRange>[2:2]</bitRange>
                         </field>
                         <field>
@@ -2381,7 +2380,7 @@
                         </field>
                         <field>
                             <name>RB_TMR_IF_FIFO_HF</name>
-                            <description>RW1, interrupt flag for timer FIFO half (capture fifo >=4 or PWM fifo less than 3 </description>
+                            <description>RW1, interrupt flag for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3 </description>
                             <bitRange>[2:2]</bitRange>
                         </field>
                         <field>
@@ -2599,7 +2598,7 @@
                         </field>
                         <field>
                             <name>RB_TMR_IE_FIFO_HF</name>
-                            <description>RW, enable interrupt for timer FIFO half (capture fifo >=4 or PWM fifo less than 3)</description>
+                            <description>RW, enable interrupt for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3)</description>
                             <bitRange>[2:2]</bitRange>
                         </field>
                         <field>
@@ -2634,7 +2633,7 @@
                         </field>
                         <field>
                             <name>RB_TMR_IF_FIFO_HF</name>
-                            <description>RW1, interrupt flag for timer FIFO half (capture fifo >=4 or PWM fifo less than 3 </description>
+                            <description>RW1, interrupt flag for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3 </description>
                             <bitRange>[2:2]</bitRange>
                         </field>
                         <field>
@@ -5666,7 +5665,7 @@
                     <resetValue>0x00</resetValue>
                     <fields>
                         <field>
-                            <name>RB_UIE_BUS_RST__RB_UIE_DETECT</name>
+                            <name>RB_UIE_BUS_RST__UIE_DETECT</name>
                             <description>enable interrupt for USB bus reset event for USB device mode;enable interrupt for USB device detected event for USB host mode</description>
                             <bitRange>[0:0]</bitRange>
                         </field>
@@ -6968,7 +6967,7 @@
                     <fields>
                         <field>
                             <name>IPRIOR1</name>
-                            <description>>RW,Interrupt priority for number 4-7</description>
+                            <description>&gt;RW,Interrupt priority for number 4-7</description>
                             <bitRange>[31:0]</bitRange>
                         </field>
                     </fields>
@@ -6984,7 +6983,7 @@
                     <fields>
                         <field>
                             <name>IPRIOR2</name>
-                            <description>>RW,Interrupt priority for number 8-11</description>
+                            <description>&gt;RW,Interrupt priority for number 8-11</description>
                             <bitRange>[31:0]</bitRange>
                         </field>
                     </fields>
@@ -7000,7 +6999,7 @@
                     <fields>
                         <field>
                             <name>IPRIOR3</name>
-                            <description>>RW,Interrupt priority for number 12-15</description>
+                            <description>&gt;RW,Interrupt priority for number 12-15</description>
                             <bitRange>[31:0]</bitRange>
                         </field>
                     </fields>
@@ -7016,7 +7015,7 @@
                     <fields>
                         <field>
                             <name>IPRIOR4</name>
-                            <description>>RW,Interrupt priority for number 16-19</description>
+                            <description>&gt;RW,Interrupt priority for number 16-19</description>
                             <bitRange>[31:0]</bitRange>
                         </field>
                     </fields>
@@ -7032,7 +7031,7 @@
                     <fields>
                         <field>
                             <name>IPRIOR5</name>
-                            <description>>RW,Interrupt priority for number 20-23</description>
+                            <description>&gt;RW,Interrupt priority for number 20-23</description>
                             <bitRange>[31:0]</bitRange>
                         </field>
                     </fields>
@@ -7048,7 +7047,7 @@
                     <fields>
                         <field>
                             <name>IPRIOR6</name>
-                            <description>>RW,Interrupt priority for number 24-27</description>
+                            <description>&gt;RW,Interrupt priority for number 24-27</description>
                             <bitRange>[31:0]</bitRange>
                         </field>
                     </fields>
@@ -7064,7 +7063,7 @@
                     <fields>
                         <field>
                             <name>IPRIOR7</name>
-                            <description>>RW,Interrupt priority for number 28-31</description>
+                            <description>&gt;RW,Interrupt priority for number 28-31</description>
                             <bitRange>[31:0]</bitRange>
                         </field>
                     </fields>
@@ -7096,7 +7095,7 @@
                     <fields>
                         <field>
                             <name>IPRIOR9</name>
-                            <description>>RW,Interrupt priority for number 36-39</description>
+                            <description>&gt;RW,Interrupt priority for number 36-39</description>
                             <bitRange>[31:0]</bitRange>
                         </field>
                     </fields>
@@ -7112,7 +7111,7 @@
                     <fields>
                         <field>
                             <name>IPRIOR10</name>
-                            <description>>RW,Interrupt priority for number 40-43</description>
+                            <description>&gt;RW,Interrupt priority for number 40-43</description>
                             <bitRange>[31:0]</bitRange>
                         </field>
                     </fields>

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd" >
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<device xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.1" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
   <vendor>WCH Ltd.</vendor>                                       <!-- device vendor name -->
   <vendorID>WCH</vendorID>                                        <!-- device vendor short name -->
   <name>CH573SFR</name>                                        <!-- name of part-->
@@ -466,7 +465,7 @@
 		    <resetValue>0x00</resetValue>
 			<fields>
 				<field>
-					<name>RB_BAT_DET_EN__RB_BAT_LOW_VTHX</name>
+					<name>RB_BAT_DET_EN__BAT_LOW_VTHX</name>
 					<description>RWA, battery voltage detector enable/select monitor threshold voltage</description>
 					<bitRange>[0:0]</bitRange>
 				</field>
@@ -801,7 +800,7 @@
 			</fields>
 		</register>
 		<register>
-			<name>R8_RESET_STATUS__R8_GLOB_ROM_CFG</name>
+			<name>R8_RESET_STATUS__GLOB_ROM_CFG</name>
 			<description>RWA, reset status, SAM or flash ROM configuration</description>
 			<addressOffset>0x04</addressOffset>
 			<access>read-only</access>
@@ -1568,7 +1567,7 @@
 			</fields>	
 		</register>
 		<register>
-			<name>R32_PB_OUT__R8_SLV_RD_DATA</name>
+			<name>R32_PB_OUT__SLV_RD_DATA</name>
 			<description>RW, GPIO PB output;RW, data for parallel slave read</description>
 			<addressOffset>0xC8</addressOffset>
 			<size>32</size>
@@ -1714,12 +1713,12 @@
 						<bitRange>[3:3]</bitRange>				
 					</field>
 					<field>
-						<name>RB_TMR_OUT_POLAR__RB_TMR_CAP_COUNT</name>
+						<name>RB_TMR_OUT_POLAR__TMR_CAP_COUNT</name>
 						<description>RW, timer PWM output polarity: 0=default low and high action, 1=default high and low action;RW, count sub-mode if RB_TMR_MODE_IN=1: 0=capture, 1=count</description>
 						<bitRange>[4:4]</bitRange>
 					</field>
 					<field>
-						<name>RB_TMR_PWM_REPEAT__RB_TMR_CAP_EDGE</name>
+						<name>RB_TMR_PWM_REPEAT__TMR_CAP_EDGE</name>
 						<description>RW, timer PWM repeat mode: 00=1, 01=4, 10=8, 11-16;RW, timer capture edge mode: 00=disable, 01=edge change, 10=fall to fall, 11-rise to rise</description>
 						<bitRange>[7:6]</bitRange>
 					</field>
@@ -1745,7 +1744,7 @@
 					</field>
 					<field>
 						<name>RB_TMR_IE_FIFO_HF</name>
-						<description>RW, enable interrupt for timer FIFO half (capture fifo >=4 or PWM fifo less than 3)</description>
+						<description>RW, enable interrupt for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3)</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
@@ -1780,7 +1779,7 @@
 					</field>
 					<field>
 						<name>RB_TMR_IF_FIFO_HF</name>
-						<description>RW1, interrupt flag for timer FIFO half (capture fifo >=4 or PWM fifo less than 3 </description>
+						<description>RW1, interrupt flag for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3 </description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
@@ -1902,12 +1901,12 @@
 						<bitRange>[3:3]</bitRange>				
 					</field>
 					<field>
-						<name>RB_TMR_OUT_POLAR__RB_TMR_CAP_COUNT</name>
+						<name>RB_TMR_OUT_POLAR__TMR_CAP_COUNT</name>
 						<description>RW, timer PWM output polarity: 0=default low and high action, 1=default high and low action;RW, count sub-mode if RB_TMR_MODE_IN=1: 0=capture, 1=count</description>
 						<bitRange>[4:4]</bitRange>
 					</field>
 					<field>
-						<name>RB_TMR_PWM_REPEAT__RB_TMR_CAP_EDGE</name>
+						<name>RB_TMR_PWM_REPEAT__TMR_CAP_EDGE</name>
 						<description>RW, timer PWM repeat mode: 00=1, 01=4, 10=8, 11-16;RW, timer capture edge mode: 00=disable, 01=edge change, 10=fall to fall, 11-rise to rise</description>
 						<bitRange>[7:6]</bitRange>
 					</field>
@@ -1953,7 +1952,7 @@
 					</field>
 					<field>
 						<name>RB_TMR_IE_FIFO_HF</name>
-						<description>RW, enable interrupt for timer FIFO half (capture fifo >=4 or PWM fifo less than 3)</description>
+						<description>RW, enable interrupt for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3)</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
@@ -1988,7 +1987,7 @@
 					</field>
 					<field>
 						<name>RB_TMR_IF_FIFO_HF</name>
-						<description>RW1, interrupt flag for timer FIFO half (capture fifo >=4 or PWM fifo less than 3 </description>
+						<description>RW1, interrupt flag for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3 </description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
@@ -2155,12 +2154,12 @@
 						<bitRange>[3:3]</bitRange>				
 					</field>
 					<field>
-						<name>RB_TMR_OUT_POLAR__RB_TMR_CAP_COUNT</name>
+						<name>RB_TMR_OUT_POLAR__TMR_CAP_COUNT</name>
 						<description>RW, timer PWM output polarity: 0=default low and high action, 1=default high and low action;RW, count sub-mode if RB_TMR_MODE_IN=1: 0=capture, 1=count</description>
 						<bitRange>[4:4]</bitRange>
 					</field>
 					<field>
-						<name>RB_TMR_PWM_REPEAT__RB_TMR_CAP_EDGE</name>
+						<name>RB_TMR_PWM_REPEAT__TMR_CAP_EDGE</name>
 						<description>RW, timer PWM repeat mode: 00=1, 01=4, 10=8, 11-16;RW, timer capture edge mode: 00=disable, 01=edge change, 10=fall to fall, 11-rise to rise</description>
 						<bitRange>[7:6]</bitRange>
 					</field>
@@ -2206,7 +2205,7 @@
 					</field>
 					<field>
 						<name>RB_TMR_IE_FIFO_HF</name>
-						<description>RW, enable interrupt for timer FIFO half (capture fifo >=4 or PWM fifo less than 3)</description>
+						<description>RW, enable interrupt for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3)</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
@@ -2241,7 +2240,7 @@
 					</field>
 					<field>
 						<name>RB_TMR_IF_FIFO_HF</name>
-						<description>RW1, interrupt flag for timer FIFO half (capture fifo >=4 or PWM fifo less than 3 </description>
+						<description>RW1, interrupt flag for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3 </description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
@@ -2408,12 +2407,12 @@
 						<bitRange>[3:3]</bitRange>				
 					</field>
 					<field>
-						<name>RB_TMR_OUT_POLAR__RB_TMR_CAP_COUNT</name>
+						<name>RB_TMR_OUT_POLAR__TMR_CAP_COUNT</name>
 						<description>RW, timer PWM output polarity: 0=default low and high action, 1=default high and low action;RW, count sub-mode if RB_TMR_MODE_IN=1: 0=capture, 1=count</description>
 						<bitRange>[4:4]</bitRange>
 					</field>
 					<field>
-						<name>RB_TMR_PWM_REPEAT__RB_TMR_CAP_EDGE</name>
+						<name>RB_TMR_PWM_REPEAT__TMR_CAP_EDGE</name>
 						<description>RW, timer PWM repeat mode: 00=1, 01=4, 10=8, 11-16;RW, timer capture edge mode: 00=disable, 01=edge change, 10=fall to fall, 11-rise to rise</description>
 						<bitRange>[7:6]</bitRange>
 					</field>
@@ -2439,7 +2438,7 @@
 					</field>
 					<field>
 						<name>RB_TMR_IE_FIFO_HF</name>
-						<description>RW, enable interrupt for timer FIFO half (capture fifo >=4 or PWM fifo less than 3)</description>
+						<description>RW, enable interrupt for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3)</description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
@@ -2474,7 +2473,7 @@
 					</field>
 					<field>
 						<name>RB_TMR_IF_FIFO_HF</name>
-						<description>RW1, interrupt flag for timer FIFO half (capture fifo >=4 or PWM fifo less than 3 </description>
+						<description>RW1, interrupt flag for timer FIFO half (capture fifo &gt;=4 or PWM fifo less than 3 </description>
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
@@ -2591,7 +2590,7 @@
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_MCR_OUT2__RB_MCR_INT_OE</name>
+						<name>RB_MCR_OUT2__MCR_INT_OE</name>
 						<description>RW, UART control OUT2/ UART interrupt output enable</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -2731,7 +2730,7 @@
 						<bitRange>[6:6]</bitRange>
 					</field>
 					<field>
-						<name>RB_LCR_GP_BIT__RB_LCR_DLAB</name>
+						<name>RB_LCR_GP_BIT__LCR_DLAB</name>
 						<description>RW, UART general purpose bit;RW, UART reserved bit</description>
 						<bitRange>[7:7]</bitRange>
 					</field>
@@ -2996,7 +2995,7 @@
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>RB_MCR_OUT2__RB_MCR_INT_OE</name>
+						<name>RB_MCR_OUT2__MCR_INT_OE</name>
 						<description>RW, UART control OUT2/UART interrupt output enable</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -3101,7 +3100,7 @@
 						<bitRange>[6:6]</bitRange>
 					</field>
 					<field>
-						<name>RB_LCR_GP_BIT__RB_LCR_DLAB</name>
+						<name>RB_LCR_GP_BIT__LCR_DLAB</name>
 						<description>RW, UART general purpose bit;RW, UART reserved bit</description>
 						<bitRange>[7:7]</bitRange>
 					</field>
@@ -3299,7 +3298,7 @@
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>RB_MCR_OUT2__RB_MCR_INT_OE</name>
+						<name>RB_MCR_OUT2__MCR_INT_OE</name>
 						<description>RW, UART control OUT2;UART interrupt output enable</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -3404,7 +3403,7 @@
 						<bitRange>[6:6]</bitRange>
 					</field>
 					<field>
-						<name>RB_LCR_GP_BIT__RB_LCR_DLAB</name>
+						<name>RB_LCR_GP_BIT__LCR_DLAB</name>
 						<description>RW, UART general purpose bit;RW, UART reserved bit</description>
 						<bitRange>[7:7]</bitRange>
 					</field>
@@ -3602,7 +3601,7 @@
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>RB_MCR_OUT2__RB_MCR_INT_OE</name>
+						<name>RB_MCR_OUT2__MCR_INT_OE</name>
 						<description>RW, UART control OUT2;UART interrupt output enable</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -3707,7 +3706,7 @@
 						<bitRange>[6:6]</bitRange>
 					</field>
 					<field>
-						<name>RB_LCR_GP_BIT__RB_LCR_DLAB</name>
+						<name>RB_LCR_GP_BIT__LCR_DLAB</name>
 						<description>RW, UART general purpose bit;RW, UART reserved bit</description>
 						<bitRange>[7:7]</bitRange>
 					</field>
@@ -3920,7 +3919,7 @@
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_SPI_MST_SCK_MOD__RB_SPI_SLV_CMD_MOD</name>
+						<name>RB_SPI_MST_SCK_MOD__SPI_SLV_CMD_MOD</name>
 						<description>RW, SPI master clock mode: 0=mode 0, 1=mode 3;RW, SPI0 slave command mode: 0=byte stream, 1=first byte command</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
@@ -4022,7 +4021,7 @@
 				</fields>
 			</register>
 			<register>
-				<name>R8_SPI0_CLOCK_DIV__R8_SPI0_SLAVE_PRE</name>
+				<name>R8_SPI0_CLOCK_DIV__SPI0_SLAVE_PRE</name>
 				<description>RW, SPI0 master clock divisor;RW, SPI0 slave preset value</description>
 				<addressOffset>0x03</addressOffset>
 				<size>8</size>
@@ -4030,7 +4029,7 @@
 				<resetValue>0x10</resetValue>
 				<fields>
 					<field>
-						<name>R8_SPI0_CLOCK_DIV__R8_SPI0_SLAVE_PRE</name>
+						<name>R8_SPI0_CLOCK_DIV__SPI0_SLAVE_PRE</name>
 						<description>RW, SPI0 master clock divisor;RW, SPI0 slave preset value</description>
 						<bitRange>[7:0]</bitRange>
 					</field>				
@@ -4619,44 +4618,44 @@
 				</fields>
 			</register>
 			<register>
-				<name>R8_UDEV_CTRL__R8_UHOST_CTRL</name>
+				<name>R8_UDEV_CTRL__UHOST_CTRL</name>
 				<description>USB device physical prot control</description>				
 				<size>8</size>
 				<addressOffset>0x01</addressOffset>
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>RB_UD_PORT_EN__RB_UH_PORT_EN</name>
+						<name>RB_UD_PORT_EN__UH_PORT_EN</name>
 						<description>enable USB physical port I-O: 0=disable, 1=enable;enable USB port: 0=disable, 1=enable port, automatic disabled if USB device detached</description>
 						<bitRange>[0:0]</bitRange>
 						<access>read-write</access>
 					</field>
 					<field>
-						<name>RB_UD_GP_BIT__RB_UH_BUS_RESET</name>
+						<name>RB_UD_GP_BIT__UH_BUS_RESET</name>
 						<description>general purpose bit;control USB bus reset: 0=normal, 1=force bus reset</description>
 						<bitRange>[1:1]</bitRange>
 						<access>read-write</access>
 					</field>
 					<field>
-						<name>RB_UD_LOW_SPEED__RB_UH_LOW_SPEED</name>
+						<name>RB_UD_LOW_SPEED__UH_LOW_SPEED</name>
 						<description>enable USB physical port low speed: 0=full speed, 1=low speed;enable USB port low speed: 0=full speed, 1=low speed</description>
 						<bitRange>[2:2]</bitRange>
 						<access>read-write</access>
 					</field>
 					<field>
-						<name>RB_UD_DM_PIN__RB_UH_DM_PIN</name>
+						<name>RB_UD_DM_PIN__UH_DM_PIN</name>
 						<description>ReadOnly: indicate current UDM pin level</description>
 						<bitRange>[4:4]</bitRange>
 						<access>read-only</access>
 					</field>
 					<field>
-						<name>RB_UD_DP_PIN__RB_UH_DP_PIN</name>
+						<name>RB_UD_DP_PIN__UH_DP_PIN</name>
 						<description>ReadOnly: indicate current UDP pin level</description>
 						<bitRange>[5:5]</bitRange>
 						<access>read-only</access>
 					</field>
 					<field>
-						<name>RB_UD_PD_DIS__RB_UH_PD_DIS</name>
+						<name>RB_UD_PD_DIS__UH_PD_DIS</name>
 						<description>disable USB UDP-UDM pulldown resistance: 0=enable pulldown, 1=disable</description>
 						<bitRange>[7:7]</bitRange>
 						<access>read-only</access>
@@ -4672,7 +4671,7 @@
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>RB_UIE_BUS_RST__RB_UIE_DETECT</name>
+						<name>RB_UIE_BUS_RST__UIE_DETECT</name>
 						<description>enable interrupt for USB bus reset event for USB device mode;enable interrupt for USB device detected event for USB host mode</description>
 						<bitRange>[0:0]</bitRange>
 					</field>
@@ -4787,7 +4786,7 @@
 				<resetValue>0x20</resetValue>
 				<fields>
 					<field>
-						<name>RB_UIF_BUS_RST__RB_UIF_DETECT</name>
+						<name>RB_UIF_BUS_RST__UIF_DETECT</name>
 						<description>RW,bus reset event interrupt flag for USB device mode, direct bit address clear or write 1 to clear;device detected event interrupt flag for USB host mode, direct bit address clear or write 1 to clear</description>
 						<bitRange>[0:0]</bitRange>
 					</field>
@@ -4912,7 +4911,7 @@
 				</fields>
 			</register>
 			<register>
-				<name>R8_UEP2_3_MOD__R8_UH_EP_MOD</name>
+				<name>R8_UEP2_3_MOD__UH_EP_MOD</name>
 				<description>endpoint 2_3 mode;host endpoint mode</description>
 				<addressOffset>0x0D</addressOffset>
 				<size>8</size>
@@ -4920,7 +4919,7 @@
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>RB_UEP2_BUF_MOD__RB_UH_EP_RBUF_MOD</name>
+						<name>RB_UEP2_BUF_MOD__UH_EP_RBUF_MOD</name>
 						<description>buffer mode of USB endpoint 2;buffer mode of USB host IN endpoint</description>
 						<bitRange>[0:0]</bitRange>
 					</field>
@@ -4930,17 +4929,17 @@
 						<bitRange>[2:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP2_RX_EN__RB_UH_EP_RX_EN</name>
+						<name>RB_UEP2_RX_EN__UH_EP_RX_EN</name>
 						<description>enable USB endpoint 2 receiving (OUT);enable USB host IN endpoint receiving</description>
 						<bitRange>[3:3]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP3_BUF_MOD__RB_UH_EP_TBUF_MOD</name>
+						<name>RB_UEP3_BUF_MOD__UH_EP_TBUF_MOD</name>
 						<description>buffer mode of USB endpoint 3;buffer mode of USB host OUT endpoint</description>
 						<bitRange>[4:4]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP3_TX_EN__RB_UH_EP_TX_EN</name>
+						<name>RB_UEP3_TX_EN__UH_EP_TX_EN</name>
 						<description>enable USB endpoint 3 transmittal (IN);enable USB host OUT endpoint transmittal</description>
 						<bitRange>[6:6]</bitRange>
 					</field>
@@ -4982,7 +4981,7 @@
 				</fields>
 			</register>
 			<register>
-				<name>R16_UEP2_DMA__R16_UH_RX_DMA</name>
+				<name>R16_UEP2_DMA__UH_RX_DMA</name>
 				<description>endpoint 2 DMA buffer address;host rx endpoint buffer high address</description>
 				<addressOffset>0x18</addressOffset>
 				<size>16</size>
@@ -4997,7 +4996,7 @@
 				</fields>
 			</register>
 			<register>
-				<name>R16_UEP3_DMA__R16_UH_TX_DMA</name>
+				<name>R16_UEP3_DMA__UH_TX_DMA</name>
 				<description>endpoint 3 DMA buffer address;host tx endpoint buffer high address</description>
 				<addressOffset>0x1C</addressOffset>
 				<size>16</size>
@@ -5069,7 +5068,7 @@
 				</fields>
 			</register>
 			<register>
-				<name>R8_UEP1_CTRL__R8_UH_SETUP</name>
+				<name>R8_UEP1_CTRL__UH_SETUP</name>
 				<description>endpoint 1 control;host aux setup</description>
 				<addressOffset>0x26</addressOffset>
 				<size>8</size>
@@ -5092,12 +5091,12 @@
 						<bitRange>[4:4]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_T_TOG__RB_UH_SOF_EN</name>
+						<name>RB_UEP_T_TOG__UH_SOF_EN</name>
 						<description>prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1;USB host automatic SOF enable</description>
 						<bitRange>[6:6]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_R_TOG__RB_UH_PRE_PID_EN</name>
+						<name>RB_UEP_R_TOG__UH_PRE_PID_EN</name>
 						<description>expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1;RB_UH_PRE_PID_EN;USB host PRE PID enable for low speed device via hub</description>
 						<bitRange>[7:7]</bitRange>
 					</field>
@@ -5152,7 +5151,7 @@
 						<bitRange>[3:2]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_AUTO_TOG__RB_UH_R_AUTO_TOG</name>
+						<name>RB_UEP_AUTO_TOG__UH_R_AUTO_TOG</name>
 						<description>enable automatic toggle after successful transfer completion on endpoint 1_2_3: 0=manual toggle, 1=automatic toggle;enable automatic toggle after successful transfer completion: 0=manual toggle, 1=automatic toggle</description>
 						<bitRange>[4:4]</bitRange>
 					</field>
@@ -5162,14 +5161,14 @@
 						<bitRange>[6:6]</bitRange>
 					</field>
 					<field>
-						<name>RB_UEP_R_TOG__RB_UH_R_TOG</name>
+						<name>RB_UEP_R_TOG__UH_R_TOG</name>
 						<description>expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1;expected data toggle flag of host receiving (IN): 0=DATA0, 1=DATA1</description>
 						<bitRange>[7:7]</bitRange>
 					</field>
 				</fields>
 			</register>
 			<register>
-				<name>R8_UEP3_T_LEN__R8_UH_TX_LEN</name>
+				<name>R8_UEP3_T_LEN__UH_TX_LEN</name>
 				<description>endpoint 3 transmittal length;host transmittal endpoint transmittal length</description>
 				<addressOffset>0x2C</addressOffset>
 				<size>8</size>
@@ -5177,14 +5176,14 @@
 				<resetValue>0x00</resetValue>
 				<fields>
 					<field>
-						<name>R8_UEP3_T_LEN__R8_UH_TX_LEN</name>
+						<name>R8_UEP3_T_LEN__UH_TX_LEN</name>
 						<description>endpoint 1 transmittal length</description>
 						<bitRange>[7:0]</bitRange>
 					</field>
 				</fields>
 			</register>
 			<register>
-				<name>R8_UEP3_CTRL__R8_UH_TX_CTRL</name>
+				<name>R8_UEP3_CTRL__UH_TX_CTRL</name>
 				<description>endpoint 3 control;host transmittal endpoint control</description>
 				<addressOffset>0x2E</addressOffset>
 				<size>8</size>
@@ -5754,7 +5753,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR1</name>
-					<description>>RW,IPRIOR1</description>
+					<description>&gt;RW,IPRIOR1</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 			</fields>
@@ -5770,7 +5769,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR2</name>
-					<description>>RW,IPRIOR2</description>
+					<description>&gt;RW,IPRIOR2</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 		  	</fields>
@@ -5786,7 +5785,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR3</name>
-					<description>>RW,IPRIOR3</description>
+					<description>&gt;RW,IPRIOR3</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 		 	</fields>
@@ -5802,7 +5801,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR4</name>
-					<description>>RW,IPRIOR4</description>
+					<description>&gt;RW,IPRIOR4</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 		  	</fields>
@@ -5818,7 +5817,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR5</name>
-					<description>>RW,IPRIOR5</description>
+					<description>&gt;RW,IPRIOR5</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 		  	</fields>
@@ -5834,7 +5833,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR6</name>
-					<description>>RW,IPRIOR6</description>
+					<description>&gt;RW,IPRIOR6</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 			</fields>
@@ -5850,7 +5849,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR7</name>
-					<description>>RW,IPRIOR7</description>
+					<description>&gt;RW,IPRIOR7</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 			</fields>
@@ -5866,7 +5865,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR8</name>
-					<description>>RW,IPRIOR8</description>
+					<description>&gt;RW,IPRIOR8</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 			</fields>
@@ -5882,7 +5881,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR9</name>
-					<description>>RW,IPRIOR9</description>
+					<description>&gt;RW,IPRIOR9</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 			</fields>
@@ -5898,7 +5897,7 @@
 			<fields>
 				<field>
 					<name>IPRIOR10</name>
-					<description>>RW,IPRIOR10</description>
+					<description>&gt;RW,IPRIOR10</description>
 					<bitRange>[31:0]</bitRange>
 				</field>
 			</fields>
