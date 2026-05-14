@@ -1,8 +1,12 @@
-# 32-bit downcounter
+# Dual 32-bit up/down counters shared by V3F + V5F cores, with per-counter
+# core ID (CID) routing for interrupts. Currently used only by CH32H417;
+# the "dual_core" name reflects the topology, not a specific Qingke core
+# version, so it can be reused by future WCH dual-core MCUs with the same
+# SysTick layout.
 
 _add:
   SYSTICK:
-    description: Systick registers, 32-bit downcounter for QingKeV2
+    description: Dual 32-bit up/down counters shared by V3F + V5F cores with per-counter core ID routing
     groupName: SYSTICK
     baseAddress: 0xE000F000
     registers:
