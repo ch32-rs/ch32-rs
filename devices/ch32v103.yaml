@@ -484,12 +484,10 @@ RCC:
       RMVF:
         _write_constraint: "enum"
 
-    "*F":
+    RMVF:
       _read:
         Nothing: [0, "No reset occurred"]
         HasReset: [1, "Reset occurred"]
-
-    RMVF:
       _W1C:
         Clear: [1, "Remove reset flags"]
 
