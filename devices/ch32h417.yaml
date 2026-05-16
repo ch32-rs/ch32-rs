@@ -23,6 +23,26 @@ _delete:
 _modify:
   name: CH32H41X
 
+# Fix vendor SVD bugs in RCC, cross-checked against CH32H417 RM V1.7
+# section 3.4.
+RCC:
+  CFGR0:
+    # RM 3.4.2: CFGR0[17:16] is FPRE[1:0] (V5F core prescaler, encodes
+    # DIV1 / DIV2 / DIV4). The vendor SVD splits it into FPRE (1-bit at
+    # 16) and a legacy V30x-style PLLXTPRE (1-bit at 17). Merge them.
+    _delete:
+      - PLLXTPRE
+    _modify:
+      FPRE:
+        description: V5F core prescaler (DIV1 / DIV2 / DIV4); 1xx encodes DIV4.
+        bitWidth: 2
+  PLLCFGR2:
+    # RM 3.4.14: PLLCFGR2[6:4] is USBSSPLL_REFSEL[2:0] (3-bit, 8 reference
+    # frequencies). The vendor SVD declares it as 2-bit at [5:4].
+    _modify:
+      USBSSPLL_REFSEL:
+        bitWidth: 3
+
 _include:
   - ../peripherals/systick_v3f_v5f.yaml
 #   - "common_patches/dma/dma_v1.yaml"
