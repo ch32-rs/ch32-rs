@@ -24,5 +24,5 @@ _modify:
   name: CH32H41X
 
 _include:
-  - ../peripherals/systick_dual_core.yaml
+  - ../peripherals/systick_v3f_v5f.yaml
 #   - "common_patches/dma/dma_v1.yaml"

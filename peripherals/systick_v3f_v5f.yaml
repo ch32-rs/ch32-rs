@@ -1,8 +1,8 @@
 # Dual 32-bit up/down counters shared by V3F + V5F cores, with per-counter
-# core ID (CID) routing for interrupts. Currently used only by CH32H417;
-# the "dual_core" name reflects the topology, not a specific Qingke core
-# version, so it can be reused by future WCH dual-core MCUs with the same
-# SysTick layout.
+# core ID (CID) routing for interrupts. Currently used only by CH32H417.
+# The "v3f_v5f" version name lists the Qingke core variants that share
+# this SysTick block; a future WCH MCU pairing different cores can use a
+# different version string.
 
 _add:
   SYSTICK:
