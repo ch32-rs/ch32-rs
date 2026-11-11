@@ -2047,7 +2047,7 @@
                 <description>RO/WO, TMR0 FIFO register, only low 26 bit</description>
                 <addressOffset>0x10</addressOffset>
                 <size>32</size>
-                <access>read-only</access>
+                <access>read-write</access>
                 <resetValue>0x00000000</resetValue>
                 <fields>
                     <field>
@@ -2252,10 +2252,10 @@
             </register>
             <register>
                 <name>R32_TMR1_FIFO</name>
-                <description>RO, TMR1 FIFO register, only low 26 bit</description>
+                <description>RO/WO, TMR1 FIFO register, only low 26 bit</description>
                 <addressOffset>0x10</addressOffset>
                 <size>32</size>
-                <access>read-only</access>
+                <access>read-write</access>
                 <resetValue>0x00000000</resetValue>
                 <fields>
                     <field>
