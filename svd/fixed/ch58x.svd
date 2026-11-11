@@ -514,7 +514,7 @@
 			<fields>
 			    <field>
 					<name>RB_PWR_XROM</name>
-					<description>RWA, power for retention 2KB SRAM</description>
+					<description>RWA, FlashROM power supply during sleep</description>
 					<bitRange>[0:0]</bitRange>
 				</field>
 				<field>
@@ -543,6 +543,11 @@
 					<bitRange>[7:7]</bitRange>
 				</field>
 				<field>
+					<name>RB_PWR_LDO_EN</name>
+					<description>RWA, internal LDO control for sleep planning: 0=turn off LDO during sleep, 1=keep LDO on</description>
+					<bitRange>[8:8]</bitRange>
+				</field>
+				<field>
 					<name>RB_PWR_DCDC_EN</name>
 					<description>RWA, DC/DC converter enable: 0=DC/DC disable and bypass, 1=DC/DC enable</description>
 					<bitRange>[9:9]</bitRange>
@@ -554,15 +559,15 @@
 				</field>
 				<field>
 					<name>RB_PWR_MUST_0010</name>
-					<description>RWA, power plan enable, auto clear after sleep executed</description>
+					<description>RWA, must write 0010</description>
 					<bitRange>[14:11]</bitRange>
-					<access>read-only</access>
+					<access>read-write</access>
 				</field>
 				<field>
 					<name>RB_PWR_PLAN_EN</name>
-					<description>RWA, must write 0010</description>
+					<description>RWA, power plan enable, auto clear after sleep executed</description>
 					<bitRange>[15:15]</bitRange>
-					<access>read-only</access>
+					<access>read-write</access>
 				</field>
 			</fields>
 		</register>
